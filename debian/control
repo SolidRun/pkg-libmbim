@@ -10,8 +10,8 @@ Build-Depends: debhelper (>= 9),
                gtk-doc-tools,
                libglib2.0-doc
 Standards-Version: 3.9.6
-Vcs-Git: git://git.debian.org/git/collab-maint/libmbim.git
-Vcs-Browser: http://git.debian.org/?p=collab-maint/libmbim.git;a=summary
+Vcs-Git: git://anonscm.debian.org/collab-maint/libmbim.git
+Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/libmbim.git
 Homepage: http://www.freedesktop.org/wiki/Software/libmbim/
 
 Package: libmbim-glib4
