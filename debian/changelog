@@ -1,3 +1,18 @@
+libmbim (1.12.2-1) UNRELEASED; urgency=medium
+
+  * Team upload.
+
+  [ Marius B. Kotsbak ]
+  * Imported Upstream version 1.12.2
+  * Update debian/libmbim-glib4.symbols for new upstream release.
+  * Update Debian standards version to the latest.
+  * Add experimental branch config in gbp.conf.
+
+  [ Michael Biebl ]
+  * Update Vcs-* to use canonical URLs, use cgit and https for Vcs-Browser.
+
+ -- Marius B. Kotsbak <marius@kotsbak.com>  Sun, 08 Feb 2015 23:51:38 +0100
+
 libmbim (1.10.0-2) unstable; urgency=medium
 
   * Team upload.
