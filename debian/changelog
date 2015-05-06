@@ -1,6 +1,7 @@
 libmbim (1.12.2-2) UNRELEASED; urgency=medium
 
   * Upload to unstable.
+  * Add myself to Uploaders.
 
  -- Michael Biebl <biebl@debian.org>  Thu, 07 May 2015 01:14:58 +0200
 
