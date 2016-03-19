@@ -1,7 +1,7 @@
 libmbim (1.12.4-1) UNRELEASED; urgency=medium
 
   [ Thomas Bechtold ]
-  * Set mbiebl@debian.org as new Maintainer and move myself to
+  * Set biebl@debian.org as new Maintainer and move myself to
     Uploaders.
 
   [ Michael Biebl ]
