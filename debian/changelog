@@ -11,6 +11,7 @@ libmbim (1.12.4-1) UNRELEASED; urgency=medium
   * Ensure proper upgrade from libmbim-glib4-dbg to new dbgsym packages by
     using dh_strip --dbgsym-migration. Bump Build-Depends on debhelper
     accordingly.
+  * Bump Standards-Version to 3.9.7.
 
  -- Thomas Bechtold <toabctl@debian.org>  Mon, 21 Sep 2015 07:35:49 +0200
 
