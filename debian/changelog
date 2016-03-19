@@ -1,7 +1,11 @@
-libmbim (1.12.2-3) UNRELEASED; urgency=medium
+libmbim (1.12.4-1) UNRELEASED; urgency=medium
 
+  [ Thomas Bechtold ]
   * Set mbiebl@debian.org as new Maintainer and move myself to
     Uploaders.
+
+  [ Michael Biebl ]
+  * New upstream release.
 
  -- Thomas Bechtold <toabctl@debian.org>  Mon, 21 Sep 2015 07:35:49 +0200
 
