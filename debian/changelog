@@ -1,4 +1,4 @@
-libmbim (1.12.4-1) UNRELEASED; urgency=medium
+libmbim (1.12.4-1) unstable; urgency=medium
 
   [ Thomas Bechtold ]
   * Set biebl@debian.org as new Maintainer and move myself to
@@ -14,7 +14,7 @@ libmbim (1.12.4-1) UNRELEASED; urgency=medium
   * Bump Standards-Version to 3.9.7.
   * Drop debian/mbimcli.1 since we use the upstream man page.
 
- -- Thomas Bechtold <toabctl@debian.org>  Mon, 21 Sep 2015 07:35:49 +0200
+ -- Michael Biebl <biebl@debian.org>  Sat, 19 Mar 2016 05:07:58 +0100
 
 libmbim (1.12.2-2) unstable; urgency=medium
 
