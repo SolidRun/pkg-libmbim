@@ -51,7 +51,7 @@
  * Evaluates to the micro version number of libmbim-glib which this source
  * compiled against.
  */
-#define MBIM_MICRO_VERSION (2)
+#define MBIM_MICRO_VERSION (4)
 
 /**
  * MBIM_CHECK_VERSION:

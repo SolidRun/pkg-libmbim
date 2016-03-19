@@ -2,13 +2,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>libmbim-glib Reference Manual: MbimProxy</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<title>MbimProxy: libmbim-glib Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
 <link rel="home" href="index.html" title="libmbim-glib Reference Manual">
 <link rel="up" href="ch01.html" title="Core">
 <link rel="prev" href="MbimDevice.html" title="MbimDevice">
 <link rel="next" href="libmbim-glib-Enumerations-and-Flags.html" title="Enumerations and Flags">
-<meta name="generator" content="GTK-Doc V1.21 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.24 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -35,7 +35,7 @@
 </tr></table></div>
 <div class="refsect1">
 <a name="MbimProxy.functions"></a><h2>Functions</h2>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="functions_return">
 <col class="functions_name">
@@ -70,7 +70,7 @@
 </div>
 <div class="refsect1">
 <a name="MbimProxy.properties"></a><h2>Properties</h2>
-<div class="informaltable"><table border="0">
+<div class="informaltable"><table class="informaltable" border="0">
 <colgroup>
 <col width="150px" class="properties_type">
 <col width="300px" class="properties_name">
@@ -92,7 +92,7 @@
 </div>
 <div class="refsect1">
 <a name="MbimProxy.other"></a><h2>Types and Values</h2>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="name">
 <col class="description">
@@ -125,8 +125,6 @@
 </div>
 <div class="refsect1">
 <a name="MbimProxy.description"></a><h2>Description</h2>
-<p>
-</p>
 </div>
 <div class="refsect1">
 <a name="MbimProxy.functions_details"></a><h2>Functions</h2>
@@ -134,12 +132,6 @@
 <a name="mbim-proxy-new"></a><h3>mbim_proxy_new ()</h3>
 <pre class="programlisting"><a class="link" href="MbimProxy.html" title="MbimProxy"><span class="returnvalue">MbimProxy</span></a> *
 mbim_proxy_new (<em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
-<p>
-</p>
-<div class="refsect3">
-<a name="id-1.2.7.8.2.5"></a><h4>Returns</h4>
-<p></p>
-</div>
 </div>
 <hr>
 <div class="refsect2">
@@ -149,7 +141,7 @@ mbim_proxy_get_n_clients (<em class="parameter"><code><a class="link" href="Mbim
 <p>Get the number of clients currently connected to the proxy.</p>
 <div class="refsect3">
 <a name="id-1.2.7.8.3.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -165,7 +157,6 @@ mbim_proxy_get_n_clients (<em class="parameter"><code><a class="link" href="Mbim
 <div class="refsect3">
 <a name="id-1.2.7.8.3.6"></a><h4>Returns</h4>
 <p> a <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a>.</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -176,7 +167,7 @@ mbim_proxy_get_n_devices (<em class="parameter"><code><a class="link" href="Mbim
 <p>Get the number of devices currently connected to the proxy.</p>
 <div class="refsect3">
 <a name="id-1.2.7.8.4.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -192,7 +183,6 @@ mbim_proxy_get_n_devices (<em class="parameter"><code><a class="link" href="Mbim
 <div class="refsect3">
 <a name="id-1.2.7.8.4.6"></a><h4>Returns</h4>
 <p> a <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a>.</p>
-<p></p>
 </div>
 </div>
 </div>
@@ -202,31 +192,23 @@ mbim_proxy_get_n_devices (<em class="parameter"><code><a class="link" href="Mbim
 <a name="MBIM-PROXY-SOCKET-PATH:CAPS"></a><h3>MBIM_PROXY_SOCKET_PATH</h3>
 <pre class="programlisting">#define MBIM_PROXY_SOCKET_PATH "mbim-proxy"
 </pre>
-<p>
-</p>
 </div>
 <hr>
 <div class="refsect2">
 <a name="MBIM-PROXY-N-CLIENTS:CAPS"></a><h3>MBIM_PROXY_N_CLIENTS</h3>
 <pre class="programlisting">#define MBIM_PROXY_N_CLIENTS   "mbim-proxy-n-clients"
 </pre>
-<p>
-</p>
 </div>
 <hr>
 <div class="refsect2">
 <a name="MBIM-PROXY-N-DEVICES:CAPS"></a><h3>MBIM_PROXY_N_DEVICES</h3>
 <pre class="programlisting">#define MBIM_PROXY_N_DEVICES   "mbim-proxy-n-devices"
 </pre>
-<p>
-</p>
 </div>
 <hr>
 <div class="refsect2">
 <a name="MbimProxy-struct"></a><h3>struct MbimProxy</h3>
 <pre class="programlisting">struct MbimProxy;</pre>
-<p>
-</p>
 </div>
 </div>
 <div class="refsect1">
@@ -249,7 +231,6 @@ mbim_proxy_get_n_devices (<em class="parameter"><code><a class="link" href="Mbim
 </div>
 </div>
 <div class="footer">
-<hr>
-          Generated by GTK-Doc V1.21</div>
+<hr>Generated by GTK-Doc V1.24</div>
 </body>
 </html>

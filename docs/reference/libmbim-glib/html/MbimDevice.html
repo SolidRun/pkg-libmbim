@@ -2,13 +2,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>libmbim-glib Reference Manual: MbimDevice</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<title>MbimDevice: libmbim-glib Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
 <link rel="home" href="index.html" title="libmbim-glib Reference Manual">
 <link rel="up" href="ch01.html" title="Core">
 <link rel="prev" href="MbimMessage.html" title="MbimMessage">
 <link rel="next" href="MbimProxy.html" title="MbimProxy">
-<meta name="generator" content="GTK-Doc V1.21 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.24 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -37,7 +37,7 @@
 </tr></table></div>
 <div class="refsect1">
 <a name="MbimDevice.functions"></a><h2>Functions</h2>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="functions_return">
 <col class="functions_name">
@@ -182,7 +182,7 @@
 </div>
 <div class="refsect1">
 <a name="MbimDevice.properties"></a><h2>Properties</h2>
-<div class="informaltable"><table border="0">
+<div class="informaltable"><table class="informaltable" border="0">
 <colgroup>
 <col width="150px" class="properties_type">
 <col width="300px" class="properties_name">
@@ -210,7 +210,7 @@
 </div>
 <div class="refsect1">
 <a name="MbimDevice.signals"></a><h2>Signals</h2>
-<div class="informaltable"><table border="0">
+<div class="informaltable"><table class="informaltable" border="0">
 <colgroup>
 <col width="150px" class="signals_return">
 <col width="300px" class="signals_name">
@@ -220,24 +220,24 @@
 <tr>
 <td class="signal_type"><span class="returnvalue">void</span></td>
 <td class="signal_name"><a class="link" href="MbimDevice.html#MbimDevice-device-error" title="The “device-error” signal">device-error</a></td>
-<td class="signal_flags">Run Last</td>
+<td class="signal_flags"><a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></td>
 </tr>
 <tr>
 <td class="signal_type"><span class="returnvalue">void</span></td>
 <td class="signal_name"><a class="link" href="MbimDevice.html#MbimDevice-device-indicate-status" title="The “device-indicate-status” signal">device-indicate-status</a></td>
-<td class="signal_flags">Run Last</td>
+<td class="signal_flags"><a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></td>
 </tr>
 <tr>
 <td class="signal_type"><span class="returnvalue">void</span></td>
 <td class="signal_name"><a class="link" href="MbimDevice.html#MbimDevice-device-removed" title="The “device-removed” signal">device-removed</a></td>
-<td class="signal_flags">Run Last</td>
+<td class="signal_flags"><a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <div class="refsect1">
 <a name="MbimDevice.other"></a><h2>Types and Values</h2>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="name">
 <col class="description">
@@ -312,7 +312,7 @@ When the operation is finished, <em class="parameter"><code>callback</code></em>
 <a class="link" href="MbimDevice.html#mbim-device-new-finish" title="mbim_device_new_finish ()"><code class="function">mbim_device_new_finish()</code></a> to get the result of the operation.</p>
 <div class="refsect3">
 <a name="id-1.2.6.10.2.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -352,7 +352,7 @@ mbim_device_new_finish (<em class="parameter"><code><a href="https://developer.g
 <p>Finishes an operation started with <a class="link" href="MbimDevice.html#mbim-device-new" title="mbim_device_new ()"><code class="function">mbim_device_new()</code></a>.</p>
 <div class="refsect3">
 <a name="id-1.2.6.10.3.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -376,7 +376,6 @@ mbim_device_new_finish (<em class="parameter"><code><a href="https://developer.g
 <a name="id-1.2.6.10.3.6"></a><h4>Returns</h4>
 <p> A newly created <a class="link" href="MbimDevice.html" title="MbimDevice"><span class="type">MbimDevice</span></a>, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><span class="type">NULL</span></a> if <em class="parameter"><code>error</code></em>
 is set.</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -387,7 +386,7 @@ mbim_device_get_file (<em class="parameter"><code><a class="link" href="MbimDevi
 <p>Get the <a href="https://developer.gnome.org/gio/unstable/GFile.html"><span class="type">GFile</span></a> associated with this <a class="link" href="MbimDevice.html" title="MbimDevice"><span class="type">MbimDevice</span></a>.</p>
 <div class="refsect3">
 <a name="id-1.2.6.10.4.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -403,7 +402,6 @@ mbim_device_get_file (<em class="parameter"><code><a class="link" href="MbimDevi
 <div class="refsect3">
 <a name="id-1.2.6.10.4.6"></a><h4>Returns</h4>
 <p> a <a href="https://developer.gnome.org/gio/unstable/GFile.html"><span class="type">GFile</span></a> that must be freed with <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#g-object-unref"><code class="function">g_object_unref()</code></a>.</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -415,7 +413,7 @@ mbim_device_peek_file (<em class="parameter"><code><a class="link" href="MbimDev
 on the returned object.</p>
 <div class="refsect3">
 <a name="id-1.2.6.10.5.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -432,7 +430,6 @@ on the returned object.</p>
 <a name="id-1.2.6.10.5.6"></a><h4>Returns</h4>
 <p> a <a href="https://developer.gnome.org/gio/unstable/GFile.html"><span class="type">GFile</span></a>. Do not free the returned object, it is owned by <em class="parameter"><code>self</code></em>
 .</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -443,7 +440,7 @@ mbim_device_get_path (<em class="parameter"><code><a class="link" href="MbimDevi
 <p>Get the system path of the underlying MBIM device.</p>
 <div class="refsect3">
 <a name="id-1.2.6.10.6.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -459,7 +456,6 @@ mbim_device_get_path (<em class="parameter"><code><a class="link" href="MbimDevi
 <div class="refsect3">
 <a name="id-1.2.6.10.6.6"></a><h4>Returns</h4>
 <p> the system path of the device.</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -470,7 +466,7 @@ mbim_device_get_path_display (<em class="parameter"><code><a class="link" href="
 <p>Get the system path of the underlying MBIM device in UTF-8.</p>
 <div class="refsect3">
 <a name="id-1.2.6.10.7.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -486,7 +482,6 @@ mbim_device_get_path_display (<em class="parameter"><code><a class="link" href="
 <div class="refsect3">
 <a name="id-1.2.6.10.7.6"></a><h4>Returns</h4>
 <p> UTF-8 encoded system path of the device.</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -497,7 +492,7 @@ mbim_device_is_open (<em class="parameter"><code><a class="link" href="MbimDevic
 <p>Checks whether the <a class="link" href="MbimDevice.html" title="MbimDevice"><span class="type">MbimDevice</span></a> is open for I/O.</p>
 <div class="refsect3">
 <a name="id-1.2.6.10.8.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -514,7 +509,6 @@ mbim_device_is_open (<em class="parameter"><code><a class="link" href="MbimDevic
 <a name="id-1.2.6.10.8.6"></a><h4>Returns</h4>
 <p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if <em class="parameter"><code>self</code></em>
 is open, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -532,7 +526,7 @@ mbim_device_open (<em class="parameter"><code><a class="link" href="MbimDevice.h
 <a class="link" href="MbimDevice.html#mbim-device-open-finish" title="mbim_device_open_finish ()"><code class="function">mbim_device_open_finish()</code></a> to get the result of the operation.</p>
 <div class="refsect3">
 <a name="id-1.2.6.10.9.6"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -578,7 +572,7 @@ mbim_device_open_finish (<em class="parameter"><code><a class="link" href="MbimD
 <p>Finishes an asynchronous open operation started with <a class="link" href="MbimDevice.html#mbim-device-open" title="mbim_device_open ()"><code class="function">mbim_device_open()</code></a>.</p>
 <div class="refsect3">
 <a name="id-1.2.6.10.10.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -607,7 +601,6 @@ mbim_device_open_finish (<em class="parameter"><code><a class="link" href="MbimD
 <a name="id-1.2.6.10.10.6"></a><h4>Returns</h4>
 <p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if successful, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if <em class="parameter"><code>error</code></em>
 is set.</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -628,7 +621,7 @@ launching the <a class="link" href="MbimDevice.html" title="MbimDevice"><span cl
 <a class="link" href="MbimDevice.html#mbim-device-open-full-finish" title="mbim_device_open_full_finish ()"><code class="function">mbim_device_open_full_finish()</code></a> to get the result of the operation.</p>
 <div class="refsect3">
 <a name="id-1.2.6.10.11.7"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -679,7 +672,7 @@ mbim_device_open_full_finish (<em class="parameter"><code><a class="link" href="
 <p>Finishes an asynchronous open operation started with <a class="link" href="MbimDevice.html#mbim-device-open-full" title="mbim_device_open_full ()"><code class="function">mbim_device_open_full()</code></a>.</p>
 <div class="refsect3">
 <a name="id-1.2.6.10.12.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -708,7 +701,6 @@ mbim_device_open_full_finish (<em class="parameter"><code><a class="link" href="
 <a name="id-1.2.6.10.12.6"></a><h4>Returns</h4>
 <p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if successful, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if <em class="parameter"><code>error</code></em>
 is set.</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -726,7 +718,7 @@ mbim_device_close (<em class="parameter"><code><a class="link" href="MbimDevice.
 <a class="link" href="MbimDevice.html#mbim-device-close-finish" title="mbim_device_close_finish ()"><code class="function">mbim_device_close_finish()</code></a> to get the result of the operation.</p>
 <div class="refsect3">
 <a name="id-1.2.6.10.13.6"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -772,7 +764,7 @@ mbim_device_close_finish (<em class="parameter"><code><a class="link" href="Mbim
 <p>Finishes an asynchronous close operation started with <a class="link" href="MbimDevice.html#mbim-device-close" title="mbim_device_close ()"><code class="function">mbim_device_close()</code></a>.</p>
 <div class="refsect3">
 <a name="id-1.2.6.10.14.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -801,7 +793,6 @@ mbim_device_close_finish (<em class="parameter"><code><a class="link" href="Mbim
 <a name="id-1.2.6.10.14.6"></a><h4>Returns</h4>
 <p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if successful, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if <em class="parameter"><code>error</code></em>
 is set.</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -813,7 +804,7 @@ mbim_device_close_force (<em class="parameter"><code><a class="link" href="MbimD
 <p>Forces the <a class="link" href="MbimDevice.html" title="MbimDevice"><span class="type">MbimDevice</span></a> to be closed.</p>
 <div class="refsect3">
 <a name="id-1.2.6.10.15.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -838,7 +829,6 @@ mbim_device_close_force (<em class="parameter"><code><a class="link" href="MbimD
 <p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if <em class="parameter"><code>self</code></em>
 if no error happens, otherwise <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> and <em class="parameter"><code>error</code></em>
 is set.</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -850,7 +840,7 @@ mbim_device_get_next_transaction_id (<em class="parameter"><code><a class="link"
 The internal transaction ID gets incremented.</p>
 <div class="refsect3">
 <a name="id-1.2.6.10.16.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -866,7 +856,6 @@ The internal transaction ID gets incremented.</p>
 <div class="refsect3">
 <a name="id-1.2.6.10.16.6"></a><h4>Returns</h4>
 <p> the next transaction ID.</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -885,7 +874,7 @@ mbim_device_command (<em class="parameter"><code><a class="link" href="MbimDevic
 <a class="link" href="MbimDevice.html#mbim-device-command-finish" title="mbim_device_command_finish ()"><code class="function">mbim_device_command_finish()</code></a> to get the result of the operation.</p>
 <div class="refsect3">
 <a name="id-1.2.6.10.17.6"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -936,7 +925,7 @@ mbim_device_command_finish (<em class="parameter"><code><a class="link" href="Mb
 <p>Finishes an operation started with <a class="link" href="MbimDevice.html#mbim-device-command" title="mbim_device_command ()"><code class="function">mbim_device_command()</code></a>.</p>
 <div class="refsect3">
 <a name="id-1.2.6.10.18.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -965,7 +954,6 @@ mbim_device_command_finish (<em class="parameter"><code><a class="link" href="Mb
 <a name="id-1.2.6.10.18.6"></a><h4>Returns</h4>
 <p> a <a class="link" href="MbimMessage.html" title="MbimMessage"><span class="type">MbimMessage</span></a> response, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><span class="type">NULL</span></a> if <em class="parameter"><code>error</code></em>
 is set. The returned value should be freed with <a class="link" href="MbimMessage.html#mbim-message-unref" title="mbim_message_unref ()"><code class="function">mbim_message_unref()</code></a>.</p>
-<p></p>
 </div>
 </div>
 </div>
@@ -975,48 +963,36 @@ is set. The returned value should be freed with <a class="link" href="MbimMessag
 <a name="MBIM-DEVICE-FILE:CAPS"></a><h3>MBIM_DEVICE_FILE</h3>
 <pre class="programlisting">#define MBIM_DEVICE_FILE           "device-file"
 </pre>
-<p>
-</p>
 </div>
 <hr>
 <div class="refsect2">
 <a name="MBIM-DEVICE-IN-SESSION:CAPS"></a><h3>MBIM_DEVICE_IN_SESSION</h3>
 <pre class="programlisting">#define MBIM_DEVICE_IN_SESSION     "device-in-session"
 </pre>
-<p>
-</p>
 </div>
 <hr>
 <div class="refsect2">
 <a name="MBIM-DEVICE-TRANSACTION-ID:CAPS"></a><h3>MBIM_DEVICE_TRANSACTION_ID</h3>
 <pre class="programlisting">#define MBIM_DEVICE_TRANSACTION_ID "device-transaction-id"
 </pre>
-<p>
-</p>
 </div>
 <hr>
 <div class="refsect2">
 <a name="MBIM-DEVICE-SIGNAL-REMOVED:CAPS"></a><h3>MBIM_DEVICE_SIGNAL_REMOVED</h3>
 <pre class="programlisting">#define MBIM_DEVICE_SIGNAL_REMOVED         "device-removed"
 </pre>
-<p>
-</p>
 </div>
 <hr>
 <div class="refsect2">
 <a name="MBIM-DEVICE-SIGNAL-INDICATE-STATUS:CAPS"></a><h3>MBIM_DEVICE_SIGNAL_INDICATE_STATUS</h3>
 <pre class="programlisting">#define MBIM_DEVICE_SIGNAL_INDICATE_STATUS "device-indicate-status"
 </pre>
-<p>
-</p>
 </div>
 <hr>
 <div class="refsect2">
 <a name="MBIM-DEVICE-SIGNAL-ERROR:CAPS"></a><h3>MBIM_DEVICE_SIGNAL_ERROR</h3>
 <pre class="programlisting">#define MBIM_DEVICE_SIGNAL_ERROR           "device-error"
 </pre>
-<p>
-</p>
 </div>
 <hr>
 <div class="refsect2">
@@ -1031,7 +1007,7 @@ using the provided API.</p>
 <p>Flags to specify which actions to be performed when the device is open.</p>
 <div class="refsect3">
 <a name="id-1.2.6.11.9.4"></a><h4>Members</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
 <col class="enum_members_description">
@@ -1094,7 +1070,7 @@ user_function (<a class="link" href="MbimDevice.html" title="MbimDevice"><span c
 <p>The ::device-error signal is emitted when a MBIM error is received.</p>
 <div class="refsect3">
 <a name="id-1.2.6.13.2.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -1119,7 +1095,7 @@ user_function (<a class="link" href="MbimDevice.html" title="MbimDevice"><span c
 </tbody>
 </table></div>
 </div>
-<p>Flags: Run Last</p>
+<p>Flags: <a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></p>
 </div>
 <hr>
 <div class="refsect2">
@@ -1131,7 +1107,7 @@ user_function (<a class="link" href="MbimDevice.html" title="MbimDevice"><span c
 <p>The ::device-indication-status signal is emitted when a MBIM indication is received.</p>
 <div class="refsect3">
 <a name="id-1.2.6.13.3.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -1156,7 +1132,7 @@ user_function (<a class="link" href="MbimDevice.html" title="MbimDevice"><span c
 </tbody>
 </table></div>
 </div>
-<p>Flags: Run Last</p>
+<p>Flags: <a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></p>
 </div>
 <hr>
 <div class="refsect2">
@@ -1167,7 +1143,7 @@ user_function (<a class="link" href="MbimDevice.html" title="MbimDevice"><span c
 <p>The ::device-removed signal is emitted when an unexpected port hang-up is received.</p>
 <div class="refsect3">
 <a name="id-1.2.6.13.4.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -1192,12 +1168,11 @@ user_function (<a class="link" href="MbimDevice.html" title="MbimDevice"><span c
 </tbody>
 </table></div>
 </div>
-<p>Flags: Run Last</p>
+<p>Flags: <a href="https://developer.gnome.org/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></p>
 </div>
 </div>
 </div>
 <div class="footer">
-<hr>
-          Generated by GTK-Doc V1.21</div>
+<hr>Generated by GTK-Doc V1.24</div>
 </body>
 </html>
