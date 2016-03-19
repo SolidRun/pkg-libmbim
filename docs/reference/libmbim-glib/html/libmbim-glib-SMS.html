@@ -2,13 +2,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>libmbim-glib Reference Manual: SMS</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<title>SMS: libmbim-glib Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
 <link rel="home" href="index.html" title="libmbim-glib Reference Manual">
 <link rel="up" href="ch02.html" title="Generic Services">
 <link rel="prev" href="libmbim-glib-Basic-Connect.html" title="Basic Connect">
 <link rel="next" href="libmbim-glib-USSD.html" title="USSD">
-<meta name="generator" content="GTK-Doc V1.21 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.24 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -33,7 +33,7 @@
 </tr></table></div>
 <div class="refsect1">
 <a name="libmbim-glib-SMS.functions"></a><h2>Functions</h2>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="functions_return">
 <col class="functions_name">
@@ -180,7 +180,7 @@
 </div>
 <div class="refsect1">
 <a name="libmbim-glib-SMS.other"></a><h2>Types and Values</h2>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="name">
 <col class="description">
@@ -207,8 +207,6 @@
 </div>
 <div class="refsect1">
 <a name="libmbim-glib-SMS.description"></a><h2>Description</h2>
-<p>
-</p>
 </div>
 <div class="refsect1">
 <a name="libmbim-glib-SMS.functions_details"></a><h2>Functions</h2>
@@ -219,7 +217,7 @@ mbim_sms_pdu_read_record_array_free (<em class="parameter"><code><a class="link"
 <p>Frees the memory allocated for the array of <a href="libmbim-glib-SMS.html#MbimSmsPduReadRecord"><span class="type">MbimSmsPduReadRecords</span></a>.</p>
 <div class="refsect3">
 <a name="id-1.3.3.6.2.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -241,7 +239,7 @@ mbim_sms_cdma_read_record_array_free (<em class="parameter"><code><a class="link
 <p>Frees the memory allocated for the array of <a href="libmbim-glib-SMS.html#MbimSmsCdmaReadRecord"><span class="type">MbimSmsCdmaReadRecords</span></a>.</p>
 <div class="refsect3">
 <a name="id-1.3.3.6.3.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -263,7 +261,7 @@ mbim_sms_pdu_send_record_free (<em class="parameter"><code><a class="link" href=
 <p>Frees the memory allocated for the <a class="link" href="libmbim-glib-SMS.html#MbimSmsPduSendRecord" title="MbimSmsPduSendRecord"><span class="type">MbimSmsPduSendRecord</span></a>.</p>
 <div class="refsect3">
 <a name="id-1.3.3.6.4.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -285,7 +283,7 @@ mbim_sms_cdma_send_record_free (<em class="parameter"><code><a class="link" href
 <p>Frees the memory allocated for the <a class="link" href="libmbim-glib-SMS.html#MbimSmsCdmaSendRecord" title="MbimSmsCdmaSendRecord"><span class="type">MbimSmsCdmaSendRecord</span></a>.</p>
 <div class="refsect3">
 <a name="id-1.3.3.6.5.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -308,7 +306,7 @@ mbim_message_sms_configuration_query_new
 <p>Create a new request for the 'Configuration' query command in the 'SMS' service.</p>
 <div class="refsect3">
 <a name="id-1.3.3.6.6.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -324,7 +322,6 @@ mbim_message_sms_configuration_query_new
 <div class="refsect3">
 <a name="id-1.3.3.6.6.6"></a><h4>Returns</h4>
 <p> a newly allocated <a class="link" href="MbimMessage.html" title="MbimMessage"><span class="type">MbimMessage</span></a>, which should be freed with <a class="link" href="MbimMessage.html#mbim-message-unref" title="mbim_message_unref ()"><code class="function">mbim_message_unref()</code></a>.</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -338,7 +335,7 @@ mbim_message_sms_configuration_set_new
 <p>Create a new request for the 'Configuration' set command in the 'SMS' service.</p>
 <div class="refsect3">
 <a name="id-1.3.3.6.7.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -366,7 +363,6 @@ mbim_message_sms_configuration_set_new
 <div class="refsect3">
 <a name="id-1.3.3.6.7.6"></a><h4>Returns</h4>
 <p> a newly allocated <a class="link" href="MbimMessage.html" title="MbimMessage"><span class="type">MbimMessage</span></a>, which should be freed with <a class="link" href="MbimMessage.html#mbim-message-unref" title="mbim_message_unref ()"><code class="function">mbim_message_unref()</code></a>.</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -384,7 +380,7 @@ mbim_message_sms_configuration_response_parse
 <p>Create a new request for the 'ScAddress' response command in the 'SMS' service.</p>
 <div class="refsect3">
 <a name="id-1.3.3.6.8.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -433,7 +429,6 @@ mbim_message_sms_configuration_response_parse
 <a name="id-1.3.3.6.8.6"></a><h4>Returns</h4>
 <p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the message was correctly parsed, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if <em class="parameter"><code>error</code></em>
 is set.</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -447,7 +442,7 @@ mbim_message_sms_read_query_new (<em class="parameter"><code><a class="link" hre
 <p>Create a new request for the 'Read' query command in the 'SMS' service.</p>
 <div class="refsect3">
 <a name="id-1.3.3.6.9.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -480,7 +475,6 @@ mbim_message_sms_read_query_new (<em class="parameter"><code><a class="link" hre
 <div class="refsect3">
 <a name="id-1.3.3.6.9.6"></a><h4>Returns</h4>
 <p> a newly allocated <a class="link" href="MbimMessage.html" title="MbimMessage"><span class="type">MbimMessage</span></a>, which should be freed with <a class="link" href="MbimMessage.html#mbim-message-unref" title="mbim_message_unref ()"><code class="function">mbim_message_unref()</code></a>.</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -496,7 +490,7 @@ mbim_message_sms_read_response_parse (<em class="parameter"><code>const <a class
 <p>Create a new request for the 'CdmaMessages' response command in the 'SMS' service.</p>
 <div class="refsect3">
 <a name="id-1.3.3.6.10.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -540,7 +534,6 @@ mbim_message_sms_read_response_parse (<em class="parameter"><code>const <a class
 <a name="id-1.3.3.6.10.6"></a><h4>Returns</h4>
 <p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the message was correctly parsed, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if <em class="parameter"><code>error</code></em>
 is set.</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -557,7 +550,7 @@ mbim_message_sms_read_notification_parse
 <p>Create a new request for the 'CdmaMessages' notification command in the 'SMS' service.</p>
 <div class="refsect3">
 <a name="id-1.3.3.6.11.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -601,7 +594,6 @@ mbim_message_sms_read_notification_parse
 <a name="id-1.3.3.6.11.6"></a><h4>Returns</h4>
 <p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the message was correctly parsed, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if <em class="parameter"><code>error</code></em>
 is set.</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -615,7 +607,7 @@ mbim_message_sms_send_set_new (<em class="parameter"><code><a class="link" href=
 <p>Create a new request for the 'Send' set command in the 'SMS' service.</p>
 <div class="refsect3">
 <a name="id-1.3.3.6.12.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -648,7 +640,6 @@ mbim_message_sms_send_set_new (<em class="parameter"><code><a class="link" href=
 <div class="refsect3">
 <a name="id-1.3.3.6.12.6"></a><h4>Returns</h4>
 <p> a newly allocated <a class="link" href="MbimMessage.html" title="MbimMessage"><span class="type">MbimMessage</span></a>, which should be freed with <a class="link" href="MbimMessage.html#mbim-message-unref" title="mbim_message_unref ()"><code class="function">mbim_message_unref()</code></a>.</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -661,7 +652,7 @@ mbim_message_sms_send_response_parse (<em class="parameter"><code>const <a class
 <p>Create a new request for the 'MessageReference' response command in the 'SMS' service.</p>
 <div class="refsect3">
 <a name="id-1.3.3.6.13.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -690,7 +681,6 @@ mbim_message_sms_send_response_parse (<em class="parameter"><code>const <a class
 <a name="id-1.3.3.6.13.6"></a><h4>Returns</h4>
 <p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the message was correctly parsed, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if <em class="parameter"><code>error</code></em>
 is set.</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -703,7 +693,7 @@ mbim_message_sms_delete_set_new (<em class="parameter"><code><a class="link" hre
 <p>Create a new request for the 'Delete' set command in the 'SMS' service.</p>
 <div class="refsect3">
 <a name="id-1.3.3.6.14.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -731,7 +721,6 @@ mbim_message_sms_delete_set_new (<em class="parameter"><code><a class="link" hre
 <div class="refsect3">
 <a name="id-1.3.3.6.14.6"></a><h4>Returns</h4>
 <p> a newly allocated <a class="link" href="MbimMessage.html" title="MbimMessage"><span class="type">MbimMessage</span></a>, which should be freed with <a class="link" href="MbimMessage.html#mbim-message-unref" title="mbim_message_unref ()"><code class="function">mbim_message_unref()</code></a>.</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -744,7 +733,7 @@ mbim_message_sms_delete_response_parse
 <p>Create a new request for the 'Delete' response command in the 'SMS' service.</p>
 <div class="refsect3">
 <a name="id-1.3.3.6.15.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -768,7 +757,6 @@ mbim_message_sms_delete_response_parse
 <a name="id-1.3.3.6.15.6"></a><h4>Returns</h4>
 <p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the message was correctly parsed, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if <em class="parameter"><code>error</code></em>
 is set.</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -780,7 +768,7 @@ mbim_message_sms_message_store_status_query_new
 <p>Create a new request for the 'Message Store Status' query command in the 'SMS' service.</p>
 <div class="refsect3">
 <a name="id-1.3.3.6.16.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -796,7 +784,6 @@ mbim_message_sms_message_store_status_query_new
 <div class="refsect3">
 <a name="id-1.3.3.6.16.6"></a><h4>Returns</h4>
 <p> a newly allocated <a class="link" href="MbimMessage.html" title="MbimMessage"><span class="type">MbimMessage</span></a>, which should be freed with <a class="link" href="MbimMessage.html#mbim-message-unref" title="mbim_message_unref ()"><code class="function">mbim_message_unref()</code></a>.</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -811,7 +798,7 @@ mbim_message_sms_message_store_status_response_parse
 <p>Create a new request for the 'MessageIndex' response command in the 'SMS' service.</p>
 <div class="refsect3">
 <a name="id-1.3.3.6.17.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -845,7 +832,6 @@ mbim_message_sms_message_store_status_response_parse
 <a name="id-1.3.3.6.17.6"></a><h4>Returns</h4>
 <p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the message was correctly parsed, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if <em class="parameter"><code>error</code></em>
 is set.</p>
-<p></p>
 </div>
 </div>
 <hr>
@@ -860,7 +846,7 @@ mbim_message_sms_message_store_status_notification_parse
 <p>Create a new request for the 'MessageIndex' notification command in the 'SMS' service.</p>
 <div class="refsect3">
 <a name="id-1.3.3.6.18.5"></a><h4>Parameters</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
 <col class="parameters_description">
@@ -894,7 +880,6 @@ mbim_message_sms_message_store_status_notification_parse
 <a name="id-1.3.3.6.18.6"></a><h4>Returns</h4>
 <p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the message was correctly parsed, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if <em class="parameter"><code>error</code></em>
 is set.</p>
-<p></p>
 </div>
 </div>
 </div>
@@ -911,7 +896,7 @@ is set.</p>
 </pre>
 <div class="refsect3">
 <a name="id-1.3.3.7.2.4"></a><h4>Members</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="struct_members_name">
 <col class="struct_members_description">
@@ -959,7 +944,7 @@ is set.</p>
 </pre>
 <div class="refsect3">
 <a name="id-1.3.3.7.3.4"></a><h4>Members</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="struct_members_name">
 <col class="struct_members_description">
@@ -1025,7 +1010,7 @@ is set.</p>
 </pre>
 <div class="refsect3">
 <a name="id-1.3.3.7.4.4"></a><h4>Members</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="struct_members_name">
 <col class="struct_members_description">
@@ -1060,7 +1045,7 @@ is set.</p>
 </pre>
 <div class="refsect3">
 <a name="id-1.3.3.7.5.4"></a><h4>Members</h4>
-<div class="informaltable"><table width="100%" border="0">
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="struct_members_name">
 <col class="struct_members_description">
@@ -1104,7 +1089,6 @@ is set.</p>
 </div>
 </div>
 <div class="footer">
-<hr>
-          Generated by GTK-Doc V1.21</div>
+<hr>Generated by GTK-Doc V1.24</div>
 </body>
 </html>

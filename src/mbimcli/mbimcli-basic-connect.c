@@ -24,6 +24,7 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <string.h>
+#include <errno.h>
 
 #include <glib.h>
 #include <gio/gio.h>
@@ -31,6 +32,7 @@
 #include <libmbim-glib.h>
 
 #include "mbimcli.h"
+#include "mbimcli-helpers.h"
 
 /* Context */
 typedef struct {
@@ -60,10 +62,20 @@ static gboolean  query_signal_state_flag;
 static gboolean  query_packet_service_flag;
 static gboolean  set_packet_service_attach_flag;
 static gboolean  set_packet_service_detach_flag;
-static gboolean  query_connect_flag;
+static gchar    *query_connect_str;
 static gchar    *set_connect_activate_str;
-static gboolean  set_connect_deactivate_flag;
+static gchar    *set_connect_deactivate_str;
 static gboolean  query_packet_statistics_flag;
+
+static gboolean query_connection_state_arg_parse (const char *option_name,
+                                                  const char *value,
+                                                  gpointer user_data,
+                                                  GError **error);
+
+static gboolean disconnect_arg_parse (const char *option_name,
+                                      const char *value,
+                                      gpointer user_data,
+                                      GError **error);
 
 static GOptionEntry entries[] = {
     { "query-device-caps", 0, 0, G_OPTION_ARG_NONE, &query_device_caps_flag,
@@ -146,17 +158,17 @@ static GOptionEntry entries[] = {
       "Detach from the packet service",
       NULL
     },
-    { "query-connection-state", 0, 0, G_OPTION_ARG_NONE, &query_connect_flag,
-      "Query connection state",
-      NULL
+    { "query-connection-state", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_CALLBACK, G_CALLBACK (query_connection_state_arg_parse),
+      "Query connection state (SessionID is optional, defaults to 0)",
+      "[SessionID]"
     },
     { "connect", 0, 0, G_OPTION_ARG_STRING, &set_connect_activate_str,
-      "Connect (Authentication, Username and Password are optional)",
-      "[(APN),(PAP|CHAP|MSCHAPV2),(Username),(Password)]"
+      "Connect (allowed keys: session-id, apn, auth (PAP|CHAP|MSCHAPV2), username, password)",
+      "[\"key=value,...\"]"
     },
-    { "disconnect", 0, 0, G_OPTION_ARG_NONE, &set_connect_deactivate_flag,
-      "Disconnect",
-      NULL
+    { "disconnect", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_CALLBACK, G_CALLBACK (disconnect_arg_parse),
+      "Disconnect (SessionID is optional, defaults to 0)",
+      "[SessionID]"
     },
     { "query-packet-statistics", 0, 0, G_OPTION_ARG_NONE, &query_packet_statistics_flag,
       "Query packet statistics",
@@ -178,6 +190,26 @@ mbimcli_basic_connect_get_option_group (void)
     g_option_group_add_entries (group, entries);
 
     return group;
+}
+
+static gboolean
+query_connection_state_arg_parse (const char *option_name,
+                                  const char *value,
+                                  gpointer user_data,
+                                  GError **error)
+{
+    query_connect_str = g_strdup (value ? value : "0");
+    return TRUE;
+}
+
+static gboolean
+disconnect_arg_parse (const char *option_name,
+                      const char *value,
+                      gpointer user_data,
+                      GError **error)
+{
+    set_connect_deactivate_str = g_strdup (value ? value : "0");
+    return TRUE;
 }
 
 gboolean
@@ -209,9 +241,9 @@ mbimcli_basic_connect_options_enabled (void)
                  query_packet_service_flag +
                  set_packet_service_attach_flag +
                  set_packet_service_detach_flag +
-                 query_connect_flag +
+                 !!query_connect_str +
                  !!set_connect_activate_str +
-                 set_connect_deactivate_flag +
+                 !!set_connect_deactivate_str +
                  query_packet_statistics_flag);
 
     if (n_actions > 1) {
@@ -657,6 +689,31 @@ enum {
 };
 
 static void
+ip_configuration_query_ready (MbimDevice *device,
+                              GAsyncResult *res,
+                              gpointer unused)
+{
+    GError *error = NULL;
+    MbimMessage *response;
+    gboolean success = FALSE;
+
+    response = mbim_device_command_finish (device, res, &error);
+    if (!response ||
+        !mbim_message_response_get_result (response, MBIM_MESSAGE_TYPE_COMMAND_DONE, &error)) {
+        g_printerr ("error: couldn't get IP configuration response message: %s\n", error->message);
+    } else {
+        success = mbimcli_print_ip_config (device, response, &error);
+        if (!success)
+            g_printerr ("error: couldn't parse IP configuration response message: %s\n", error->message);
+    }
+
+    g_clear_error (&error);
+    if (response)
+        mbim_message_unref (response);
+    shutdown (success);
+}
+
+static void
 connect_ready (MbimDevice   *device,
                GAsyncResult *res,
                gpointer user_data)
@@ -694,6 +751,7 @@ connect_ready (MbimDevice   *device,
         shutdown (FALSE);
         return;
     }
+    mbim_message_unref (response);
 
     switch (GPOINTER_TO_UINT (user_data)) {
     case CONNECT:
@@ -723,71 +781,258 @@ connect_ready (MbimDevice   *device,
              VALIDATE_UNKNOWN (mbim_context_type_get_string (mbim_uuid_to_context_type (context_type))),
              VALIDATE_UNKNOWN (mbim_nw_error_get_string (nw_error)));
 
-    mbim_message_unref (response);
+    if (GPOINTER_TO_UINT (user_data) == CONNECT) {
+        MbimMessage *message;
+
+        message = (mbim_message_ip_configuration_query_new (
+                   session_id,
+                   MBIM_IP_CONFIGURATION_AVAILABLE_FLAG_NONE, /* ipv4configurationavailable */
+                   MBIM_IP_CONFIGURATION_AVAILABLE_FLAG_NONE, /* ipv6configurationavailable */
+                   0, /* ipv4addresscount */
+                   NULL, /* ipv4address */
+                   0, /* ipv6addresscount */
+                   NULL, /* ipv6address */
+                   NULL, /* ipv4gateway */
+                   NULL, /* ipv6gateway */
+                   0, /* ipv4dnsservercount */
+                   NULL, /* ipv4dnsserver */
+                   0, /* ipv6dnsservercount */
+                   NULL, /* ipv6dnsserver */
+                   0, /* ipv4mtu */
+                   0, /* ipv6mtu */
+                   &error));
+        if (message) {
+            mbim_device_command (device,
+                                 message,
+                                 60,
+                                 NULL,
+                                 (GAsyncReadyCallback)ip_configuration_query_ready,
+                                 NULL);
+            mbim_message_unref (message);
+        } else {
+            g_printerr ("error: couldn't create IP config request: %s\n", error->message);
+            g_error_free (error);
+            mbim_message_unref (message);
+            shutdown (FALSE);
+        }
+        return;
+    }
+
     shutdown (TRUE);
 }
 
 static gboolean
+mbim_auth_protocol_from_string (const gchar      *str,
+                                MbimAuthProtocol *auth_protocol)
+{
+    if (g_ascii_strcasecmp (str, "PAP") == 0) {
+        *auth_protocol = MBIM_AUTH_PROTOCOL_PAP;
+        return TRUE;
+    } else if (g_ascii_strcasecmp (str, "CHAP") == 0) {
+        *auth_protocol = MBIM_AUTH_PROTOCOL_CHAP;
+        return TRUE;
+    } else if (g_ascii_strcasecmp (str, "MSCHAPV2") == 0) {
+        *auth_protocol = MBIM_AUTH_PROTOCOL_MSCHAPV2;
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+static gboolean
+connect_session_id_parse (const gchar  *str,
+                          gboolean      allow_empty,
+                          guint        *session_id,
+                          GError      **error)
+{
+    gchar *endptr = NULL;
+    gint64 n;
+
+    g_assert (str != NULL);
+    g_assert (session_id != NULL);
+
+    if (!str[0]) {
+        if (allow_empty) {
+            *session_id = 0;
+            return TRUE;
+        }
+        g_set_error_literal (error,
+                             MBIM_CORE_ERROR,
+                             MBIM_CORE_ERROR_FAILED,
+                             "missing session ID (must be 0 - 255)");
+        return FALSE;
+    }
+
+    errno = 0;
+    n = g_ascii_strtoll (str, &endptr, 10);
+    if (errno || n < 0 || n > 255 || ((endptr - str) < strlen (str))) {
+        g_set_error (error,
+                     MBIM_CORE_ERROR,
+                     MBIM_CORE_ERROR_FAILED,
+                     "couldn't parse session ID '%s' (must be 0 - 255)",
+                     str);
+        return FALSE;
+    }
+    *session_id = (guint) n;
+
+    return TRUE;
+}
+
+typedef struct {
+    guint             session_id;
+    gchar            *apn;
+    MbimAuthProtocol  auth_protocol;
+    gchar            *username;
+    gchar            *password;
+} ConnectActivateProperties;
+
+static gboolean connect_activate_properties_handle (const gchar  *key,
+                                                    const gchar  *value,
+                                                    GError      **error,
+                                                    gpointer      user_data)
+{
+    ConnectActivateProperties *props = user_data;
+
+    if (!value || !value[0]) {
+        g_set_error (error,
+                     MBIM_CORE_ERROR,
+                     MBIM_CORE_ERROR_FAILED,
+                     "key '%s' required a value",
+                     key);
+        return FALSE;
+    }
+
+    if (g_ascii_strcasecmp (key, "session-id") == 0) {
+        if (!connect_session_id_parse (value, FALSE, &props->session_id, error))
+            return FALSE;
+    } else if (g_ascii_strcasecmp (key, "apn") == 0 && !props->apn) {
+        props->apn = g_strdup (value);
+    } else if (g_ascii_strcasecmp (key, "auth") == 0) {
+        if (!mbim_auth_protocol_from_string (value, &props->auth_protocol)) {
+            g_set_error (error,
+                         MBIM_CORE_ERROR,
+                         MBIM_CORE_ERROR_FAILED,
+                         "unknown auth protocol '%s'",
+                         value);
+            return FALSE;
+        }
+    } else if (g_ascii_strcasecmp (key, "username") == 0 && !props->username) {
+        props->username = g_strdup (value);
+    } else if (g_ascii_strcasecmp (key, "password") == 0 && !props->password) {
+        props->password = g_strdup (value);
+    } else {
+            g_set_error (error,
+                         MBIM_CORE_ERROR,
+                         MBIM_CORE_ERROR_FAILED,
+                         "unrecognized or duplicate option '%s'",
+                         key);
+        return FALSE;
+    }
+
+    return TRUE;
+}
+
+static gboolean
 set_connect_activate_parse (const gchar       *str,
+                            guint             *session_id,
                             gchar            **apn,
                             MbimAuthProtocol  *auth_protocol,
                             gchar            **username,
                             gchar            **password)
 {
-    gchar **split;
+    ConnectActivateProperties props = {
+        .session_id    = 0,
+        .apn           = NULL,
+        .auth_protocol = MBIM_AUTH_PROTOCOL_NONE,
+        .username      = NULL,
+        .password      = NULL
+    };
+    gchar **split = NULL;
 
+    g_assert (session_id != NULL);
     g_assert (apn != NULL);
     g_assert (auth_protocol != NULL);
     g_assert (username != NULL);
     g_assert (password != NULL);
 
-    /* Format of the string is:
-     *    "[(APN),(PAP|CHAP|MSCHAPV2),(Username),(Password)]"
-     */
-    split = g_strsplit (str, ",", -1);
+    if (strchr (str, '=')) {
+        GError *error = NULL;
 
-    if (g_strv_length (split) > 4) {
-        g_printerr ("error: couldn't parse input string, too many arguments\n");
-        g_strfreev (split);
-        return FALSE;
-    }
+        /* New key=value format */
+        if (!mbimcli_parse_key_value_string (str,
+                                             &error,
+                                             connect_activate_properties_handle,
+                                             &props)) {
+            g_printerr ("error: couldn't parse input string: %s\n", error->message);
+            g_error_free (error);
+            goto error;
+        }
+    } else {
+        /* Old non key=value format, like this:
+         *    "[(APN),(PAP|CHAP|MSCHAPV2),(Username),(Password)]"
+         */
+        split = g_strsplit (str, ",", -1);
 
-    if (g_strv_length (split) < 1) {
-        g_printerr ("error: couldn't parse input string, missing arguments\n");
-        g_strfreev (split);
-        return FALSE;
-    }
+        if (g_strv_length (split) > 4) {
+            g_printerr ("error: couldn't parse input string, too many arguments\n");
+            goto error;
+        }
 
-    /* APN */
-    *apn = g_strdup (split[0]);
+        if (g_strv_length (split) < 1) {
+            g_printerr ("error: couldn't parse input string, missing arguments\n");
+            goto error;
+        }
 
-    /* Some defaults */
-    *auth_protocol = MBIM_AUTH_PROTOCOL_NONE;
-    *username = NULL;
-    *password = NULL;
+        /* APN */
+        props.apn = g_strdup (split[0]);
 
-    /* Use authentication method */
-    if (split[1]) {
-        if (g_ascii_strcasecmp (split[1], "PAP") == 0)
-            *auth_protocol = MBIM_AUTH_PROTOCOL_PAP;
-        else if (g_ascii_strcasecmp (split[1], "CHAP") == 0)
-            *auth_protocol = MBIM_AUTH_PROTOCOL_CHAP;
-        else if (g_ascii_strcasecmp (split[1], "MSCHAPV2") == 0)
-            *auth_protocol = MBIM_AUTH_PROTOCOL_MSCHAPV2;
-        else
-            *auth_protocol = MBIM_AUTH_PROTOCOL_NONE;
+        /* Use authentication method */
+        if (split[1]) {
+            if (!mbim_auth_protocol_from_string (split[1], &props.auth_protocol)) {
+                g_printerr ("error: couldn't parse input string, unknown auth protocol '%s'\n", split[1]);
+                goto error;
+            }
 
-        /* Username */
-        if (split[2]) {
-            *username = g_strdup (split[2]);
+            /* Username */
+            if (split[2]) {
+                props.username = g_strdup (split[2]);
 
-            /* Password */
-            *password = g_strdup (split[3]);
+                /* Password */
+                props.password = g_strdup (split[3]);
+            }
         }
     }
 
-    g_strfreev (split);
+    if (props.auth_protocol == MBIM_AUTH_PROTOCOL_NONE) {
+        if (props.username || props.password) {
+            g_printerr ("error: username or password requires an auth protocol\n");
+            goto error;
+        }
+    } else {
+        if (!props.username) {
+            g_printerr ("error: auth protocol requires a username\n");
+            goto error;
+        }
+    }
+
+    *session_id = props.session_id;
+    *apn = props.apn;
+    *auth_protocol = props.auth_protocol;
+    *username = props.username;
+    *password = props.password;
+
+    if (split)
+        g_strfreev (split);
+
     return TRUE;
+
+error:
+    if (split)
+        g_strfreev (split);
+    g_free (props.apn);
+    g_free (props.username);
+    g_free (props.password);
+    return FALSE;
 }
 
 static void
@@ -1543,7 +1788,7 @@ mbimcli_basic_connect_run (MbimDevice   *device,
 
         mbim_device_command (ctx->device,
                              request,
-                             10,
+                             120, /* longer timeout, needs to look for the home network */
                              ctx->cancellable,
                              (GAsyncReadyCallback)register_state_ready,
                              GUINT_TO_POINTER (TRUE));
@@ -1605,7 +1850,7 @@ mbimcli_basic_connect_run (MbimDevice   *device,
 
         mbim_device_command (ctx->device,
                              request,
-                             10,
+                             120,
                              ctx->cancellable,
                              (GAsyncReadyCallback)packet_service_ready,
                              GUINT_TO_POINTER (set_packet_service_attach_flag ?
@@ -1616,11 +1861,19 @@ mbimcli_basic_connect_run (MbimDevice   *device,
     }
 
     /* Query connection status? */
-    if (query_connect_flag) {
+    if (query_connect_str) {
         MbimMessage *request;
         GError *error = NULL;
+        guint session_id = 0;
 
-        request = mbim_message_connect_query_new (0,
+        if (!connect_session_id_parse (query_connect_str, TRUE, &session_id, &error)) {
+            g_printerr ("error: couldn't parse session ID: %s\n", error->message);
+            g_error_free (error);
+            shutdown (FALSE);
+            return;
+        }
+
+        request = mbim_message_connect_query_new (session_id,
                                                   MBIM_ACTIVATION_STATE_UNKNOWN,
                                                   MBIM_VOICE_CALL_STATE_NONE,
                                                   MBIM_CONTEXT_IP_TYPE_DEFAULT,
@@ -1648,12 +1901,14 @@ mbimcli_basic_connect_run (MbimDevice   *device,
     if (set_connect_activate_str) {
         MbimMessage *request;
         GError *error = NULL;
+        guint session_id = 0;
         gchar *apn;
         MbimAuthProtocol auth_protocol;
         gchar *username = NULL;
         gchar *password = NULL;
 
         if (!set_connect_activate_parse (set_connect_activate_str,
+                                         &session_id,
                                          &apn,
                                          &auth_protocol,
                                          &username,
@@ -1662,7 +1917,7 @@ mbimcli_basic_connect_run (MbimDevice   *device,
             return;
         }
 
-        request = mbim_message_connect_set_new (0,
+        request = mbim_message_connect_set_new (session_id,
                                                 MBIM_ACTIVATION_COMMAND_ACTIVATE,
                                                 apn,
                                                 username,
@@ -1685,7 +1940,7 @@ mbimcli_basic_connect_run (MbimDevice   *device,
 
         mbim_device_command (ctx->device,
                              request,
-                             10,
+                             120,
                              ctx->cancellable,
                              (GAsyncReadyCallback)connect_ready,
                              GUINT_TO_POINTER (CONNECT));
@@ -1694,11 +1949,19 @@ mbimcli_basic_connect_run (MbimDevice   *device,
     }
 
     /* Disconnect? */
-    if (set_connect_deactivate_flag) {
+    if (set_connect_deactivate_str) {
         MbimMessage *request;
         GError *error = NULL;
+        guint session_id = 0;
 
-        request = mbim_message_connect_set_new (0,
+        if (!connect_session_id_parse (set_connect_deactivate_str, TRUE, &session_id, &error)) {
+            g_printerr ("error: couldn't parse session ID: %s\n", error->message);
+            g_error_free (error);
+            shutdown (FALSE);
+            return;
+        }
+
+        request = mbim_message_connect_set_new (session_id,
                                                 MBIM_ACTIVATION_COMMAND_DEACTIVATE,
                                                 NULL,
                                                 NULL,
