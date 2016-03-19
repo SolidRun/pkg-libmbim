@@ -6,6 +6,7 @@ libmbim (1.12.4-1) UNRELEASED; urgency=medium
 
   [ Michael Biebl ]
   * New upstream release.
+  * Use https:// for upstream homepage.
 
  -- Thomas Bechtold <toabctl@debian.org>  Mon, 21 Sep 2015 07:35:49 +0200
 

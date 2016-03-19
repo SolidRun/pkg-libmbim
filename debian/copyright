@@ -1,6 +1,6 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: libmbim
-Source: http://www.freedesktop.org/software/libmbim/
+Source: https://www.freedesktop.org/software/libmbim/
 
 Files: *
 Copyright: 2013 Aleksander Morgado <aleksander@gnu.org>
