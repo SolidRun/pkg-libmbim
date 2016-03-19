@@ -12,6 +12,7 @@ libmbim (1.12.4-1) UNRELEASED; urgency=medium
     using dh_strip --dbgsym-migration. Bump Build-Depends on debhelper
     accordingly.
   * Bump Standards-Version to 3.9.7.
+  * Drop debian/mbimcli.1 since we use the upstream man page.
 
  -- Thomas Bechtold <toabctl@debian.org>  Mon, 21 Sep 2015 07:35:49 +0200
 
