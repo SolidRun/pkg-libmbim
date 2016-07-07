@@ -4,6 +4,7 @@ libmbim (1.14.0-1) UNRELEASED; urgency=medium
   * Explicitly build with udev support.
   * Update symbols file.
   * Bump Standards-Version to 3.9.8.
+  * Install bash-completion file for mbimcli.
 
  -- Michael Biebl <biebl@debian.org>  Thu, 07 Jul 2016 23:21:58 +0200
 
