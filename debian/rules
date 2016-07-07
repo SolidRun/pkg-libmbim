@@ -7,6 +7,7 @@ override_dh_auto_configure:
 	dh_auto_configure -- \
 		--enable-gtk-doc \
 		--enable-gtk-doc-html \
+		--with-udev \
 		--libexecdir=/usr/lib/libmbim
 
 override_dh_install:
