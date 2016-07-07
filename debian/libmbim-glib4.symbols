@@ -25,6 +25,8 @@ libmbim-glib.so.4 libmbim-glib4 #MINVER#, libmbim-proxy
  mbim_cid_phonebook_get_type@Base 1.10.0
  mbim_cid_proxy_control_get_string@Base 1.10.0
  mbim_cid_proxy_control_get_type@Base 1.10.0
+ mbim_cid_qmi_get_string@Base 1.14.0
+ mbim_cid_qmi_get_type@Base 1.14.0
  mbim_cid_sms_get_string@Base 1.10.0
  mbim_cid_sms_get_type@Base 1.10.0
  mbim_cid_stk_get_string@Base 1.10.0
@@ -187,6 +189,8 @@ libmbim-glib.so.4 libmbim-glib4 #MINVER#, libmbim-proxy
  mbim_message_provisioned_contexts_set_new@Base 1.10.0
  mbim_message_proxy_control_configuration_response_parse@Base 1.10.0
  mbim_message_proxy_control_configuration_set_new@Base 1.10.0
+ mbim_message_qmi_msg_response_parse@Base 1.14.0
+ mbim_message_qmi_msg_set_new@Base 1.14.0
  mbim_message_radio_state_notification_parse@Base 1.10.0
  mbim_message_radio_state_query_new@Base 1.10.0
  mbim_message_radio_state_response_parse@Base 1.10.0
