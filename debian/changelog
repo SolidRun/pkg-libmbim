@@ -1,4 +1,4 @@
-libmbim (1.14.0-1) UNRELEASED; urgency=medium
+libmbim (1.14.0-1) unstable; urgency=medium
 
   * New upstream release.
   * Explicitly build with udev support.
@@ -6,7 +6,7 @@ libmbim (1.14.0-1) UNRELEASED; urgency=medium
   * Bump Standards-Version to 3.9.8.
   * Install bash-completion file for mbimcli.
 
- -- Michael Biebl <biebl@debian.org>  Thu, 07 Jul 2016 23:21:58 +0200
+ -- Michael Biebl <biebl@debian.org>  Thu, 07 Jul 2016 23:34:33 +0200
 
 libmbim (1.12.4-1) unstable; urgency=medium
 
