@@ -119,7 +119,8 @@ am__objects_2 = libmbim_glib_generated_la-mbim-error-types.lo \
 	libmbim_glib_generated_la-mbim-dss.lo \
 	libmbim_glib_generated_la-mbim-ms-firmware-id.lo \
 	libmbim_glib_generated_la-mbim-ms-host-shutdown.lo \
-	libmbim_glib_generated_la-mbim-proxy-control.lo
+	libmbim_glib_generated_la-mbim-proxy-control.lo \
+	libmbim_glib_generated_la-mbim-qmi.lo
 nodist_libmbim_glib_generated_la_OBJECTS = $(am__objects_1) \
 	$(am__objects_2)
 libmbim_glib_generated_la_OBJECTS =  \
@@ -252,6 +253,8 @@ GTKDOC_DEPS_CFLAGS = @GTKDOC_DEPS_CFLAGS@
 GTKDOC_DEPS_LIBS = @GTKDOC_DEPS_LIBS@
 GTKDOC_MKPDF = @GTKDOC_MKPDF@
 GTKDOC_REBASE = @GTKDOC_REBASE@
+GUDEV_CFLAGS = @GUDEV_CFLAGS@
+GUDEV_LIBS = @GUDEV_LIBS@
 HELP2MAN = @HELP2MAN@
 HTML_DIR = @HTML_DIR@
 INSTALL = @INSTALL@
@@ -375,7 +378,8 @@ GENERATED_H = \
 	mbim-dss.h \
 	mbim-ms-firmware-id.h \
 	mbim-ms-host-shutdown.h \
-	mbim-proxy-control.h
+	mbim-proxy-control.h \
+	mbim-qmi.h
 
 GENERATED_C = \
 	mbim-error-types.c \
@@ -390,7 +394,8 @@ GENERATED_C = \
 	mbim-dss.c \
 	mbim-ms-firmware-id.c \
 	mbim-ms-host-shutdown.c \
-	mbim-proxy-control.c
+	mbim-proxy-control.c \
+	mbim-qmi.c
 
 GENERATED_SECTIONS = \
 	mbim-basic-connect.sections \
@@ -402,7 +407,8 @@ GENERATED_SECTIONS = \
 	mbim-dss.sections \
 	mbim-ms-firmware-id.sections \
 	mbim-ms-host-shutdown.sections \
-	mbim-proxy-control.sections
+	mbim-proxy-control.sections \
+	mbim-qmi.sections
 
 
 # Enum/Flag types
@@ -496,6 +502,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmbim_glib_generated_la-mbim-ms-host-shutdown.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmbim_glib_generated_la-mbim-phonebook.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmbim_glib_generated_la-mbim-proxy-control.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmbim_glib_generated_la-mbim-qmi.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmbim_glib_generated_la-mbim-sms.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmbim_glib_generated_la-mbim-stk.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmbim_glib_generated_la-mbim-ussd.Plo@am__quote@
@@ -611,6 +618,13 @@ libmbim_glib_generated_la-mbim-proxy-control.lo: mbim-proxy-control.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='mbim-proxy-control.c' object='libmbim_glib_generated_la-mbim-proxy-control.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmbim_glib_generated_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o libmbim_glib_generated_la-mbim-proxy-control.lo `test -f 'mbim-proxy-control.c' || echo '$(srcdir)/'`mbim-proxy-control.c
+
+libmbim_glib_generated_la-mbim-qmi.lo: mbim-qmi.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmbim_glib_generated_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT libmbim_glib_generated_la-mbim-qmi.lo -MD -MP -MF $(DEPDIR)/libmbim_glib_generated_la-mbim-qmi.Tpo -c -o libmbim_glib_generated_la-mbim-qmi.lo `test -f 'mbim-qmi.c' || echo '$(srcdir)/'`mbim-qmi.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libmbim_glib_generated_la-mbim-qmi.Tpo $(DEPDIR)/libmbim_glib_generated_la-mbim-qmi.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='mbim-qmi.c' object='libmbim_glib_generated_la-mbim-qmi.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmbim_glib_generated_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o libmbim_glib_generated_la-mbim-qmi.lo `test -f 'mbim-qmi.c' || echo '$(srcdir)/'`mbim-qmi.c
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -974,6 +988,15 @@ mbim-proxy-control.h mbim-proxy-control.c mbim-proxy-control.sections: $(top_src
 		$(top_srcdir)/build-aux/mbim-codegen/mbim-codegen \
 			--input $(top_srcdir)/data/mbim-service-proxy-control.json \
 			--output mbim-proxy-control
+
+# QMI-over-MBIM service
+mbim-qmi.h mbim-qmi.c mbim-qmi.sections: $(top_srcdir)/data/mbim-service-qmi.json $(top_srcdir)/build-aux/mbim-codegen/*.py $(top_srcdir)/build-aux/mbim-codegen/mbim-codegen
+	$(AM_V_GEN)  \
+		rm -f mbim-qmi.h && \
+		rm -f mbim-qmi.c && \
+		$(top_srcdir)/build-aux/mbim-codegen/mbim-codegen \
+			--input $(top_srcdir)/data/mbim-service-qmi.json \
+			--output mbim-qmi
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

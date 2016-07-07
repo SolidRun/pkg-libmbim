@@ -22,6 +22,7 @@
  */
 
 #include "mbim-cid.h"
+#include "mbim-uuid.h"
 #include "mbim-enum-types.h"
 
 /**
@@ -38,98 +39,112 @@ typedef struct {
     gboolean notify;
 } CidConfig;
 
+#define NO_SET    FALSE
+#define NO_QUERY  FALSE
+#define NO_NOTIFY FALSE
+
+#define SET    TRUE
+#define QUERY  TRUE
+#define NOTIFY TRUE
+
 /* Note: index of the array is CID-1 */
 #define MBIM_CID_BASIC_CONNECT_LAST MBIM_CID_BASIC_CONNECT_MULTICARRIER_PROVIDERS
 static const CidConfig cid_basic_connect_config [MBIM_CID_BASIC_CONNECT_LAST] = {
-    { FALSE, TRUE,  FALSE }, /* MBIM_CID_BASIC_CONNECT_DEVICE_CAPSo */
-    { FALSE, TRUE,  TRUE  }, /* MBIM_CID_BASIC_CONNECT_SUBSCRIBER_READY_STATUS */
-    { TRUE,  TRUE,  TRUE  }, /* MBIM_CID_BASIC_CONNECT_RADIO_STATE */
-    { TRUE,  TRUE,  FALSE }, /* MBIM_CID_BASIC_CONNECT_PIN */
-    { FALSE, TRUE,  FALSE }, /* MBIM_CID_BASIC_CONNECT_PIN_LIST */
-    { TRUE,  TRUE,  FALSE }, /* MBIM_CID_BASIC_CONNECT_HOME_PROVIDER */
-    { TRUE,  TRUE,  TRUE  }, /* MBIM_CID_BASIC_CONNECT_PREFERRED_PROVIDERS */
-    { FALSE, TRUE,  FALSE }, /* MBIM_CID_BASIC_CONNECT_VISIBLE_PROVIDERS */
-    { TRUE,  TRUE,  TRUE  }, /* MBIM_CID_BASIC_CONNECT_REGISTER_STATE */
-    { TRUE,  TRUE,  TRUE  }, /* MBIM_CID_BASIC_CONNECT_PACKET_SERVICE */
-    { TRUE,  TRUE,  TRUE  }, /* MBIM_CID_BASIC_CONNECT_SIGNAL_STATE */
-    { TRUE,  TRUE,  TRUE  }, /* MBIM_CID_BASIC_CONNECT_CONNECT */
-    { TRUE,  TRUE,  TRUE  }, /* MBIM_CID_BASIC_CONNECT_PROVISIONED_CONTEXTS */
-    { TRUE,  FALSE, FALSE }, /* MBIM_CID_BASIC_CONNECT_SERVICE_ACTIVATION */
-    { FALSE, TRUE,  TRUE  }, /* MBIM_CID_BASIC_CONNECT_IP_CONFIGURATION */
-    { FALSE, TRUE,  FALSE }, /* MBIM_CID_BASIC_CONNECT_DEVICE_SERVICES */
-    { FALSE, FALSE, FALSE }, /* 17 reserved */
-    { FALSE, FALSE, FALSE }, /* 18 reserved */
-    { TRUE,  FALSE, FALSE }, /* MBIM_CID_BASIC_CONNECT_DEVICE_SERVICE_SUBSCRIBE_LIST */
-    { FALSE, TRUE,  FALSE }, /* MBIM_CID_BASIC_CONNECT_PACKET_STATISTICS */
-    { TRUE,  TRUE,  FALSE }, /* MBIM_CID_BASIC_CONNECT_NETWORK_IDLE_HINT */
-    { FALSE, TRUE,  TRUE  }, /* MBIM_CID_BASIC_CONNECT_EMERGENCY_MODE */
-    { TRUE,  TRUE,  FALSE }, /* MBIM_CID_BASIC_CONNECT_IP_PACKET_FILTERS */
-    { TRUE,  TRUE,  TRUE  }, /* MBIM_CID_BASIC_CONNECT_MULTICARRIER_PROVIDERS */
+    { NO_SET, QUERY,    NO_NOTIFY }, /* MBIM_CID_BASIC_CONNECT_DEVICE_CAPS */
+    { NO_SET, QUERY,    NOTIFY    }, /* MBIM_CID_BASIC_CONNECT_SUBSCRIBER_READY_STATUS */
+    { SET,    QUERY,    NOTIFY    }, /* MBIM_CID_BASIC_CONNECT_RADIO_STATE */
+    { SET,    QUERY,    NO_NOTIFY }, /* MBIM_CID_BASIC_CONNECT_PIN */
+    { NO_SET, QUERY,    NO_NOTIFY }, /* MBIM_CID_BASIC_CONNECT_PIN_LIST */
+    { SET,    QUERY,    NO_NOTIFY }, /* MBIM_CID_BASIC_CONNECT_HOME_PROVIDER */
+    { SET,    QUERY,    NOTIFY    }, /* MBIM_CID_BASIC_CONNECT_PREFERRED_PROVIDERS */
+    { NO_SET, QUERY,    NO_NOTIFY }, /* MBIM_CID_BASIC_CONNECT_VISIBLE_PROVIDERS */
+    { SET,    QUERY,    NOTIFY    }, /* MBIM_CID_BASIC_CONNECT_REGISTER_STATE */
+    { SET,    QUERY,    NOTIFY    }, /* MBIM_CID_BASIC_CONNECT_PACKET_SERVICE */
+    { SET,    QUERY,    NOTIFY    }, /* MBIM_CID_BASIC_CONNECT_SIGNAL_STATE */
+    { SET,    QUERY,    NOTIFY    }, /* MBIM_CID_BASIC_CONNECT_CONNECT */
+    { SET,    QUERY,    NOTIFY    }, /* MBIM_CID_BASIC_CONNECT_PROVISIONED_CONTEXTS */
+    { SET,    NO_QUERY, NO_NOTIFY }, /* MBIM_CID_BASIC_CONNECT_SERVICE_ACTIVATION */
+    { NO_SET, QUERY,    NOTIFY    }, /* MBIM_CID_BASIC_CONNECT_IP_CONFIGURATION */
+    { NO_SET, QUERY,    NO_NOTIFY }, /* MBIM_CID_BASIC_CONNECT_DEVICE_SERVICES */
+    { NO_SET, NO_QUERY, NO_NOTIFY }, /* 17 reserved */
+    { NO_SET, NO_QUERY, NO_NOTIFY }, /* 18 reserved */
+    { SET,    NO_QUERY, NO_NOTIFY }, /* MBIM_CID_BASIC_CONNECT_DEVICE_SERVICE_SUBSCRIBE_LIST */
+    { NO_SET, QUERY,    NO_NOTIFY }, /* MBIM_CID_BASIC_CONNECT_PACKET_STATISTICS */
+    { SET,    QUERY,    NO_NOTIFY }, /* MBIM_CID_BASIC_CONNECT_NETWORK_IDLE_HINT */
+    { NO_SET, QUERY,    NOTIFY    }, /* MBIM_CID_BASIC_CONNECT_EMERGENCY_MODE */
+    { SET,    QUERY,    NO_NOTIFY }, /* MBIM_CID_BASIC_CONNECT_IP_PACKET_FILTERS */
+    { SET,    QUERY,    NOTIFY    }, /* MBIM_CID_BASIC_CONNECT_MULTICARRIER_PROVIDERS */
 };
 
 /* Note: index of the array is CID-1 */
 #define MBIM_CID_SMS_LAST MBIM_CID_SMS_MESSAGE_STORE_STATUS
 static const CidConfig cid_sms_config [MBIM_CID_SMS_LAST] = {
-    { TRUE,  TRUE,  TRUE  }, /* MBIM_CID_SMS_CONFIGURATION */
-    { FALSE, TRUE,  TRUE  }, /* MBIM_CID_SMS_READ */
-    { TRUE,  FALSE, FALSE }, /* MBIM_CID_SMS_SEND */
-    { TRUE,  FALSE, FALSE }, /* MBIM_CID_SMS_DELETE */
-    { FALSE, TRUE,  TRUE  }, /* MBIM_CID_SMS_MESSAGE_STORE_STATUS */
+    { SET,    QUERY,    NOTIFY    }, /* MBIM_CID_SMS_CONFIGURATION */
+    { NO_SET, QUERY,    NOTIFY    }, /* MBIM_CID_SMS_READ */
+    { SET,    NO_QUERY, NO_NOTIFY }, /* MBIM_CID_SMS_SEND */
+    { SET,    NO_QUERY, NO_NOTIFY }, /* MBIM_CID_SMS_DELETE */
+    { NO_SET, QUERY,    NOTIFY    }, /* MBIM_CID_SMS_MESSAGE_STORE_STATUS */
 };
 
 /* Note: index of the array is CID-1 */
 #define MBIM_CID_USSD_LAST MBIM_CID_USSD
 static const CidConfig cid_ussd_config [MBIM_CID_USSD_LAST] = {
-    { TRUE,  FALSE, TRUE  }, /* MBIM_CID_USSD */
+    { SET, NO_QUERY, NOTIFY }, /* MBIM_CID_USSD */
 };
 
 /* Note: index of the array is CID-1 */
 #define MBIM_CID_PHONEBOOK_LAST MBIM_CID_PHONEBOOK_WRITE
 static const CidConfig cid_phonebook_config [MBIM_CID_PHONEBOOK_LAST] = {
-    { FALSE, TRUE,  TRUE  }, /* MBIM_CID_PHONEBOOK_CONFIGURATION */
-    { FALSE, TRUE,  FALSE }, /* MBIM_CID_PHONEBOOK_READ */
-    { TRUE,  FALSE, FALSE }, /* MBIM_CID_PHONEBOOK_DELETE */
-    { TRUE,  FALSE, FALSE }, /* MBIM_CID_PHONEBOOK_WRITE */
+    { NO_SET, QUERY,    NOTIFY    }, /* MBIM_CID_PHONEBOOK_CONFIGURATION */
+    { NO_SET, QUERY,    NO_NOTIFY }, /* MBIM_CID_PHONEBOOK_READ */
+    { SET,    NO_QUERY, NO_NOTIFY }, /* MBIM_CID_PHONEBOOK_DELETE */
+    { SET,    NO_QUERY, NO_NOTIFY }, /* MBIM_CID_PHONEBOOK_WRITE */
 };
 
 /* Note: index of the array is CID-1 */
 #define MBIM_CID_STK_LAST MBIM_CID_STK_ENVELOPE
 static const CidConfig cid_stk_config [MBIM_CID_STK_LAST] = {
-    { TRUE,  TRUE,  TRUE  }, /* MBIM_CID_STK_PAC */
-    { TRUE,  FALSE, FALSE }, /* MBIM_CID_STK_TERMINAL_RESPONSE */
-    { TRUE,  TRUE,  FALSE }, /* MBIM_CID_STK_ENVELOPE */
+    { SET, QUERY,    NOTIFY    }, /* MBIM_CID_STK_PAC */
+    { SET, NO_QUERY, NO_NOTIFY }, /* MBIM_CID_STK_TERMINAL_RESPONSE */
+    { SET, QUERY,    NO_NOTIFY }, /* MBIM_CID_STK_ENVELOPE */
 };
 
 /* Note: index of the array is CID-1 */
 #define MBIM_CID_AUTH_LAST MBIM_CID_AUTH_SIM
 static const CidConfig cid_auth_config [MBIM_CID_AUTH_LAST] = {
-    { FALSE, TRUE,  FALSE }, /* MBIM_CID_AUTH_AKA */
-    { FALSE, TRUE,  FALSE }, /* MBIM_CID_AUTH_AKAP */
-    { FALSE, TRUE,  FALSE }, /* MBIM_CID_AUTH_SIM */
+    { NO_SET, QUERY, NO_NOTIFY }, /* MBIM_CID_AUTH_AKA */
+    { NO_SET, QUERY, NO_NOTIFY }, /* MBIM_CID_AUTH_AKAP */
+    { NO_SET, QUERY, NO_NOTIFY }, /* MBIM_CID_AUTH_SIM */
 };
 
 /* Note: index of the array is CID-1 */
 #define MBIM_CID_DSS_LAST MBIM_CID_DSS_CONNECT
 static const CidConfig cid_dss_config [MBIM_CID_DSS_LAST] = {
-    { TRUE,  FALSE, FALSE }, /* MBIM_CID_DSS_CONNECT */
+    { SET, NO_QUERY, NO_NOTIFY }, /* MBIM_CID_DSS_CONNECT */
 };
 
 /* Note: index of the array is CID-1 */
 #define MBIM_CID_MS_FIRMWARE_ID_LAST MBIM_CID_MS_FIRMWARE_ID_GET
 static const CidConfig cid_ms_firmware_id_config [MBIM_CID_MS_FIRMWARE_ID_LAST] = {
-    { FALSE, TRUE,  FALSE }, /* MBIM_CID_MS_FIRMWARE_ID_GET */
+    { NO_SET, QUERY, NO_NOTIFY }, /* MBIM_CID_MS_FIRMWARE_ID_GET */
 };
 
 /* Note: index of the array is CID-1 */
 #define MBIM_CID_MS_HOST_SHUTDOWN_LAST MBIM_CID_MS_HOST_SHUTDOWN_NOTIFY
 static const CidConfig cid_ms_host_shutdown_config [MBIM_CID_MS_HOST_SHUTDOWN_LAST] = {
-    { TRUE,  FALSE, FALSE }, /* MBIM_CID_MS_HOST_SHUTDOWN_NOTIFY */
+    { SET, NO_QUERY, NO_NOTIFY }, /* MBIM_CID_MS_HOST_SHUTDOWN_NOTIFY */
 };
 
 /* Note: index of the array is CID-1 */
 #define MBIM_CID_PROXY_CONTROL_LAST MBIM_CID_PROXY_CONTROL_CONFIGURATION
 static const CidConfig cid_proxy_control_config [MBIM_CID_PROXY_CONTROL_LAST] = {
-    { TRUE,  FALSE, FALSE }, /* MBIM_CID_PROXY_CONTROL_CONFIGURATION */
+    { SET, NO_QUERY, NO_NOTIFY }, /* MBIM_CID_PROXY_CONTROL_CONFIGURATION */
+};
+
+/* Note: index of the array is CID-1 */
+#define MBIM_CID_QMI_LAST MBIM_CID_QMI_MSG
+static const CidConfig cid_qmi_config [MBIM_CID_QMI_LAST] = {
+    { SET, NO_QUERY, NO_NOTIFY }, /* MBIM_CID_QMI_MSG */
 };
 
 /**
@@ -149,7 +164,7 @@ mbim_cid_can_set (MbimService service,
     g_return_val_if_fail (cid > 0, FALSE);
     /* Known service required */
     g_return_val_if_fail (service > MBIM_SERVICE_INVALID, FALSE);
-    g_return_val_if_fail (service <= MBIM_SERVICE_PROXY_CONTROL, FALSE);
+    g_return_val_if_fail (service < MBIM_SERVICE_LAST, FALSE);
 
     switch (service) {
     case MBIM_SERVICE_BASIC_CONNECT:
@@ -172,6 +187,8 @@ mbim_cid_can_set (MbimService service,
         return cid_ms_host_shutdown_config[cid - 1].set;
     case MBIM_SERVICE_PROXY_CONTROL:
         return cid_proxy_control_config[cid - 1].set;
+    case MBIM_SERVICE_QMI:
+        return cid_qmi_config[cid - 1].set;
     default:
         g_assert_not_reached ();
         return FALSE;
@@ -195,7 +212,7 @@ mbim_cid_can_query (MbimService service,
     g_return_val_if_fail (cid > 0, FALSE);
     /* Known service required */
     g_return_val_if_fail (service > MBIM_SERVICE_INVALID, FALSE);
-    g_return_val_if_fail (service <= MBIM_SERVICE_PROXY_CONTROL, FALSE);
+    g_return_val_if_fail (service < MBIM_SERVICE_LAST, FALSE);
 
     switch (service) {
     case MBIM_SERVICE_BASIC_CONNECT:
@@ -218,6 +235,8 @@ mbim_cid_can_query (MbimService service,
         return cid_ms_host_shutdown_config[cid - 1].query;
     case MBIM_SERVICE_PROXY_CONTROL:
         return cid_proxy_control_config[cid - 1].query;
+    case MBIM_SERVICE_QMI:
+        return cid_qmi_config[cid - 1].query;
     default:
         g_assert_not_reached ();
         return FALSE;
@@ -241,7 +260,7 @@ mbim_cid_can_notify (MbimService service,
     g_return_val_if_fail (cid > 0, FALSE);
     /* Known service required */
     g_return_val_if_fail (service > MBIM_SERVICE_INVALID, FALSE);
-    g_return_val_if_fail (service <= MBIM_SERVICE_PROXY_CONTROL, FALSE);
+    g_return_val_if_fail (service < MBIM_SERVICE_LAST, FALSE);
 
     switch (service) {
     case MBIM_SERVICE_BASIC_CONNECT:
@@ -264,6 +283,8 @@ mbim_cid_can_notify (MbimService service,
         return cid_ms_host_shutdown_config[cid - 1].notify;
     case MBIM_SERVICE_PROXY_CONTROL:
         return cid_proxy_control_config[cid - 1].notify;
+    case MBIM_SERVICE_QMI:
+        return cid_qmi_config[cid - 1].notify;
     default:
         g_assert_not_reached ();
         return FALSE;
@@ -288,7 +309,7 @@ mbim_cid_get_printable (MbimService service,
     g_return_val_if_fail (cid > 0, NULL);
     /* Known service required */
     g_return_val_if_fail (service > MBIM_SERVICE_INVALID, NULL);
-    g_return_val_if_fail (service <= MBIM_SERVICE_PROXY_CONTROL, NULL);
+    g_return_val_if_fail (service < MBIM_SERVICE_LAST, NULL);
 
     switch (service) {
     case MBIM_SERVICE_BASIC_CONNECT:
@@ -311,6 +332,8 @@ mbim_cid_get_printable (MbimService service,
         return mbim_cid_ms_host_shutdown_get_string (cid);
     case MBIM_SERVICE_PROXY_CONTROL:
         return mbim_cid_proxy_control_get_string (cid);
+    case MBIM_SERVICE_QMI:
+        return mbim_cid_qmi_get_string (cid);
     default:
         g_assert_not_reached ();
         return FALSE;
