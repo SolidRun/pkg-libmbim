@@ -216,6 +216,8 @@ GTKDOC_DEPS_CFLAGS = @GTKDOC_DEPS_CFLAGS@
 GTKDOC_DEPS_LIBS = @GTKDOC_DEPS_LIBS@
 GTKDOC_MKPDF = @GTKDOC_MKPDF@
 GTKDOC_REBASE = @GTKDOC_REBASE@
+GUDEV_CFLAGS = @GUDEV_CFLAGS@
+GUDEV_LIBS = @GUDEV_LIBS@
 HELP2MAN = @HELP2MAN@
 HTML_DIR = @HTML_DIR@
 INSTALL = @INSTALL@
@@ -337,7 +339,8 @@ EXTRA_DIST = \
 	mbim-service-dss.json \
 	mbim-service-ms-firmware-id.json \
 	mbim-service-ms-host-shutdown.json \
-	mbim-service-proxy-control.json
+	mbim-service-proxy-control.json \
+	mbim-service-qmi.json
 
 all: all-recursive
 

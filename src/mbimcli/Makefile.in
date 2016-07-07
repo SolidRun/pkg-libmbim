@@ -215,6 +215,8 @@ GTKDOC_DEPS_CFLAGS = @GTKDOC_DEPS_CFLAGS@
 GTKDOC_DEPS_LIBS = @GTKDOC_DEPS_LIBS@
 GTKDOC_MKPDF = @GTKDOC_MKPDF@
 GTKDOC_REBASE = @GTKDOC_REBASE@
+GUDEV_CFLAGS = @GUDEV_CFLAGS@
+GUDEV_LIBS = @GUDEV_LIBS@
 HELP2MAN = @HELP2MAN@
 HTML_DIR = @HTML_DIR@
 INSTALL = @INSTALL@
@@ -346,6 +348,8 @@ mbimcli_LDADD = \
 	$(MBIMCLI_LIBS) \
 	$(top_builddir)/src/libmbim-glib/libmbim-glib.la
 
+completiondir = $(datadir)/bash-completion/completions
+EXTRA_DIST = mbimcli-completion
 all: all-am
 
 .SUFFIXES:
@@ -714,7 +718,8 @@ info: info-am
 info-am:
 
 install-data-am:
-
+	@$(NORMAL_INSTALL)
+	$(MAKE) $(AM_MAKEFLAGS) install-data-hook
 install-dvi: install-dvi-am
 
 install-dvi-am:
@@ -760,25 +765,34 @@ ps: ps-am
 ps-am:
 
 uninstall-am: uninstall-binPROGRAMS
-
-.MAKE: install-am install-strip
+	@$(NORMAL_INSTALL)
+	$(MAKE) $(AM_MAKEFLAGS) uninstall-hook
+.MAKE: install-am install-data-am install-strip uninstall-am
 
 .PHONY: CTAGS GTAGS TAGS all all-am check check-am clean \
 	clean-binPROGRAMS clean-generic clean-libtool cscopelist-am \
 	ctags ctags-am distclean distclean-compile distclean-generic \
 	distclean-libtool distclean-tags distdir dvi dvi-am html \
 	html-am info info-am install install-am install-binPROGRAMS \
-	install-data install-data-am install-dvi install-dvi-am \
-	install-exec install-exec-am install-html install-html-am \
-	install-info install-info-am install-man install-pdf \
-	install-pdf-am install-ps install-ps-am install-strip \
-	installcheck installcheck-am installdirs maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-compile \
-	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
-	tags tags-am uninstall uninstall-am uninstall-binPROGRAMS
+	install-data install-data-am install-data-hook install-dvi \
+	install-dvi-am install-exec install-exec-am install-html \
+	install-html-am install-info install-info-am install-man \
+	install-pdf install-pdf-am install-ps install-ps-am \
+	install-strip installcheck installcheck-am installdirs \
+	maintainer-clean maintainer-clean-generic mostlyclean \
+	mostlyclean-compile mostlyclean-generic mostlyclean-libtool \
+	pdf pdf-am ps ps-am tags tags-am uninstall uninstall-am \
+	uninstall-binPROGRAMS uninstall-hook
 
 .PRECIOUS: Makefile
 
+
+install-data-hook:
+	$(mkinstalldirs) $(DESTDIR)$(completiondir)
+	$(INSTALL_DATA) $(srcdir)/mbimcli-completion $(DESTDIR)$(completiondir)/mbimcli
+
+uninstall-hook:
+	rm -f $(DESTDIR)$(completiondir)/mbimcli
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

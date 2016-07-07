@@ -23,6 +23,11 @@
  * Implementation based on the 'QmiDevice' GObject from libqmi-glib.
  */
 
+#include <config.h>
+
+#define _GNU_SOURCE
+#include <stdlib.h>
+#include <unistd.h>
 #include <errno.h>
 #include <string.h>
 #include <fcntl.h>
@@ -30,16 +35,20 @@
 #include <unistd.h>
 #include <gio/gio.h>
 #include <gio/gunixsocketaddress.h>
-#include <gudev/gudev.h>
 #include <sys/ioctl.h>
 #define IOCTL_WDM_MAX_COMMAND _IOR('H', 0xA0, guint16)
 #define RETRY_TIMEOUT_SECS 5
+
+#if WITH_UDEV
+# include <gudev/gudev.h>
+#endif
 
 #include "mbim-utils.h"
 #include "mbim-device.h"
 #include "mbim-message.h"
 #include "mbim-message-private.h"
 #include "mbim-error-types.h"
+#include "mbim-enum-types.h"
 #include "mbim-proxy.h"
 #include "mbim-proxy-control.h"
 
@@ -140,6 +149,7 @@ typedef struct {
 } TransactionWaitContext;
 
 typedef struct {
+    MbimDevice *self;
     MbimMessage *fragments;
     MbimMessageType type;
     guint32 transaction_id;
@@ -149,6 +159,22 @@ typedef struct {
     gulong cancellable_id;
     TransactionWaitContext *wait_ctx;
 } Transaction;
+
+/* #define TRACE_TRANSACTION 1 */
+#ifdef TRACE_TRANSACTION
+static void
+trace_transaction (Transaction *tr,
+                   const gchar *state)
+{
+    g_debug ("[%s,%u] transaction %s: %s",
+             tr->self->priv->path_display,
+             tr->transaction_id,
+             mbim_message_type_get_string (tr->type),
+             state);
+}
+#else
+# define trace_transaction(...)
+#endif
 
 static Transaction *
 transaction_new (MbimDevice          *self,
@@ -163,12 +189,15 @@ transaction_new (MbimDevice          *self,
     tr = g_slice_new0 (Transaction);
     tr->type = type;
     tr->transaction_id = transaction_id;
+    tr->self = g_object_ref (self);
     tr->result = g_simple_async_result_new (G_OBJECT (self),
                                             callback,
                                             user_data,
                                             transaction_new);
     if (cancellable)
         tr->cancellable = g_object_ref (cancellable);
+
+    trace_transaction (tr, "new");
 
     return tr;
 }
@@ -190,10 +219,12 @@ transaction_complete_and_free (Transaction  *tr,
         g_slice_free (TransactionWaitContext, tr->wait_ctx);
 
     if (error) {
+        trace_transaction (tr, "complete: response");
         g_simple_async_result_set_from_error (tr->result, error);
         if (tr->fragments)
             mbim_message_unref (tr->fragments);
     } else {
+        trace_transaction (tr, "complete: error");
         g_assert (tr->fragments != NULL);
         g_simple_async_result_set_op_res_gpointer (tr->result,
                                                    tr->fragments,
@@ -202,6 +233,7 @@ transaction_complete_and_free (Transaction  *tr,
 
     g_simple_async_result_complete_in_idle (tr->result);
     g_object_unref (tr->result);
+    g_object_unref (tr->self);
     g_slice_free (Transaction, tr);
 }
 
@@ -218,6 +250,7 @@ device_release_transaction (MbimDevice      *self,
         tr = g_hash_table_lookup (self->priv->transactions[type], GUINT_TO_POINTER (transaction_id));
         if (tr && ((tr->type == expected_type) || (expected_type == MBIM_MESSAGE_TYPE_INVALID))) {
             /* If found, remove it from the HT */
+            trace_transaction (tr, "release");
             g_hash_table_remove (self->priv->transactions[type], GUINT_TO_POINTER (transaction_id));
             return tr;
         }
@@ -293,6 +326,8 @@ device_store_transaction (MbimDevice       *self,
                           guint             timeout_ms,
                           GError          **error)
 {
+    trace_transaction (tr, "store");
+
     if (G_UNLIKELY (!self->priv->transactions[type]))
         self->priv->transactions[type] = g_hash_table_new (g_direct_hash, g_direct_equal);
 
@@ -735,21 +770,17 @@ struct usb_cdc_mbim_desc {
     guint8  bmNetworkCapabilities;
 } __attribute__ ((packed));
 
-static guint16
-read_max_control_transfer (MbimDevice *self)
+#if WITH_UDEV
+
+static gchar *
+get_descriptors_filepath (MbimDevice *self)
 {
-    static const guint8 mbim_signature[4] = { 0x0c, 0x24, 0x1b, 0x00 };
-    guint16 max = MAX_CONTROL_TRANSFER;
     GUdevClient *client;
     GUdevDevice *device = NULL;
     GUdevDevice *parent_device = NULL;
     GUdevDevice *grandparent_device = NULL;
     gchar *descriptors_path = NULL;
     gchar *device_basename = NULL;
-    GError *error = NULL;
-    gchar *contents = NULL;
-    gsize length = 0;
-    guint i;
 
     client = g_udev_client_new (NULL);
     if (!G_UDEV_IS_CLIENT (client)) {
@@ -799,6 +830,93 @@ read_max_control_transfer (MbimDevice *self)
                                      g_udev_device_get_sysfs_path (grandparent_device),
                                      "descriptors",
                                      NULL);
+
+out:
+    g_free (device_basename);
+    if (parent_device)
+        g_object_unref (parent_device);
+    if (grandparent_device)
+        g_object_unref (grandparent_device);
+    if (device)
+        g_object_unref (device);
+    if (client)
+        g_object_unref (client);
+
+    return descriptors_path;
+}
+
+#else
+
+static gchar *
+get_descriptors_filepath (MbimDevice *self)
+{
+    static const gchar *subsystems[] = { "usbmisc", "usb" };
+    guint i;
+    gchar *device_basename;
+    gchar *descriptors_path = NULL;
+
+    device_basename = g_path_get_basename (self->priv->path);
+
+    for (i = 0; !descriptors_path && i < G_N_ELEMENTS (subsystems); i++) {
+        gchar *tmp;
+        gchar *path;
+
+        /* parent sysfs can be built directly using subsystem and name; e.g. for subsystem
+         * usbmisc and name cdc-wdm0:
+         *    $ realpath /sys/class/usbmisc/cdc-wdm0/device
+         *    /sys/devices/pci0000:00/0000:00:1d.0/usb2/2-1/2-1.5/2-1.5:2.0
+         */
+        tmp = g_strdup_printf ("/sys/class/%s/%s/device", subsystems[i], device_basename);
+        path = canonicalize_file_name (tmp);
+        g_free (tmp);
+
+        if (g_file_test (path, G_FILE_TEST_EXISTS)) {
+            /* Now look for the parent dir with descriptors file. */
+            gchar *dirname;
+
+            dirname = g_path_get_dirname (path);
+            descriptors_path = g_build_path (G_DIR_SEPARATOR_S,
+                                             dirname,
+                                             "descriptors",
+                                             NULL);
+            g_free (dirname);
+        }
+        g_free (path);
+    }
+
+    g_free (device_basename);
+
+    if (descriptors_path && !g_file_test (descriptors_path, G_FILE_TEST_EXISTS)) {
+        g_warning ("[%s] Descriptors file doesn't exist",
+                   self->priv->path_display);
+        g_free (descriptors_path);
+        descriptors_path = NULL;
+    }
+
+    return descriptors_path;
+}
+
+#endif
+
+static guint16
+read_max_control_transfer (MbimDevice *self)
+{
+    static const guint8 mbim_signature[4] = { 0x0c, 0x24, 0x1b, 0x00 };
+    guint16 max = MAX_CONTROL_TRANSFER;
+    gchar *descriptors_path;
+    GError *error = NULL;
+    gchar *contents = NULL;
+    gsize length = 0;
+    guint i;
+
+    /* Build descriptors filepath */
+    descriptors_path = get_descriptors_filepath (self);
+    if (!descriptors_path) {
+        g_warning ("[%s] Couldn't get descriptors file path",
+                   self->priv->path_display);
+        goto out;
+    }
+
     if (!g_file_get_contents (descriptors_path,
                               &contents,
                               &length,
@@ -832,16 +950,6 @@ read_max_control_transfer (MbimDevice *self)
 
 out:
     g_free (contents);
-    g_free (device_basename);
-    g_free (descriptors_path);
-    if (parent_device)
-        g_object_unref (parent_device);
-    if (grandparent_device)
-        g_object_unref (grandparent_device);
-    if (device)
-        g_object_unref (device);
-    if (client)
-        g_object_unref (client);
 
     return max;
 }

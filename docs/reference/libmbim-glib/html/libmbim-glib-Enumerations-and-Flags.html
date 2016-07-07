@@ -8,7 +8,7 @@
 <link rel="up" href="ch01.html" title="Core">
 <link rel="prev" href="MbimProxy.html" title="MbimProxy">
 <link rel="next" href="libmbim-glib-Errors.html" title="Errors">
-<meta name="generator" content="GTK-Doc V1.24 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.25 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -596,7 +596,7 @@
 </div>
 <div class="refsect1">
 <a name="libmbim-glib-Enumerations-and-Flags.object-hierarchy"></a><h2>Object Hierarchy</h2>
-<pre class="screen">    GEnum
+<pre class="screen">    <a href="https://developer.gnome.org/gobject/unstable/gobject-Enumeration-and-Flag-Types.html">GEnum</a>
     <span class="lineart">├──</span> MbimActivationCommand
     <span class="lineart">├──</span> MbimActivationState
     <span class="lineart">├──</span> MbimAuthProtocol
@@ -637,7 +637,7 @@
     <span class="lineart">├──</span> MbimVisibleProvidersAction
     <span class="lineart">├──</span> MbimVoiceCallState
     <span class="lineart">╰──</span> MbimVoiceClass
-    GFlags
+    <a href="https://developer.gnome.org/gobject/unstable/gobject-Enumeration-and-Flag-Types.html">GFlags</a>
     <span class="lineart">├──</span> MbimCellularClass
     <span class="lineart">├──</span> MbimCtrlCaps
     <span class="lineart">├──</span> MbimDataClass
@@ -662,7 +662,7 @@ mbim_device_type_get_string (<em class="parameter"><code><a class="link" href="l
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimDeviceType" title="enum MbimDeviceType"><span class="type">MbimDeviceType</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.2.5"></a><h4>Parameters</h4>
+<a name="mbim-device-type-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -677,7 +677,7 @@ mbim_device_type_get_string (<em class="parameter"><code><a class="link" href="l
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.2.6"></a><h4>Returns</h4>
+<a name="mbim-device-type-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -692,7 +692,7 @@ mbim_cellular_class_build_string_from_mask
 each <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimCellularClass" title="enum MbimCellularClass"><span class="type">MbimCellularClass</span></a> in <em class="parameter"><code>mask</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.3.5"></a><h4>Parameters</h4>
+<a name="mbim-cellular-class-build-string-from-mask.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -707,7 +707,7 @@ each <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimCellular
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.3.6"></a><h4>Returns</h4>
+<a name="mbim-cellular-class-build-string-from-mask.returns"></a><h4>Returns</h4>
 <p> a string with the list of nicknames, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if none given. The returned value should be freed with <a href="https://developer.gnome.org/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>. </p>
 <p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></p>
 </div>
@@ -720,7 +720,7 @@ mbim_voice_class_get_string (<em class="parameter"><code><a class="link" href="l
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimVoiceClass" title="enum MbimVoiceClass"><span class="type">MbimVoiceClass</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.4.5"></a><h4>Parameters</h4>
+<a name="mbim-voice-class-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -735,7 +735,7 @@ mbim_voice_class_get_string (<em class="parameter"><code><a class="link" href="l
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.4.6"></a><h4>Returns</h4>
+<a name="mbim-voice-class-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -749,7 +749,7 @@ mbim_sim_class_build_string_from_mask (<em class="parameter"><code><a class="lin
 each <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimSimClass" title="enum MbimSimClass"><span class="type">MbimSimClass</span></a> in <em class="parameter"><code>mask</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.5.5"></a><h4>Parameters</h4>
+<a name="mbim-sim-class-build-string-from-mask.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -764,7 +764,7 @@ each <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimSimClass
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.5.6"></a><h4>Returns</h4>
+<a name="mbim-sim-class-build-string-from-mask.returns"></a><h4>Returns</h4>
 <p> a string with the list of nicknames, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if none given. The returned value should be freed with <a href="https://developer.gnome.org/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>. </p>
 <p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></p>
 </div>
@@ -779,7 +779,7 @@ mbim_data_class_build_string_from_mask
 each <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimDataClass" title="enum MbimDataClass"><span class="type">MbimDataClass</span></a> in <em class="parameter"><code>mask</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.6.5"></a><h4>Parameters</h4>
+<a name="mbim-data-class-build-string-from-mask.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -794,7 +794,7 @@ each <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimDataClas
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.6.6"></a><h4>Returns</h4>
+<a name="mbim-data-class-build-string-from-mask.returns"></a><h4>Returns</h4>
 <p> a string with the list of nicknames, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if none given. The returned value should be freed with <a href="https://developer.gnome.org/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>. </p>
 <p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></p>
 </div>
@@ -808,7 +808,7 @@ mbim_sms_caps_build_string_from_mask (<em class="parameter"><code><a class="link
 each <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimSmsCaps" title="enum MbimSmsCaps"><span class="type">MbimSmsCaps</span></a> in <em class="parameter"><code>mask</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.7.5"></a><h4>Parameters</h4>
+<a name="mbim-sms-caps-build-string-from-mask.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -823,7 +823,7 @@ each <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimSmsCaps"
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.7.6"></a><h4>Returns</h4>
+<a name="mbim-sms-caps-build-string-from-mask.returns"></a><h4>Returns</h4>
 <p> a string with the list of nicknames, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if none given. The returned value should be freed with <a href="https://developer.gnome.org/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>. </p>
 <p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></p>
 </div>
@@ -837,7 +837,7 @@ mbim_ctrl_caps_build_string_from_mask (<em class="parameter"><code><a class="lin
 each <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimCtrlCaps" title="enum MbimCtrlCaps"><span class="type">MbimCtrlCaps</span></a> in <em class="parameter"><code>mask</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.8.5"></a><h4>Parameters</h4>
+<a name="mbim-ctrl-caps-build-string-from-mask.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -852,7 +852,7 @@ each <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimCtrlCaps
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.8.6"></a><h4>Returns</h4>
+<a name="mbim-ctrl-caps-build-string-from-mask.returns"></a><h4>Returns</h4>
 <p> a string with the list of nicknames, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if none given. The returned value should be freed with <a href="https://developer.gnome.org/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>. </p>
 <p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></p>
 </div>
@@ -866,7 +866,7 @@ mbim_subscriber_ready_state_get_string
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimSubscriberReadyState" title="enum MbimSubscriberReadyState"><span class="type">MbimSubscriberReadyState</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.9.5"></a><h4>Parameters</h4>
+<a name="mbim-subscriber-ready-state-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -881,7 +881,7 @@ mbim_subscriber_ready_state_get_string
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.9.6"></a><h4>Returns</h4>
+<a name="mbim-subscriber-ready-state-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -896,7 +896,7 @@ mbim_ready_info_flag_build_string_from_mask
 each <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimReadyInfoFlag" title="enum MbimReadyInfoFlag"><span class="type">MbimReadyInfoFlag</span></a> in <em class="parameter"><code>mask</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.10.5"></a><h4>Parameters</h4>
+<a name="mbim-ready-info-flag-build-string-from-mask.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -911,7 +911,7 @@ each <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimReadyInf
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.10.6"></a><h4>Returns</h4>
+<a name="mbim-ready-info-flag-build-string-from-mask.returns"></a><h4>Returns</h4>
 <p> a string with the list of nicknames, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if none given. The returned value should be freed with <a href="https://developer.gnome.org/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>. </p>
 <p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></p>
 </div>
@@ -924,7 +924,7 @@ mbim_radio_switch_state_get_string (<em class="parameter"><code><a class="link" 
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimRadioSwitchState" title="enum MbimRadioSwitchState"><span class="type">MbimRadioSwitchState</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.11.5"></a><h4>Parameters</h4>
+<a name="mbim-radio-switch-state-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -939,7 +939,7 @@ mbim_radio_switch_state_get_string (<em class="parameter"><code><a class="link" 
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.11.6"></a><h4>Returns</h4>
+<a name="mbim-radio-switch-state-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -952,7 +952,7 @@ mbim_pin_type_get_string (<em class="parameter"><code><a class="link" href="libm
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimPinType" title="enum MbimPinType"><span class="type">MbimPinType</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.12.5"></a><h4>Parameters</h4>
+<a name="mbim-pin-type-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -967,7 +967,7 @@ mbim_pin_type_get_string (<em class="parameter"><code><a class="link" href="libm
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.12.6"></a><h4>Returns</h4>
+<a name="mbim-pin-type-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -980,7 +980,7 @@ mbim_pin_state_get_string (<em class="parameter"><code><a class="link" href="lib
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimPinState" title="enum MbimPinState"><span class="type">MbimPinState</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.13.5"></a><h4>Parameters</h4>
+<a name="mbim-pin-state-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -995,7 +995,7 @@ mbim_pin_state_get_string (<em class="parameter"><code><a class="link" href="lib
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.13.6"></a><h4>Returns</h4>
+<a name="mbim-pin-state-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1008,7 +1008,7 @@ mbim_pin_operation_get_string (<em class="parameter"><code><a class="link" href=
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimPinOperation" title="enum MbimPinOperation"><span class="type">MbimPinOperation</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.14.5"></a><h4>Parameters</h4>
+<a name="mbim-pin-operation-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1023,7 +1023,7 @@ mbim_pin_operation_get_string (<em class="parameter"><code><a class="link" href=
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.14.6"></a><h4>Returns</h4>
+<a name="mbim-pin-operation-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1036,7 +1036,7 @@ mbim_pin_mode_get_string (<em class="parameter"><code><a class="link" href="libm
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimPinMode" title="enum MbimPinMode"><span class="type">MbimPinMode</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.15.5"></a><h4>Parameters</h4>
+<a name="mbim-pin-mode-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1051,7 +1051,7 @@ mbim_pin_mode_get_string (<em class="parameter"><code><a class="link" href="libm
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.15.6"></a><h4>Returns</h4>
+<a name="mbim-pin-mode-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1064,7 +1064,7 @@ mbim_pin_format_get_string (<em class="parameter"><code><a class="link" href="li
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimPinFormat" title="enum MbimPinFormat"><span class="type">MbimPinFormat</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.16.5"></a><h4>Parameters</h4>
+<a name="mbim-pin-format-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1079,7 +1079,7 @@ mbim_pin_format_get_string (<em class="parameter"><code><a class="link" href="li
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.16.6"></a><h4>Returns</h4>
+<a name="mbim-pin-format-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1094,7 +1094,7 @@ mbim_provider_state_build_string_from_mask
 each <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimProviderState" title="enum MbimProviderState"><span class="type">MbimProviderState</span></a> in <em class="parameter"><code>mask</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.17.5"></a><h4>Parameters</h4>
+<a name="mbim-provider-state-build-string-from-mask.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1109,7 +1109,7 @@ each <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimProvider
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.17.6"></a><h4>Returns</h4>
+<a name="mbim-provider-state-build-string-from-mask.returns"></a><h4>Returns</h4>
 <p> a string with the list of nicknames, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if none given. The returned value should be freed with <a href="https://developer.gnome.org/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>. </p>
 <p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></p>
 </div>
@@ -1123,7 +1123,7 @@ mbim_visible_providers_action_get_string
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimVisibleProvidersAction" title="enum MbimVisibleProvidersAction"><span class="type">MbimVisibleProvidersAction</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.18.5"></a><h4>Parameters</h4>
+<a name="mbim-visible-providers-action-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1138,7 +1138,7 @@ mbim_visible_providers_action_get_string
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.18.6"></a><h4>Returns</h4>
+<a name="mbim-visible-providers-action-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1151,7 +1151,7 @@ mbim_nw_error_get_string (<em class="parameter"><code><a class="link" href="libm
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimNwError" title="enum MbimNwError"><span class="type">MbimNwError</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.19.5"></a><h4>Parameters</h4>
+<a name="mbim-nw-error-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1166,7 +1166,7 @@ mbim_nw_error_get_string (<em class="parameter"><code><a class="link" href="libm
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.19.6"></a><h4>Returns</h4>
+<a name="mbim-nw-error-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1179,7 +1179,7 @@ mbim_register_action_get_string (<em class="parameter"><code><a class="link" hre
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimRegisterAction" title="enum MbimRegisterAction"><span class="type">MbimRegisterAction</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.20.5"></a><h4>Parameters</h4>
+<a name="mbim-register-action-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1194,7 +1194,7 @@ mbim_register_action_get_string (<em class="parameter"><code><a class="link" hre
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.20.6"></a><h4>Returns</h4>
+<a name="mbim-register-action-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1207,7 +1207,7 @@ mbim_register_state_get_string (<em class="parameter"><code><a class="link" href
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimRegisterState" title="enum MbimRegisterState"><span class="type">MbimRegisterState</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.21.5"></a><h4>Parameters</h4>
+<a name="mbim-register-state-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1222,7 +1222,7 @@ mbim_register_state_get_string (<em class="parameter"><code><a class="link" href
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.21.6"></a><h4>Returns</h4>
+<a name="mbim-register-state-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1235,7 +1235,7 @@ mbim_register_mode_get_string (<em class="parameter"><code><a class="link" href=
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimRegisterMode" title="enum MbimRegisterMode"><span class="type">MbimRegisterMode</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.22.5"></a><h4>Parameters</h4>
+<a name="mbim-register-mode-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1250,7 +1250,7 @@ mbim_register_mode_get_string (<em class="parameter"><code><a class="link" href=
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.22.6"></a><h4>Returns</h4>
+<a name="mbim-register-mode-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1263,7 +1263,7 @@ mbim_packet_service_action_get_string (<em class="parameter"><code><a class="lin
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimPacketServiceAction" title="enum MbimPacketServiceAction"><span class="type">MbimPacketServiceAction</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.23.5"></a><h4>Parameters</h4>
+<a name="mbim-packet-service-action-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1278,7 +1278,7 @@ mbim_packet_service_action_get_string (<em class="parameter"><code><a class="lin
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.23.6"></a><h4>Returns</h4>
+<a name="mbim-packet-service-action-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1291,7 +1291,7 @@ mbim_packet_service_state_get_string (<em class="parameter"><code><a class="link
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimPacketServiceState" title="enum MbimPacketServiceState"><span class="type">MbimPacketServiceState</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.24.5"></a><h4>Parameters</h4>
+<a name="mbim-packet-service-state-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1306,7 +1306,7 @@ mbim_packet_service_state_get_string (<em class="parameter"><code><a class="link
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.24.6"></a><h4>Returns</h4>
+<a name="mbim-packet-service-state-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1319,7 +1319,7 @@ mbim_activation_command_get_string (<em class="parameter"><code><a class="link" 
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimActivationCommand" title="enum MbimActivationCommand"><span class="type">MbimActivationCommand</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.25.5"></a><h4>Parameters</h4>
+<a name="mbim-activation-command-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1334,7 +1334,7 @@ mbim_activation_command_get_string (<em class="parameter"><code><a class="link" 
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.25.6"></a><h4>Returns</h4>
+<a name="mbim-activation-command-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1347,7 +1347,7 @@ mbim_compression_get_string (<em class="parameter"><code><a class="link" href="l
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimCompression" title="enum MbimCompression"><span class="type">MbimCompression</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.26.5"></a><h4>Parameters</h4>
+<a name="mbim-compression-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1362,7 +1362,7 @@ mbim_compression_get_string (<em class="parameter"><code><a class="link" href="l
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.26.6"></a><h4>Returns</h4>
+<a name="mbim-compression-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1375,7 +1375,7 @@ mbim_auth_protocol_get_string (<em class="parameter"><code><a class="link" href=
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimAuthProtocol" title="enum MbimAuthProtocol"><span class="type">MbimAuthProtocol</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.27.5"></a><h4>Parameters</h4>
+<a name="mbim-auth-protocol-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1390,7 +1390,7 @@ mbim_auth_protocol_get_string (<em class="parameter"><code><a class="link" href=
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.27.6"></a><h4>Returns</h4>
+<a name="mbim-auth-protocol-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1403,7 +1403,7 @@ mbim_context_ip_type_get_string (<em class="parameter"><code><a class="link" hre
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimContextIpType" title="enum MbimContextIpType"><span class="type">MbimContextIpType</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.28.5"></a><h4>Parameters</h4>
+<a name="mbim-context-ip-type-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1418,7 +1418,7 @@ mbim_context_ip_type_get_string (<em class="parameter"><code><a class="link" hre
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.28.6"></a><h4>Returns</h4>
+<a name="mbim-context-ip-type-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1431,7 +1431,7 @@ mbim_activation_state_get_string (<em class="parameter"><code><a class="link" hr
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimActivationState" title="enum MbimActivationState"><span class="type">MbimActivationState</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.29.5"></a><h4>Parameters</h4>
+<a name="mbim-activation-state-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1446,7 +1446,7 @@ mbim_activation_state_get_string (<em class="parameter"><code><a class="link" hr
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.29.6"></a><h4>Returns</h4>
+<a name="mbim-activation-state-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1459,7 +1459,7 @@ mbim_voice_call_state_get_string (<em class="parameter"><code><a class="link" hr
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimVoiceCallState" title="enum MbimVoiceCallState"><span class="type">MbimVoiceCallState</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.30.5"></a><h4>Parameters</h4>
+<a name="mbim-voice-call-state-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1474,7 +1474,7 @@ mbim_voice_call_state_get_string (<em class="parameter"><code><a class="link" hr
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.30.6"></a><h4>Returns</h4>
+<a name="mbim-voice-call-state-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1489,7 +1489,7 @@ mbim_ip_configuration_available_flag_build_string_from_mask
 each <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimIPConfigurationAvailableFlag" title="enum MbimIPConfigurationAvailableFlag"><span class="type">MbimIPConfigurationAvailableFlag</span></a> in <em class="parameter"><code>mask</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.31.5"></a><h4>Parameters</h4>
+<a name="mbim-ip-configuration-available-flag-build-string-from-mask.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1504,7 +1504,7 @@ each <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimIPConfig
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.31.6"></a><h4>Returns</h4>
+<a name="mbim-ip-configuration-available-flag-build-string-from-mask.returns"></a><h4>Returns</h4>
 <p> a string with the list of nicknames, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if none given. The returned value should be freed with <a href="https://developer.gnome.org/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>. </p>
 <p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></p>
 </div>
@@ -1517,7 +1517,7 @@ mbim_sms_storage_state_get_string (<em class="parameter"><code><a class="link" h
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimSmsStorageState" title="enum MbimSmsStorageState"><span class="type">MbimSmsStorageState</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.32.5"></a><h4>Parameters</h4>
+<a name="mbim-sms-storage-state-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1532,7 +1532,7 @@ mbim_sms_storage_state_get_string (<em class="parameter"><code><a class="link" h
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.32.6"></a><h4>Returns</h4>
+<a name="mbim-sms-storage-state-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1545,7 +1545,7 @@ mbim_sms_format_get_string (<em class="parameter"><code><a class="link" href="li
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimSmsFormat" title="enum MbimSmsFormat"><span class="type">MbimSmsFormat</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.33.5"></a><h4>Parameters</h4>
+<a name="mbim-sms-format-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1560,7 +1560,7 @@ mbim_sms_format_get_string (<em class="parameter"><code><a class="link" href="li
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.33.6"></a><h4>Returns</h4>
+<a name="mbim-sms-format-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1573,7 +1573,7 @@ mbim_sms_flag_get_string (<em class="parameter"><code><a class="link" href="libm
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimSmsFlag" title="enum MbimSmsFlag"><span class="type">MbimSmsFlag</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.34.5"></a><h4>Parameters</h4>
+<a name="mbim-sms-flag-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1588,7 +1588,7 @@ mbim_sms_flag_get_string (<em class="parameter"><code><a class="link" href="libm
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.34.6"></a><h4>Returns</h4>
+<a name="mbim-sms-flag-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1601,7 +1601,7 @@ mbim_sms_cdma_lang_get_string (<em class="parameter"><code><a class="link" href=
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimSmsCdmaLang" title="enum MbimSmsCdmaLang"><span class="type">MbimSmsCdmaLang</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.35.5"></a><h4>Parameters</h4>
+<a name="mbim-sms-cdma-lang-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1616,7 +1616,7 @@ mbim_sms_cdma_lang_get_string (<em class="parameter"><code><a class="link" href=
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.35.6"></a><h4>Returns</h4>
+<a name="mbim-sms-cdma-lang-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1629,7 +1629,7 @@ mbim_sms_cdma_encoding_get_string (<em class="parameter"><code><a class="link" h
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimSmsCdmaEncoding" title="enum MbimSmsCdmaEncoding"><span class="type">MbimSmsCdmaEncoding</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.36.5"></a><h4>Parameters</h4>
+<a name="mbim-sms-cdma-encoding-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1644,7 +1644,7 @@ mbim_sms_cdma_encoding_get_string (<em class="parameter"><code><a class="link" h
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.36.6"></a><h4>Returns</h4>
+<a name="mbim-sms-cdma-encoding-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1657,7 +1657,7 @@ mbim_sms_status_get_string (<em class="parameter"><code><a class="link" href="li
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimSmsStatus" title="enum MbimSmsStatus"><span class="type">MbimSmsStatus</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.37.5"></a><h4>Parameters</h4>
+<a name="mbim-sms-status-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1672,7 +1672,7 @@ mbim_sms_status_get_string (<em class="parameter"><code><a class="link" href="li
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.37.6"></a><h4>Returns</h4>
+<a name="mbim-sms-status-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1685,7 +1685,7 @@ mbim_sms_status_flag_get_string (<em class="parameter"><code><a class="link" hre
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimSmsStatusFlag" title="enum MbimSmsStatusFlag"><span class="type">MbimSmsStatusFlag</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.38.5"></a><h4>Parameters</h4>
+<a name="mbim-sms-status-flag-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1700,7 +1700,7 @@ mbim_sms_status_flag_get_string (<em class="parameter"><code><a class="link" hre
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.38.6"></a><h4>Returns</h4>
+<a name="mbim-sms-status-flag-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1713,7 +1713,7 @@ mbim_ussd_action_get_string (<em class="parameter"><code><a class="link" href="l
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimUssdAction" title="enum MbimUssdAction"><span class="type">MbimUssdAction</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.39.5"></a><h4>Parameters</h4>
+<a name="mbim-ussd-action-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1728,7 +1728,7 @@ mbim_ussd_action_get_string (<em class="parameter"><code><a class="link" href="l
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.39.6"></a><h4>Returns</h4>
+<a name="mbim-ussd-action-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1741,7 +1741,7 @@ mbim_ussd_response_get_string (<em class="parameter"><code><a class="link" href=
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimUssdResponse" title="enum MbimUssdResponse"><span class="type">MbimUssdResponse</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.40.5"></a><h4>Parameters</h4>
+<a name="mbim-ussd-response-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1756,7 +1756,7 @@ mbim_ussd_response_get_string (<em class="parameter"><code><a class="link" href=
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.40.6"></a><h4>Returns</h4>
+<a name="mbim-ussd-response-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1769,7 +1769,7 @@ mbim_ussd_session_state_get_string (<em class="parameter"><code><a class="link" 
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimUssdSessionState" title="enum MbimUssdSessionState"><span class="type">MbimUssdSessionState</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.41.5"></a><h4>Parameters</h4>
+<a name="mbim-ussd-session-state-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1784,7 +1784,7 @@ mbim_ussd_session_state_get_string (<em class="parameter"><code><a class="link" 
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.41.6"></a><h4>Returns</h4>
+<a name="mbim-ussd-session-state-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1797,7 +1797,7 @@ mbim_phonebook_flag_get_string (<em class="parameter"><code><a class="link" href
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimPhonebookFlag" title="enum MbimPhonebookFlag"><span class="type">MbimPhonebookFlag</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.42.5"></a><h4>Parameters</h4>
+<a name="mbim-phonebook-flag-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1812,7 +1812,7 @@ mbim_phonebook_flag_get_string (<em class="parameter"><code><a class="link" href
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.42.6"></a><h4>Returns</h4>
+<a name="mbim-phonebook-flag-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1825,7 +1825,7 @@ mbim_phonebook_state_get_string (<em class="parameter"><code><a class="link" hre
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimPhonebookState" title="enum MbimPhonebookState"><span class="type">MbimPhonebookState</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.43.5"></a><h4>Parameters</h4>
+<a name="mbim-phonebook-state-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1840,7 +1840,7 @@ mbim_phonebook_state_get_string (<em class="parameter"><code><a class="link" hre
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.43.6"></a><h4>Returns</h4>
+<a name="mbim-phonebook-state-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1853,7 +1853,7 @@ mbim_phonebook_write_flag_get_string (<em class="parameter"><code><a class="link
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimPhonebookWriteFlag" title="enum MbimPhonebookWriteFlag"><span class="type">MbimPhonebookWriteFlag</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.44.5"></a><h4>Parameters</h4>
+<a name="mbim-phonebook-write-flag-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1868,7 +1868,7 @@ mbim_phonebook_write_flag_get_string (<em class="parameter"><code><a class="link
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.44.6"></a><h4>Returns</h4>
+<a name="mbim-phonebook-write-flag-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1881,7 +1881,7 @@ mbim_stk_pac_profile_get_string (<em class="parameter"><code><a class="link" hre
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimStkPacProfile" title="enum MbimStkPacProfile"><span class="type">MbimStkPacProfile</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.45.5"></a><h4>Parameters</h4>
+<a name="mbim-stk-pac-profile-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1896,7 +1896,7 @@ mbim_stk_pac_profile_get_string (<em class="parameter"><code><a class="link" hre
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.45.6"></a><h4>Returns</h4>
+<a name="mbim-stk-pac-profile-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1909,7 +1909,7 @@ mbim_stk_pac_type_get_string (<em class="parameter"><code><a class="link" href="
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimStkPacType" title="enum MbimStkPacType"><span class="type">MbimStkPacType</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.46.5"></a><h4>Parameters</h4>
+<a name="mbim-stk-pac-type-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1924,7 +1924,7 @@ mbim_stk_pac_type_get_string (<em class="parameter"><code><a class="link" href="
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.46.6"></a><h4>Returns</h4>
+<a name="mbim-stk-pac-type-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1938,7 +1938,7 @@ mbim_network_idle_hint_state_get_string
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimNetworkIdleHintState" title="enum MbimNetworkIdleHintState"><span class="type">MbimNetworkIdleHintState</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.47.5"></a><h4>Parameters</h4>
+<a name="mbim-network-idle-hint-state-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1953,7 +1953,7 @@ mbim_network_idle_hint_state_get_string
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.47.6"></a><h4>Returns</h4>
+<a name="mbim-network-idle-hint-state-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1966,7 +1966,7 @@ mbim_emergency_mode_state_get_string (<em class="parameter"><code><a class="link
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimEmergencyModeState" title="enum MbimEmergencyModeState"><span class="type">MbimEmergencyModeState</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.48.5"></a><h4>Parameters</h4>
+<a name="mbim-emergency-mode-state-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -1981,7 +1981,7 @@ mbim_emergency_mode_state_get_string (<em class="parameter"><code><a class="link
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.48.6"></a><h4>Returns</h4>
+<a name="mbim-emergency-mode-state-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -1994,7 +1994,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimDssLinkState" title="enum MbimDssLinkState"><span class="type">MbimDssLinkState</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
 <div class="refsect3">
-<a name="id-1.2.8.7.49.5"></a><h4>Parameters</h4>
+<a name="mbim-dss-link-state-get-string.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -2009,7 +2009,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.2.8.7.49.6"></a><h4>Returns</h4>
+<a name="mbim-dss-link-state-get-string.returns"></a><h4>Returns</h4>
 <p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
@@ -2021,7 +2021,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimDeviceType"></a><h3>enum MbimDeviceType</h3>
 <p>Type of device.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.2.4"></a><h4>Members</h4>
+<a name="MbimDeviceType.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -2066,7 +2066,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimCellularClass"></a><h3>enum MbimCellularClass</h3>
 <p>Cellular class.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.3.4"></a><h4>Members</h4>
+<a name="MbimCellularClass.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -2097,7 +2097,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimVoiceClass"></a><h3>enum MbimVoiceClass</h3>
 <p>Voice class.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.4.4"></a><h4>Members</h4>
+<a name="MbimVoiceClass.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -2142,7 +2142,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimSimClass"></a><h3>enum MbimSimClass</h3>
 <p>SIM class.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.5.4"></a><h4>Members</h4>
+<a name="MbimSimClass.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -2173,7 +2173,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimDataClass"></a><h3>enum MbimDataClass</h3>
 <p>Data class.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.6.4"></a><h4>Members</h4>
+<a name="MbimDataClass.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -2288,7 +2288,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimSmsCaps"></a><h3>enum MbimSmsCaps</h3>
 <p>SMS capabilities.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.7.4"></a><h4>Members</h4>
+<a name="MbimSmsCaps.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -2333,7 +2333,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimCtrlCaps"></a><h3>enum MbimCtrlCaps</h3>
 <p>Control capabilities.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.8.4"></a><h4>Members</h4>
+<a name="MbimCtrlCaps.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -2385,7 +2385,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimSubscriberReadyState"></a><h3>enum MbimSubscriberReadyState</h3>
 <p>Ready state of the subscriber.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.9.4"></a><h4>Members</h4>
+<a name="MbimSubscriberReadyState.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -2450,7 +2450,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <div class="refsect2">
 <a name="MbimReadyInfoFlag"></a><h3>enum MbimReadyInfoFlag</h3>
 <div class="refsect3">
-<a name="id-1.2.8.8.10.3"></a><h4>Members</h4>
+<a name="MbimReadyInfoFlag.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -2472,7 +2472,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimRadioSwitchState"></a><h3>enum MbimRadioSwitchState</h3>
 <p>Radio switch state.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.11.4"></a><h4>Members</h4>
+<a name="MbimRadioSwitchState.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -2503,7 +2503,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimPinType"></a><h3>enum MbimPinType</h3>
 <p>PIN Types.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.12.4"></a><h4>Members</h4>
+<a name="MbimPinType.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -2646,7 +2646,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimPinState"></a><h3>enum MbimPinState</h3>
 <p>PIN States.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.13.4"></a><h4>Members</h4>
+<a name="MbimPinState.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -2676,7 +2676,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <div class="refsect2">
 <a name="MbimPinOperation"></a><h3>enum MbimPinOperation</h3>
 <div class="refsect3">
-<a name="id-1.2.8.8.14.3"></a><h4>Members</h4>
+<a name="MbimPinOperation.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -2721,7 +2721,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimPinMode"></a><h3>enum MbimPinMode</h3>
 <p>Whether the lock is enabled or disabled.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.15.4"></a><h4>Members</h4>
+<a name="MbimPinMode.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -2759,7 +2759,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimPinFormat"></a><h3>enum MbimPinFormat</h3>
 <p>Format of the expected PIN code.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.16.4"></a><h4>Members</h4>
+<a name="MbimPinFormat.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -2797,7 +2797,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimProviderState"></a><h3>enum MbimProviderState</h3>
 <p>State of the provider.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.17.4"></a><h4>Members</h4>
+<a name="MbimProviderState.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -2863,7 +2863,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimVisibleProvidersAction"></a><h3>enum MbimVisibleProvidersAction</h3>
 <p>Type of action to perform when listing visible providers.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.18.4"></a><h4>Members</h4>
+<a name="MbimVisibleProvidersAction.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -2894,7 +2894,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimNwError"></a><h3>enum MbimNwError</h3>
 <p>Network errors.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.19.4"></a><h4>Members</h4>
+<a name="MbimNwError.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -3156,7 +3156,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimRegisterAction"></a><h3>enum MbimRegisterAction</h3>
 <p>Type of registration requested.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.20.4"></a><h4>Members</h4>
+<a name="MbimRegisterAction.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -3187,7 +3187,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimRegisterState"></a><h3>enum MbimRegisterState</h3>
 <p>Registration state.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.21.4"></a><h4>Members</h4>
+<a name="MbimRegisterState.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -3253,7 +3253,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimRegisterMode"></a><h3>enum MbimRegisterMode</h3>
 <p>Type of registration requested.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.22.4"></a><h4>Members</h4>
+<a name="MbimRegisterMode.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -3291,7 +3291,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimRegistrationFlag"></a><h3>enum MbimRegistrationFlag</h3>
 <p>Registration flags.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.23.4"></a><h4>Members</h4>
+<a name="MbimRegistrationFlag.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -3329,7 +3329,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimPacketServiceAction"></a><h3>enum MbimPacketServiceAction</h3>
 <p>Packet Service Action.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.24.4"></a><h4>Members</h4>
+<a name="MbimPacketServiceAction.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -3360,7 +3360,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimPacketServiceState"></a><h3>enum MbimPacketServiceState</h3>
 <p>Packet Service State.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.25.4"></a><h4>Members</h4>
+<a name="MbimPacketServiceState.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -3412,7 +3412,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimActivationCommand"></a><h3>enum MbimActivationCommand</h3>
 <p>Activation Command.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.26.4"></a><h4>Members</h4>
+<a name="MbimActivationCommand.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -3443,7 +3443,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimCompression"></a><h3>enum MbimCompression</h3>
 <p>Compression.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.27.4"></a><h4>Members</h4>
+<a name="MbimCompression.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -3474,7 +3474,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimAuthProtocol"></a><h3>enum MbimAuthProtocol</h3>
 <p>Auth Protocol.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.28.4"></a><h4>Members</h4>
+<a name="MbimAuthProtocol.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -3519,7 +3519,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimContextIpType"></a><h3>enum MbimContextIpType</h3>
 <p>Context IP Type.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.29.4"></a><h4>Members</h4>
+<a name="MbimContextIpType.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -3571,7 +3571,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimActivationState"></a><h3>enum MbimActivationState</h3>
 <p>Activation State.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.30.4"></a><h4>Members</h4>
+<a name="MbimActivationState.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -3623,7 +3623,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimVoiceCallState"></a><h3>enum MbimVoiceCallState</h3>
 <p>Voice Call State.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.31.4"></a><h4>Members</h4>
+<a name="MbimVoiceCallState.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -3661,7 +3661,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimIPConfigurationAvailableFlag"></a><h3>enum MbimIPConfigurationAvailableFlag</h3>
 <p>Mask of available information about an IP address.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.32.4"></a><h4>Members</h4>
+<a name="MbimIPConfigurationAvailableFlag.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -3713,7 +3713,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimSmsStorageState"></a><h3>enum MbimSmsStorageState</h3>
 <p>State of the SMS storage.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.33.4"></a><h4>Members</h4>
+<a name="MbimSmsStorageState.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -3744,7 +3744,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimSmsFormat"></a><h3>enum MbimSmsFormat</h3>
 <p>SMS format.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.34.4"></a><h4>Members</h4>
+<a name="MbimSmsFormat.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -3778,7 +3778,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <em class="parameter"><code>MBIM_SMS_FLAG_NEW</code></em>
  are mandatory, all the others are optional.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.35.4"></a><h4>Members</h4>
+<a name="MbimSmsFlag.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -3837,7 +3837,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimSmsCdmaLang"></a><h3>enum MbimSmsCdmaLang</h3>
 <p>Language of a CDMA SMS.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.36.4"></a><h4>Members</h4>
+<a name="MbimSmsCdmaLang.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -3910,7 +3910,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimSmsCdmaEncoding"></a><h3>enum MbimSmsCdmaEncoding</h3>
 <p>Type of encoding of a CDMA SMS.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.37.4"></a><h4>Members</h4>
+<a name="MbimSmsCdmaEncoding.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -3997,7 +3997,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimSmsStatus"></a><h3>enum MbimSmsStatus</h3>
 <p>Status of a SMS message.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.38.4"></a><h4>Members</h4>
+<a name="MbimSmsStatus.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -4042,7 +4042,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimSmsStatusFlag"></a><h3>enum MbimSmsStatusFlag</h3>
 <p>SMS status flags.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.39.4"></a><h4>Members</h4>
+<a name="MbimSmsStatusFlag.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -4080,7 +4080,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimUssdAction"></a><h3>enum MbimUssdAction</h3>
 <p>USSD action.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.40.4"></a><h4>Members</h4>
+<a name="MbimUssdAction.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -4118,7 +4118,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimUssdResponse"></a><h3>enum MbimUssdResponse</h3>
 <p>USSD response.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.41.4"></a><h4>Members</h4>
+<a name="MbimUssdResponse.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -4177,7 +4177,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimUssdSessionState"></a><h3>enum MbimUssdSessionState</h3>
 <p>Session state.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.42.4"></a><h4>Members</h4>
+<a name="MbimUssdSessionState.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -4208,7 +4208,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimPhonebookFlag"></a><h3>enum MbimPhonebookFlag</h3>
 <p>Flags to use when reading the phonebook.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.43.4"></a><h4>Members</h4>
+<a name="MbimPhonebookFlag.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -4239,7 +4239,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimPhonebookState"></a><h3>enum MbimPhonebookState</h3>
 <p>Phonebook state.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.44.4"></a><h4>Members</h4>
+<a name="MbimPhonebookState.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -4270,7 +4270,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimPhonebookWriteFlag"></a><h3>enum MbimPhonebookWriteFlag</h3>
 <p>Flags to use when writing the phonebook.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.45.4"></a><h4>Members</h4>
+<a name="MbimPhonebookWriteFlag.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -4301,7 +4301,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimStkPacProfile"></a><h3>enum MbimStkPacProfile</h3>
 <p>Proactive command profile.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.46.4"></a><h4>Members</h4>
+<a name="MbimStkPacProfile.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -4374,7 +4374,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimStkPacType"></a><h3>enum MbimStkPacType</h3>
 <p>Type of proactive command.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.47.4"></a><h4>Members</h4>
+<a name="MbimStkPacType.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -4405,7 +4405,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimNetworkIdleHintState"></a><h3>enum MbimNetworkIdleHintState</h3>
 <p>Enable or disable network idle hint.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.48.4"></a><h4>Members</h4>
+<a name="MbimNetworkIdleHintState.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -4436,7 +4436,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimEmergencyModeState"></a><h3>enum MbimEmergencyModeState</h3>
 <p>Emergency mode state.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.49.4"></a><h4>Members</h4>
+<a name="MbimEmergencyModeState.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -4467,7 +4467,7 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 <a name="MbimDssLinkState"></a><h3>enum MbimDssLinkState</h3>
 <p>Action performed in the link state.</p>
 <div class="refsect3">
-<a name="id-1.2.8.8.50.4"></a><h4>Members</h4>
+<a name="MbimDssLinkState.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="enum_members_name">
@@ -4496,6 +4496,6 @@ mbim_dss_link_state_get_string (<em class="parameter"><code><a class="link" href
 </div>
 </div>
 <div class="footer">
-<hr>Generated by GTK-Doc V1.24</div>
+<hr>Generated by GTK-Doc V1.25</div>
 </body>
 </html>

@@ -24,6 +24,7 @@
     <sub name="Other Services" link="ch03.html">
       <sub name="MS Firmware ID" link="libmbim-glib-MS-Firmware-ID.html"/>
       <sub name="MS Host Shutdown" link="libmbim-glib-MS-Host-Shutdown.html"/>
+      <sub name="QMI" link="libmbim-glib-QMI.html"/>
     </sub>
     <sub name="Compatibility" link="ch04.html">
       <sub name="Deprecated API" link="libmbim-glib-Deprecated-API.html"/>
@@ -33,10 +34,10 @@
     <sub name="Annotation Glossary" link="annotation-glossary.html"/>
   </chapters>
   <functions>
+    <keyword type="macro" name="MBIM_CHECK_VERSION()" link="libmbim-glib-Version-checks.html#MBIM-CHECK-VERSION:CAPS"/>
     <keyword type="macro" name="MBIM_MAJOR_VERSION" link="libmbim-glib-Version-checks.html#MBIM-MAJOR-VERSION:CAPS"/>
     <keyword type="macro" name="MBIM_MINOR_VERSION" link="libmbim-glib-Version-checks.html#MBIM-MINOR-VERSION:CAPS"/>
     <keyword type="macro" name="MBIM_MICRO_VERSION" link="libmbim-glib-Version-checks.html#MBIM-MICRO-VERSION:CAPS"/>
-    <keyword type="macro" name="MBIM_CHECK_VERSION()" link="libmbim-glib-Version-checks.html#MBIM-CHECK-VERSION:CAPS"/>
     <keyword type="function" name="mbim_service_get_string ()" link="libmbim-glib-UUIDs.html#mbim-service-get-string"/>
     <keyword type="function" name="mbim_service_lookup_name ()" link="libmbim-glib-UUIDs.html#mbim-service-lookup-name"/>
     <keyword type="function" name="mbim_register_custom_service ()" link="libmbim-glib-UUIDs.html#mbim-register-custom-service"/>
@@ -64,6 +65,7 @@
     <keyword type="macro" name="MBIM_UUID_MS_FIRMWARE_ID" link="libmbim-glib-UUIDs.html#MBIM-UUID-MS-FIRMWARE-ID:CAPS"/>
     <keyword type="macro" name="MBIM_UUID_MS_HOST_SHUTDOWN" link="libmbim-glib-UUIDs.html#MBIM-UUID-MS-HOST-SHUTDOWN:CAPS"/>
     <keyword type="macro" name="MBIM_UUID_PROXY_CONTROL" link="libmbim-glib-UUIDs.html#MBIM-UUID-PROXY-CONTROL:CAPS"/>
+    <keyword type="macro" name="MBIM_UUID_QMI" link="libmbim-glib-UUIDs.html#MBIM-UUID-QMI:CAPS"/>
     <keyword type="function" name="mbim_cid_can_set ()" link="libmbim-glib-Command-IDs.html#mbim-cid-can-set"/>
     <keyword type="function" name="mbim_cid_can_query ()" link="libmbim-glib-Command-IDs.html#mbim-cid-can-query"/>
     <keyword type="function" name="mbim_cid_can_notify ()" link="libmbim-glib-Command-IDs.html#mbim-cid-can-notify"/>
@@ -78,6 +80,7 @@
     <keyword type="function" name="mbim_cid_ms_firmware_id_get_string ()" link="libmbim-glib-Command-IDs.html#mbim-cid-ms-firmware-id-get-string"/>
     <keyword type="function" name="mbim_cid_ms_host_shutdown_get_string ()" link="libmbim-glib-Command-IDs.html#mbim-cid-ms-host-shutdown-get-string"/>
     <keyword type="function" name="mbim_cid_proxy_control_get_string ()" link="libmbim-glib-Command-IDs.html#mbim-cid-proxy-control-get-string"/>
+    <keyword type="function" name="mbim_cid_qmi_get_string ()" link="libmbim-glib-Command-IDs.html#mbim-cid-qmi-get-string"/>
     <keyword type="enum" name="enum MbimCidBasicConnect" link="libmbim-glib-Command-IDs.html#MbimCidBasicConnect"/>
     <keyword type="enum" name="enum MbimCidSms" link="libmbim-glib-Command-IDs.html#MbimCidSms"/>
     <keyword type="enum" name="enum MbimCidUssd" link="libmbim-glib-Command-IDs.html#MbimCidUssd"/>
@@ -88,6 +91,7 @@
     <keyword type="enum" name="enum MbimCidMsFirmwareId" link="libmbim-glib-Command-IDs.html#MbimCidMsFirmwareId"/>
     <keyword type="enum" name="enum MbimCidMsHostShutdown" link="libmbim-glib-Command-IDs.html#MbimCidMsHostShutdown"/>
     <keyword type="enum" name="enum MbimCidProxyControl" link="libmbim-glib-Command-IDs.html#MbimCidProxyControl"/>
+    <keyword type="enum" name="enum MbimCidQmi" link="libmbim-glib-Command-IDs.html#MbimCidQmi"/>
     <keyword type="function" name="mbim_message_new ()" link="MbimMessage.html#mbim-message-new"/>
     <keyword type="function" name="mbim_message_dup ()" link="MbimMessage.html#mbim-message-dup"/>
     <keyword type="function" name="mbim_message_ref ()" link="MbimMessage.html#mbim-message-ref"/>
@@ -419,6 +423,8 @@
     <keyword type="function" name="mbim_message_ms_firmware_id_get_query_new ()" link="libmbim-glib-MS-Firmware-ID.html#mbim-message-ms-firmware-id-get-query-new"/>
     <keyword type="function" name="mbim_message_ms_firmware_id_get_response_parse ()" link="libmbim-glib-MS-Firmware-ID.html#mbim-message-ms-firmware-id-get-response-parse"/>
     <keyword type="function" name="mbim_message_ms_host_shutdown_notify_set_new ()" link="libmbim-glib-MS-Host-Shutdown.html#mbim-message-ms-host-shutdown-notify-set-new"/>
+    <keyword type="function" name="mbim_message_qmi_msg_set_new ()" link="libmbim-glib-QMI.html#mbim-message-qmi-msg-set-new"/>
+    <keyword type="function" name="mbim_message_qmi_msg_response_parse ()" link="libmbim-glib-QMI.html#mbim-message-qmi-msg-response-parse"/>
     <keyword type="function" name="mbim_message_device_service_subscriber_list_response_parse ()" link="libmbim-glib-Deprecated-API.html#mbim-message-device-service-subscriber-list-response-parse" deprecated="1.8.0: Use mbim_message_device_service_subscribe_list_response_parse() instead."/>
     <keyword type="function" name="mbim_message_device_service_subscriber_list_set_new ()" link="libmbim-glib-Deprecated-API.html#mbim-message-device-service-subscriber-list-set-new" deprecated="1.8.0: Use mbim_message_device_service_subscribe_list_set_new() instead."/>
     <keyword type="macro" name="MBIM_CID_BASIC_CONNECT_DEVICE_SERVICE_SUBSCRIBER_LIST" link="libmbim-glib-Deprecated-API.html#MBIM-CID-BASIC-CONNECT-DEVICE-SERVICE-SUBSCRIBER-LIST:CAPS" deprecated="1.8.0: Use MBIM_CID_BASIC_CONNECT_DEVICE_SERVICE_SUBSCRIBE_LIST instead."/>
@@ -434,6 +440,7 @@
     <keyword type="constant" name="MBIM_SERVICE_MS_FIRMWARE_ID" link="libmbim-glib-UUIDs.html#MBIM-SERVICE-MS-FIRMWARE-ID:CAPS"/>
     <keyword type="constant" name="MBIM_SERVICE_MS_HOST_SHUTDOWN" link="libmbim-glib-UUIDs.html#MBIM-SERVICE-MS-HOST-SHUTDOWN:CAPS"/>
     <keyword type="constant" name="MBIM_SERVICE_PROXY_CONTROL" link="libmbim-glib-UUIDs.html#MBIM-SERVICE-PROXY-CONTROL:CAPS"/>
+    <keyword type="constant" name="MBIM_SERVICE_QMI" link="libmbim-glib-UUIDs.html#MBIM-SERVICE-QMI:CAPS"/>
     <keyword type="constant" name="MBIM_CONTEXT_TYPE_INVALID" link="libmbim-glib-UUIDs.html#MBIM-CONTEXT-TYPE-INVALID:CAPS"/>
     <keyword type="constant" name="MBIM_CONTEXT_TYPE_NONE" link="libmbim-glib-UUIDs.html#MBIM-CONTEXT-TYPE-NONE:CAPS"/>
     <keyword type="constant" name="MBIM_CONTEXT_TYPE_INTERNET" link="libmbim-glib-UUIDs.html#MBIM-CONTEXT-TYPE-INTERNET:CAPS"/>
@@ -496,6 +503,8 @@
     <keyword type="constant" name="MBIM_CID_MS_HOST_SHUTDOWN_NOTIFY" link="libmbim-glib-Command-IDs.html#MBIM-CID-MS-HOST-SHUTDOWN-NOTIFY:CAPS"/>
     <keyword type="constant" name="MBIM_CID_PROXY_CONTROL_UNKNOWN" link="libmbim-glib-Command-IDs.html#MBIM-CID-PROXY-CONTROL-UNKNOWN:CAPS"/>
     <keyword type="constant" name="MBIM_CID_PROXY_CONTROL_CONFIGURATION" link="libmbim-glib-Command-IDs.html#MBIM-CID-PROXY-CONTROL-CONFIGURATION:CAPS"/>
+    <keyword type="constant" name="MBIM_CID_QMI_UNKNOWN" link="libmbim-glib-Command-IDs.html#MBIM-CID-QMI-UNKNOWN:CAPS"/>
+    <keyword type="constant" name="MBIM_CID_QMI_MSG" link="libmbim-glib-Command-IDs.html#MBIM-CID-QMI-MSG:CAPS"/>
     <keyword type="constant" name="MBIM_MESSAGE_TYPE_INVALID" link="MbimMessage.html#MBIM-MESSAGE-TYPE-INVALID:CAPS"/>
     <keyword type="constant" name="MBIM_MESSAGE_TYPE_OPEN" link="MbimMessage.html#MBIM-MESSAGE-TYPE-OPEN:CAPS"/>
     <keyword type="constant" name="MBIM_MESSAGE_TYPE_CLOSE" link="MbimMessage.html#MBIM-MESSAGE-TYPE-CLOSE:CAPS"/>
@@ -804,5 +813,63 @@
     <keyword type="constant" name="MBIM_STATUS_ERROR_SMS_LANG_NOT_SUPPORTED" link="libmbim-glib-Errors.html#MBIM-STATUS-ERROR-SMS-LANG-NOT-SUPPORTED:CAPS"/>
     <keyword type="constant" name="MBIM_STATUS_ERROR_SMS_ENCODING_NOT_SUPPORTED" link="libmbim-glib-Errors.html#MBIM-STATUS-ERROR-SMS-ENCODING-NOT-SUPPORTED:CAPS"/>
     <keyword type="constant" name="MBIM_STATUS_ERROR_SMS_FORMAT_NOT_SUPPORTED" link="libmbim-glib-Errors.html#MBIM-STATUS-ERROR-SMS-FORMAT-NOT-SUPPORTED:CAPS"/>
+    <keyword type="member" name="MbimIPv4.addr" link="MbimMessage.html#MbimIPv4.addr"/>
+    <keyword type="member" name="MbimIPv6.addr" link="MbimMessage.html#MbimIPv6.addr"/>
+    <keyword type="member" name="MbimPinDesc.pin-mode" link="libmbim-glib-Basic-Connect.html#MbimPinDesc.pin-mode"/>
+    <keyword type="member" name="MbimPinDesc.pin-format" link="libmbim-glib-Basic-Connect.html#MbimPinDesc.pin-format"/>
+    <keyword type="member" name="MbimPinDesc.pin-length-min" link="libmbim-glib-Basic-Connect.html#MbimPinDesc.pin-length-min"/>
+    <keyword type="member" name="MbimPinDesc.pin-length-max" link="libmbim-glib-Basic-Connect.html#MbimPinDesc.pin-length-max"/>
+    <keyword type="member" name="MbimProvider.provider-id" link="libmbim-glib-Basic-Connect.html#MbimProvider.provider-id"/>
+    <keyword type="member" name="MbimProvider.provider-state" link="libmbim-glib-Basic-Connect.html#MbimProvider.provider-state"/>
+    <keyword type="member" name="MbimProvider.provider-name" link="libmbim-glib-Basic-Connect.html#MbimProvider.provider-name"/>
+    <keyword type="member" name="MbimProvider.cellular-class" link="libmbim-glib-Basic-Connect.html#MbimProvider.cellular-class"/>
+    <keyword type="member" name="MbimProvider.rssi" link="libmbim-glib-Basic-Connect.html#MbimProvider.rssi"/>
+    <keyword type="member" name="MbimProvider.error-rate" link="libmbim-glib-Basic-Connect.html#MbimProvider.error-rate"/>
+    <keyword type="member" name="MbimProvisionedContextElement.context-id" link="libmbim-glib-Basic-Connect.html#MbimProvisionedContextElement.context-id"/>
+    <keyword type="member" name="MbimProvisionedContextElement.context-type" link="libmbim-glib-Basic-Connect.html#MbimProvisionedContextElement.context-type"/>
+    <keyword type="member" name="MbimProvisionedContextElement.access-string" link="libmbim-glib-Basic-Connect.html#MbimProvisionedContextElement.access-string"/>
+    <keyword type="member" name="MbimProvisionedContextElement.user-name" link="libmbim-glib-Basic-Connect.html#MbimProvisionedContextElement.user-name"/>
+    <keyword type="member" name="MbimProvisionedContextElement.password" link="libmbim-glib-Basic-Connect.html#MbimProvisionedContextElement.password"/>
+    <keyword type="member" name="MbimProvisionedContextElement.compression" link="libmbim-glib-Basic-Connect.html#MbimProvisionedContextElement.compression"/>
+    <keyword type="member" name="MbimProvisionedContextElement.auth-protocol" link="libmbim-glib-Basic-Connect.html#MbimProvisionedContextElement.auth-protocol"/>
+    <keyword type="member" name="MbimIPv4Element.on-link-prefix-length" link="libmbim-glib-Basic-Connect.html#MbimIPv4Element.on-link-prefix-length"/>
+    <keyword type="member" name="MbimIPv4Element.ipv4-address" link="libmbim-glib-Basic-Connect.html#MbimIPv4Element.ipv4-address"/>
+    <keyword type="member" name="MbimIPv6Element.on-link-prefix-length" link="libmbim-glib-Basic-Connect.html#MbimIPv6Element.on-link-prefix-length"/>
+    <keyword type="member" name="MbimIPv6Element.ipv6-address" link="libmbim-glib-Basic-Connect.html#MbimIPv6Element.ipv6-address"/>
+    <keyword type="member" name="MbimDeviceServiceElement.device-service-id" link="libmbim-glib-Basic-Connect.html#MbimDeviceServiceElement.device-service-id"/>
+    <keyword type="member" name="MbimDeviceServiceElement.dss-payload" link="libmbim-glib-Basic-Connect.html#MbimDeviceServiceElement.dss-payload"/>
+    <keyword type="member" name="MbimDeviceServiceElement.max-dss-instances" link="libmbim-glib-Basic-Connect.html#MbimDeviceServiceElement.max-dss-instances"/>
+    <keyword type="member" name="MbimDeviceServiceElement.cids-count" link="libmbim-glib-Basic-Connect.html#MbimDeviceServiceElement.cids-count"/>
+    <keyword type="member" name="MbimDeviceServiceElement.cids" link="libmbim-glib-Basic-Connect.html#MbimDeviceServiceElement.cids"/>
+    <keyword type="member" name="MbimEventEntry.device-service-id" link="libmbim-glib-Basic-Connect.html#MbimEventEntry.device-service-id"/>
+    <keyword type="member" name="MbimEventEntry.cids-count" link="libmbim-glib-Basic-Connect.html#MbimEventEntry.cids-count"/>
+    <keyword type="member" name="MbimEventEntry.cids" link="libmbim-glib-Basic-Connect.html#MbimEventEntry.cids"/>
+    <keyword type="member" name="MbimPacketFilter.filter-size" link="libmbim-glib-Basic-Connect.html#MbimPacketFilter.filter-size"/>
+    <keyword type="member" name="MbimPacketFilter.packet-filter" link="libmbim-glib-Basic-Connect.html#MbimPacketFilter.packet-filter"/>
+    <keyword type="member" name="MbimPacketFilter.packet-mask" link="libmbim-glib-Basic-Connect.html#MbimPacketFilter.packet-mask"/>
+    <keyword type="member" name="MbimSmsPduReadRecord.message-index" link="libmbim-glib-SMS.html#MbimSmsPduReadRecord.message-index"/>
+    <keyword type="member" name="MbimSmsPduReadRecord.message-status" link="libmbim-glib-SMS.html#MbimSmsPduReadRecord.message-status"/>
+    <keyword type="member" name="MbimSmsPduReadRecord.pdu-data-size" link="libmbim-glib-SMS.html#MbimSmsPduReadRecord.pdu-data-size"/>
+    <keyword type="member" name="MbimSmsPduReadRecord.pdu-data" link="libmbim-glib-SMS.html#MbimSmsPduReadRecord.pdu-data"/>
+    <keyword type="member" name="MbimSmsCdmaReadRecord.message-index" link="libmbim-glib-SMS.html#MbimSmsCdmaReadRecord.message-index"/>
+    <keyword type="member" name="MbimSmsCdmaReadRecord.message-status" link="libmbim-glib-SMS.html#MbimSmsCdmaReadRecord.message-status"/>
+    <keyword type="member" name="MbimSmsCdmaReadRecord.address" link="libmbim-glib-SMS.html#MbimSmsCdmaReadRecord.address"/>
+    <keyword type="member" name="MbimSmsCdmaReadRecord.timestamp" link="libmbim-glib-SMS.html#MbimSmsCdmaReadRecord.timestamp"/>
+    <keyword type="member" name="MbimSmsCdmaReadRecord.encoding" link="libmbim-glib-SMS.html#MbimSmsCdmaReadRecord.encoding"/>
+    <keyword type="member" name="MbimSmsCdmaReadRecord.language" link="libmbim-glib-SMS.html#MbimSmsCdmaReadRecord.language"/>
+    <keyword type="member" name="MbimSmsCdmaReadRecord.encoded-message-size" link="libmbim-glib-SMS.html#MbimSmsCdmaReadRecord.encoded-message-size"/>
+    <keyword type="member" name="MbimSmsCdmaReadRecord.encoded-message" link="libmbim-glib-SMS.html#MbimSmsCdmaReadRecord.encoded-message"/>
+    <keyword type="member" name="MbimSmsCdmaReadRecord.encoded-message-size-in-characters" link="libmbim-glib-SMS.html#MbimSmsCdmaReadRecord.encoded-message-size-in-characters"/>
+    <keyword type="member" name="MbimSmsPduSendRecord.pdu-data-size" link="libmbim-glib-SMS.html#MbimSmsPduSendRecord.pdu-data-size"/>
+    <keyword type="member" name="MbimSmsPduSendRecord.pdu-data" link="libmbim-glib-SMS.html#MbimSmsPduSendRecord.pdu-data"/>
+    <keyword type="member" name="MbimSmsCdmaSendRecord.encoding" link="libmbim-glib-SMS.html#MbimSmsCdmaSendRecord.encoding"/>
+    <keyword type="member" name="MbimSmsCdmaSendRecord.language" link="libmbim-glib-SMS.html#MbimSmsCdmaSendRecord.language"/>
+    <keyword type="member" name="MbimSmsCdmaSendRecord.address" link="libmbim-glib-SMS.html#MbimSmsCdmaSendRecord.address"/>
+    <keyword type="member" name="MbimSmsCdmaSendRecord.encoded-message-size" link="libmbim-glib-SMS.html#MbimSmsCdmaSendRecord.encoded-message-size"/>
+    <keyword type="member" name="MbimSmsCdmaSendRecord.encoded-message" link="libmbim-glib-SMS.html#MbimSmsCdmaSendRecord.encoded-message"/>
+    <keyword type="member" name="MbimSmsCdmaSendRecord.encoded-message-size-in-characters" link="libmbim-glib-SMS.html#MbimSmsCdmaSendRecord.encoded-message-size-in-characters"/>
+    <keyword type="member" name="MbimPhonebookEntry.entry-index" link="libmbim-glib-Phonebook.html#MbimPhonebookEntry.entry-index"/>
+    <keyword type="member" name="MbimPhonebookEntry.number" link="libmbim-glib-Phonebook.html#MbimPhonebookEntry.number"/>
+    <keyword type="member" name="MbimPhonebookEntry.name" link="libmbim-glib-Phonebook.html#MbimPhonebookEntry.name"/>
   </functions>
 </book>

@@ -8,7 +8,7 @@
 <link rel="up" href="ch02.html" title="Generic Services">
 <link rel="prev" href="libmbim-glib-Auth.html" title="Auth">
 <link rel="next" href="libmbim-glib-STK.html" title="STK">
-<meta name="generator" content="GTK-Doc V1.24 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.25 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -146,7 +146,7 @@
 mbim_phonebook_entry_array_free (<em class="parameter"><code><a class="link" href="libmbim-glib-Phonebook.html#MbimPhonebookEntry" title="MbimPhonebookEntry"><span class="type">MbimPhonebookEntry</span></a> **array</code></em>);</pre>
 <p>Frees the memory allocated for the array of <a href="libmbim-glib-Phonebook.html#MbimPhonebookEntry"><span class="type">MbimPhonebookEntrys</span></a>.</p>
 <div class="refsect3">
-<a name="id-1.3.6.6.2.5"></a><h4>Parameters</h4>
+<a name="mbim-phonebook-entry-array-free.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -169,7 +169,7 @@ mbim_message_phonebook_configuration_query_new
                                (<em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
 <p>Create a new request for the 'Configuration' query command in the 'Phonebook' service.</p>
 <div class="refsect3">
-<a name="id-1.3.6.6.3.5"></a><h4>Parameters</h4>
+<a name="mbim-message-phonebook-configuration-query-new.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -184,7 +184,7 @@ mbim_message_phonebook_configuration_query_new
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.3.6.6.3.6"></a><h4>Returns</h4>
+<a name="mbim-message-phonebook-configuration-query-new.returns"></a><h4>Returns</h4>
 <p> a newly allocated <a class="link" href="MbimMessage.html" title="MbimMessage"><span class="type">MbimMessage</span></a>, which should be freed with <a class="link" href="MbimMessage.html#mbim-message-unref" title="mbim_message_unref ()"><code class="function">mbim_message_unref()</code></a>.</p>
 </div>
 </div>
@@ -202,7 +202,7 @@ mbim_message_phonebook_configuration_response_parse
                                 <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
 <p>Create a new request for the 'MaxName' response command in the 'Phonebook' service.</p>
 <div class="refsect3">
-<a name="id-1.3.6.6.4.5"></a><h4>Parameters</h4>
+<a name="mbim-message-phonebook-configuration-response-parse.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -249,7 +249,7 @@ mbim_message_phonebook_configuration_response_parse
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.3.6.6.4.6"></a><h4>Returns</h4>
+<a name="mbim-message-phonebook-configuration-response-parse.returns"></a><h4>Returns</h4>
 <p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the message was correctly parsed, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if <em class="parameter"><code>error</code></em>
 is set.</p>
 </div>
@@ -268,7 +268,7 @@ mbim_message_phonebook_configuration_notification_parse
                                 <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
 <p>Create a new request for the 'MaxName' notification command in the 'Phonebook' service.</p>
 <div class="refsect3">
-<a name="id-1.3.6.6.5.5"></a><h4>Parameters</h4>
+<a name="mbim-message-phonebook-configuration-notification-parse.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -315,7 +315,7 @@ mbim_message_phonebook_configuration_notification_parse
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.3.6.6.5.6"></a><h4>Returns</h4>
+<a name="mbim-message-phonebook-configuration-notification-parse.returns"></a><h4>Returns</h4>
 <p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the message was correctly parsed, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if <em class="parameter"><code>error</code></em>
 is set.</p>
 </div>
@@ -329,7 +329,7 @@ mbim_message_phonebook_read_query_new (<em class="parameter"><code><a class="lin
                                        <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
 <p>Create a new request for the 'Read' query command in the 'Phonebook' service.</p>
 <div class="refsect3">
-<a name="id-1.3.6.6.6.5"></a><h4>Parameters</h4>
+<a name="mbim-message-phonebook-read-query-new.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -356,7 +356,7 @@ mbim_message_phonebook_read_query_new (<em class="parameter"><code><a class="lin
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.3.6.6.6.6"></a><h4>Returns</h4>
+<a name="mbim-message-phonebook-read-query-new.returns"></a><h4>Returns</h4>
 <p> a newly allocated <a class="link" href="MbimMessage.html" title="MbimMessage"><span class="type">MbimMessage</span></a>, which should be freed with <a class="link" href="MbimMessage.html#mbim-message-unref" title="mbim_message_unref ()"><code class="function">mbim_message_unref()</code></a>.</p>
 </div>
 </div>
@@ -371,7 +371,7 @@ mbim_message_phonebook_read_response_parse
                                 <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
 <p>Create a new request for the 'Entries' response command in the 'Phonebook' service.</p>
 <div class="refsect3">
-<a name="id-1.3.6.6.7.5"></a><h4>Parameters</h4>
+<a name="mbim-message-phonebook-read-response-parse.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -403,7 +403,7 @@ mbim_message_phonebook_read_response_parse
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.3.6.6.7.6"></a><h4>Returns</h4>
+<a name="mbim-message-phonebook-read-response-parse.returns"></a><h4>Returns</h4>
 <p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the message was correctly parsed, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if <em class="parameter"><code>error</code></em>
 is set.</p>
 </div>
@@ -417,7 +417,7 @@ mbim_message_phonebook_delete_set_new (<em class="parameter"><code><a class="lin
                                        <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
 <p>Create a new request for the 'Delete' set command in the 'Phonebook' service.</p>
 <div class="refsect3">
-<a name="id-1.3.6.6.8.5"></a><h4>Parameters</h4>
+<a name="mbim-message-phonebook-delete-set-new.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -444,7 +444,7 @@ mbim_message_phonebook_delete_set_new (<em class="parameter"><code><a class="lin
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.3.6.6.8.6"></a><h4>Returns</h4>
+<a name="mbim-message-phonebook-delete-set-new.returns"></a><h4>Returns</h4>
 <p> a newly allocated <a class="link" href="MbimMessage.html" title="MbimMessage"><span class="type">MbimMessage</span></a>, which should be freed with <a class="link" href="MbimMessage.html#mbim-message-unref" title="mbim_message_unref ()"><code class="function">mbim_message_unref()</code></a>.</p>
 </div>
 </div>
@@ -457,7 +457,7 @@ mbim_message_phonebook_delete_response_parse
                                 <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
 <p>Create a new request for the 'Delete' response command in the 'Phonebook' service.</p>
 <div class="refsect3">
-<a name="id-1.3.6.6.9.5"></a><h4>Parameters</h4>
+<a name="mbim-message-phonebook-delete-response-parse.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -479,7 +479,7 @@ mbim_message_phonebook_delete_response_parse
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.3.6.6.9.6"></a><h4>Returns</h4>
+<a name="mbim-message-phonebook-delete-response-parse.returns"></a><h4>Returns</h4>
 <p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the message was correctly parsed, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if <em class="parameter"><code>error</code></em>
 is set.</p>
 </div>
@@ -495,7 +495,7 @@ mbim_message_phonebook_write_set_new (<em class="parameter"><code><a class="link
                                       <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
 <p>Create a new request for the 'Write' set command in the 'Phonebook' service.</p>
 <div class="refsect3">
-<a name="id-1.3.6.6.10.5"></a><h4>Parameters</h4>
+<a name="mbim-message-phonebook-write-set-new.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -532,7 +532,7 @@ mbim_message_phonebook_write_set_new (<em class="parameter"><code><a class="link
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.3.6.6.10.6"></a><h4>Returns</h4>
+<a name="mbim-message-phonebook-write-set-new.returns"></a><h4>Returns</h4>
 <p> a newly allocated <a class="link" href="MbimMessage.html" title="MbimMessage"><span class="type">MbimMessage</span></a>, which should be freed with <a class="link" href="MbimMessage.html#mbim-message-unref" title="mbim_message_unref ()"><code class="function">mbim_message_unref()</code></a>.</p>
 </div>
 </div>
@@ -545,7 +545,7 @@ mbim_message_phonebook_write_response_parse
                                 <em class="parameter"><code><a href="https://developer.gnome.org/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
 <p>Create a new request for the 'Write' response command in the 'Phonebook' service.</p>
 <div class="refsect3">
-<a name="id-1.3.6.6.11.5"></a><h4>Parameters</h4>
+<a name="mbim-message-phonebook-write-response-parse.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="150px" class="parameters_name">
@@ -567,7 +567,7 @@ mbim_message_phonebook_write_response_parse
 </table></div>
 </div>
 <div class="refsect3">
-<a name="id-1.3.6.6.11.6"></a><h4>Returns</h4>
+<a name="mbim-message-phonebook-write-response-parse.returns"></a><h4>Returns</h4>
 <p> <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the message was correctly parsed, <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if <em class="parameter"><code>error</code></em>
 is set.</p>
 </div>
@@ -584,7 +584,7 @@ is set.</p>
 } MbimPhonebookEntry;
 </pre>
 <div class="refsect3">
-<a name="id-1.3.6.7.2.4"></a><h4>Members</h4>
+<a name="MbimPhonebookEntry.members"></a><h4>Members</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
 <colgroup>
 <col width="300px" class="struct_members_name">
@@ -614,6 +614,6 @@ is set.</p>
 </div>
 </div>
 <div class="footer">
-<hr>Generated by GTK-Doc V1.24</div>
+<hr>Generated by GTK-Doc V1.25</div>
 </body>
 </html>

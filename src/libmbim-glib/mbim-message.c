@@ -43,6 +43,24 @@
 
 /*****************************************************************************/
 
+static void
+bytearray_apply_padding (GByteArray *buffer,
+                         guint32    *len)
+{
+    static const guint8 padding = 0;
+
+    g_assert (buffer);
+    g_assert (len);
+
+    /* Apply padding to the requested length until multiple of 4 */
+    while (*len % 4 != 0) {
+        g_byte_array_append (buffer, &padding, 1);
+        (*len)++;
+    }
+}
+
+/*****************************************************************************/
+
 GType
 mbim_message_get_type (void)
 {
@@ -492,6 +510,7 @@ void
 _mbim_struct_builder_append_byte_array (MbimStructBuilder *builder,
                                         gboolean           with_offset,
                                         gboolean           with_length,
+                                        gboolean           pad_buffer,
                                         const guint8      *buffer,
                                         guint32            buffer_len)
 {
@@ -501,12 +520,8 @@ _mbim_struct_builder_append_byte_array (MbimStructBuilder *builder,
      */
     if (!with_offset && !with_length) {
         g_byte_array_append (builder->fixed_buffer, buffer, buffer_len);
-        while (buffer_len % 4 != 0) {
-            const guint8 padding = 0;
-
-            g_byte_array_append (builder->fixed_buffer, &padding, 1);
-            buffer_len++;
-        }
+        if (pad_buffer)
+            bytearray_apply_padding (builder->fixed_buffer, &buffer_len);
         return;
     }
 
@@ -550,12 +565,9 @@ _mbim_struct_builder_append_byte_array (MbimStructBuilder *builder,
     if (buffer_len) {
         g_byte_array_append (builder->variable_buffer, (const guint8 *)buffer, (guint)buffer_len);
 
-        while (buffer_len % 4 != 0) {
-            const guint8 padding = 0;
-
-            g_byte_array_append (builder->variable_buffer, &padding, 1);
-            buffer_len++;
-        }
+        /* Note: adding zero padding causes trouble for QMI service */
+        if (pad_buffer)
+            bytearray_apply_padding (builder->variable_buffer, &buffer_len);
     }
 }
 
@@ -630,7 +642,7 @@ _mbim_struct_builder_append_string (MbimStructBuilder *builder,
     guint32 offset;
     guint32 length;
     gchar *utf16le = NULL;
-    gsize utf16le_bytes = 0;
+    guint32 utf16le_bytes = 0;
     GError *error = NULL;
 
     /* A string consists of Offset+Size in the static buffer, plus the
@@ -638,18 +650,22 @@ _mbim_struct_builder_append_string (MbimStructBuilder *builder,
 
     /* Convert the string from UTF-8 to UTF-16LE */
     if (value && value[0]) {
+        gsize out_bytes = 0;
+
         utf16le = g_convert (value,
                              -1,
                              "utf-16le",
                              "utf-8",
                              NULL,
-                             &utf16le_bytes,
+                             &out_bytes,
                              &error);
         if (error) {
             g_warning ("Error converting string: %s", error->message);
             g_error_free (error);
             return;
         }
+
+        utf16le_bytes = out_bytes;
     }
 
     /* If string length is greater than 0, add the offset to fix, otherwise set
@@ -672,18 +688,13 @@ _mbim_struct_builder_append_string (MbimStructBuilder *builder,
     }
 
     /* Add the length value */
-    length = GUINT32_TO_LE ((guint32)utf16le_bytes);
+    length = GUINT32_TO_LE (utf16le_bytes);
     g_byte_array_append (builder->fixed_buffer, (guint8 *)&length, sizeof (length));
 
     /* And finally, the string itself to the variable buffer */
     if (utf16le_bytes) {
         g_byte_array_append (builder->variable_buffer, (const guint8 *)utf16le, (guint)utf16le_bytes);
-        while (utf16le_bytes % 4 != 0) {
-            const guint8 padding = 0;
-
-            g_byte_array_append (builder->variable_buffer, &padding, 1);
-            utf16le_bytes++;
-        }
+        bytearray_apply_padding (builder->variable_buffer, &utf16le_bytes);
     }
     g_free (utf16le);
 }
@@ -824,10 +835,11 @@ void
 _mbim_message_command_builder_append_byte_array (MbimMessageCommandBuilder *builder,
                                                  gboolean                   with_offset,
                                                  gboolean                   with_length,
+                                                 gboolean                   pad_buffer,
                                                  const guint8              *buffer,
                                                  guint32                    buffer_len)
 {
-    _mbim_struct_builder_append_byte_array (builder->contents_builder, with_offset, with_length, buffer, buffer_len);
+    _mbim_struct_builder_append_byte_array (builder->contents_builder, with_offset, with_length, pad_buffer, buffer, buffer_len);
 }
 
 void
@@ -1811,9 +1823,8 @@ mbim_message_command_new (guint32                transaction_id,
     const MbimUuid *service_id;
 
     /* Known service required */
-    g_return_val_if_fail (service > MBIM_SERVICE_INVALID, FALSE);
-    g_return_val_if_fail (service <= MBIM_SERVICE_PROXY_CONTROL, FALSE);
     service_id = mbim_uuid_from_service (service);
+    g_return_val_if_fail (service_id != NULL, NULL);
 
     self = _mbim_message_allocate (MBIM_MESSAGE_TYPE_COMMAND,
                                    transaction_id,
