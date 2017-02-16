@@ -3,8 +3,7 @@ Section: libs
 Priority: optional
 Maintainer: Michael Biebl <biebl@debian.org>
 Uploaders: Thomas Bechtold <toabctl@debian.org>
-Build-Depends: debhelper (>= 9.20160114),
-               dh-autoreconf,
+Build-Depends: debhelper (>= 10),
                pkg-config,
                libglib2.0-dev (>= 2.32),
                libgudev-1.0-dev (>= 147),
