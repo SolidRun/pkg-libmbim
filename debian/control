@@ -3,7 +3,7 @@ Section: libs
 Priority: optional
 Maintainer: Michael Biebl <biebl@debian.org>
 Uploaders: Thomas Bechtold <toabctl@debian.org>
-Build-Depends: debhelper (>= 10),
+Build-Depends: debhelper (>= 10.3),
                pkg-config,
                libglib2.0-dev (>= 2.32),
                libgudev-1.0-dev (>= 147),
