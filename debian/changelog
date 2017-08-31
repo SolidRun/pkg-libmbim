@@ -1,3 +1,11 @@
+libmbim (1.14.2-1) UNRELEASED; urgency=medium
+
+  * New upstream version 1.14.2
+  * Bump debhelper compat level to 10 for automatic dh-autoreconf
+  * Update Vcs-* following the latest recommendation
+
+ -- Michael Biebl <biebl@debian.org>  Thu, 31 Aug 2017 08:37:36 +0200
+
 libmbim (1.14.0-1) unstable; urgency=medium
 
   * New upstream release.
