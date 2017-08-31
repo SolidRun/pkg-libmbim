@@ -9,7 +9,7 @@ Build-Depends: debhelper (>= 10),
                libgudev-1.0-dev (>= 147),
                gtk-doc-tools,
                libglib2.0-doc
-Standards-Version: 3.9.8
+Standards-Version: 4.1.0
 Vcs-Git: https://anonscm.debian.org/git/collab-maint/libmbim.git
 Vcs-Browser: https://anonscm.debian.org/git/collab-maint/libmbim.git
 Homepage: https://www.freedesktop.org/wiki/Software/libmbim/
