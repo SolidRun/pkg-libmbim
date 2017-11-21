@@ -1,4 +1,4 @@
-libmbim (1.14.2-2.1) UNRELEASED; urgency=medium
+libmbim (1.14.2-2.1) unstable; urgency=medium
 
   [ Manuel A. Fernandez Montecelo ]
   * Non-maintainer upload.
@@ -6,7 +6,7 @@ libmbim (1.14.2-2.1) UNRELEASED; urgency=medium
   [ Helmut Grohne ]
   * Fix FTCBFS: Skip documentation in arch-only build. (Closes: #872813)
 
- -- Helmut Grohne <helmut@subdivi.de>  Mon, 21 Aug 2017 14:03:31 +0200
+ -- Manuel A. Fernandez Montecelo <mafm@debian.org>  Tue, 21 Nov 2017 01:15:38 +0100
 
 libmbim (1.14.2-2) unstable; urgency=medium
 
