@@ -3,10 +3,15 @@
 %:
 	dh $@
 
+ifeq ($(filter libmbim-glib-doc,$(shell dh_listpackages)),)
+configure_flags += --disable-gtk-doc --disable-gtk-doc-html
+else
+configure_flags += --enable-gtk-doc --enable-gtk-doc-html
+endif
+
 override_dh_auto_configure:
 	dh_auto_configure -- \
-		--enable-gtk-doc \
-		--enable-gtk-doc-html \
+		$(configure_flags) \
 		--with-udev \
 		--libexecdir=/usr/lib/libmbim
 
