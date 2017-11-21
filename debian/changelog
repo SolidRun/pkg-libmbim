@@ -1,7 +1,10 @@
 libmbim (1.14.2-2.1) UNRELEASED; urgency=medium
 
+  [ Manuel A. Fernandez Montecelo ]
   * Non-maintainer upload.
-  * Fix FTCBFS: Skip documentation in arch-only build. (Closes: #-1)
+
+  [ Helmut Grohne ]
+  * Fix FTCBFS: Skip documentation in arch-only build. (Closes: #872813)
 
  -- Helmut Grohne <helmut@subdivi.de>  Mon, 21 Aug 2017 14:03:31 +0200
 
