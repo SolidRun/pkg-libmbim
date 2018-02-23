@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Thomas Bechtold <toabctl@debian.org>
 Build-Depends: debhelper (>= 10.3),
                pkg-config,
-               libglib2.0-dev (>= 2.32),
+               libglib2.0-dev (>= 2.36),
                libgudev-1.0-dev (>= 147),
                gtk-doc-tools,
                libglib2.0-doc

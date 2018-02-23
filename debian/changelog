@@ -1,3 +1,10 @@
+libmbim (1.16.0-1) UNRELEASED; urgency=medium
+
+  * debian/control: bump libglib-dev Depends to (>= 2.36) as required by the
+    new release.
+
+ -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Fri, 23 Feb 2018 09:54:57 -0500
+
 libmbim (1.14.2-2.1) unstable; urgency=medium
 
   [ Manuel A. Fernandez Montecelo ]
