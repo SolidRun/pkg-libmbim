@@ -1,5 +1,7 @@
 libmbim (1.16.0-1) UNRELEASED; urgency=medium
 
+  * New upstream release 1.16.0 (Closes: #887974)
+  * Adopting the package. (Closes: #888680)
   * debian/control: bump libglib-dev Depends to (>= 2.36) as required by the
     new release.
 
