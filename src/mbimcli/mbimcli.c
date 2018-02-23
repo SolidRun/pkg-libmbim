@@ -29,6 +29,7 @@
 #include <glib.h>
 #include <glib/gprintf.h>
 #include <gio/gio.h>
+#include <glib-unix.h>
 
 #include <libmbim-glib.h>
 
@@ -91,25 +92,26 @@ static GOptionEntry main_entries[] = {
     { NULL }
 };
 
-static void
-signals_handler (int signum)
+static gboolean
+signals_handler (gpointer psignum)
 {
     if (cancellable) {
         /* Ignore consecutive requests of cancellation */
         if (!g_cancellable_is_cancelled (cancellable)) {
-            g_printerr ("%s\n",
-                        "cancelling the operation...\n");
+            g_printerr ("cancelling the operation...\n");
             g_cancellable_cancel (cancellable);
-            return;
+            /* Re-set the signal handler to allow main loop cancellation on
+             * second signal */
+            g_unix_signal_add (GPOINTER_TO_INT (psignum),  (GSourceFunc) signals_handler, psignum);
+            return FALSE;
         }
     }
 
-    if (loop &&
-        g_main_loop_is_running (loop)) {
-        g_printerr ("%s\n",
-                    "cancelling the main loop...\n");
-        g_main_loop_quit (loop);
+    if (loop && g_main_loop_is_running (loop)) {
+        g_printerr ("cancelling the main loop...\n");
+        g_idle_add ((GSourceFunc) g_main_loop_quit, loop);
     }
+    return FALSE;
 }
 
 static void
@@ -170,7 +172,7 @@ print_version_and_exit (void)
 {
     g_print ("\n"
              PROGRAM_NAME " " PROGRAM_VERSION "\n"
-             "Copyright (2013-2014) Aleksander Morgado\n"
+             "Copyright (C) 2013-2018 Aleksander Morgado\n"
              "License GPLv2+: GNU GPL version 2 or later <http://gnu.org/licenses/gpl-2.0.html>\n"
              "This is free software: you are free to change and redistribute it.\n"
              "There is NO WARRANTY, to the extent permitted by law.\n"
@@ -216,10 +218,8 @@ mbimcli_async_operation_done (gboolean reported_operation_status)
     /* Keep the result of the operation */
     operation_status = reported_operation_status;
 
-    if (cancellable) {
-        g_object_unref (cancellable);
-        cancellable = NULL;
-    }
+    /* Cleanup cancellation */
+    g_clear_object (&cancellable);
 
     /* Set the in-session setup */
     g_object_set (device,
@@ -271,6 +271,12 @@ device_open_ready (MbimDevice   *dev,
         return;
     case MBIM_SERVICE_MS_HOST_SHUTDOWN:
         mbimcli_ms_host_shutdown_run (dev, cancellable);
+        return;
+    case MBIM_SERVICE_ATDS:
+        mbimcli_atds_run (dev, cancellable);
+        return;
+    case MBIM_SERVICE_INTEL_FIRMWARE_UPDATE:
+        mbimcli_intel_firmware_update_run (dev, cancellable);
         return;
     default:
         g_assert_not_reached ();
@@ -343,6 +349,12 @@ parse_actions (void)
     } else if (mbimcli_ms_host_shutdown_options_enabled ()) {
         service = MBIM_SERVICE_MS_HOST_SHUTDOWN;
         actions_enabled++;
+    } else if (mbimcli_atds_options_enabled ()) {
+        service = MBIM_SERVICE_ATDS;
+        actions_enabled++;
+    } else if (mbimcli_intel_firmware_update_options_enabled ()) {
+        service = MBIM_SERVICE_INTEL_FIRMWARE_UPDATE;
+        actions_enabled++;
     }
 
     /* Noop */
@@ -372,10 +384,6 @@ int main (int argc, char **argv)
 
     setlocale (LC_ALL, "");
 
-#if !GLIB_CHECK_VERSION (2, 36, 0)
-    g_type_init ();
-#endif
-
     /* Setup option context, process it and destroy it */
     context = g_option_context_new ("- Control MBIM devices");
     g_option_context_add_group (context,
@@ -388,6 +396,10 @@ int main (int argc, char **argv)
                                 mbimcli_ms_firmware_id_get_option_group ());
     g_option_context_add_group (context,
                                 mbimcli_ms_host_shutdown_get_option_group ());
+    g_option_context_add_group (context,
+                                mbimcli_atds_get_option_group ());
+    g_option_context_add_group (context,
+                                mbimcli_intel_firmware_update_get_option_group ());
     g_option_context_add_main_entries (context, main_entries, NULL);
     if (!g_option_context_parse (context, &argc, &argv, &error)) {
         g_printerr ("error: %s\n",
@@ -413,16 +425,16 @@ int main (int argc, char **argv)
     /* Build new GFile from the commandline arg */
     file = g_file_new_for_commandline_arg (device_str);
 
-    /* Setup signals */
-    signal (SIGINT, signals_handler);
-    signal (SIGHUP, signals_handler);
-    signal (SIGTERM, signals_handler);
+    parse_actions ();
 
     /* Create requirements for async options */
     cancellable = g_cancellable_new ();
     loop = g_main_loop_new (NULL, FALSE);
 
-    parse_actions ();
+    /* Setup signals */
+    g_unix_signal_add (SIGINT,  (GSourceFunc)signals_handler, GUINT_TO_POINTER (SIGINT));
+    g_unix_signal_add (SIGHUP,  (GSourceFunc)signals_handler, GUINT_TO_POINTER (SIGHUP));
+    g_unix_signal_add (SIGTERM, (GSourceFunc)signals_handler, GUINT_TO_POINTER (SIGTERM));
 
     /* Launch MbimDevice creation */
     mbim_device_new (file,

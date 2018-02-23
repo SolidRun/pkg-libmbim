@@ -72,6 +72,9 @@ gboolean  mbim_uuid_from_printable (const gchar *str,
  * @MBIM_SERVICE_MS_HOST_SHUTDOWN: Microsoft Host Shutdown service.
  * @MBIM_SERVICE_PROXY_CONTROL: Proxy Control service.
  * @MBIM_SERVICE_QMI: QMI-over-MBIM service.
+ * @MBIM_SERVICE_ATDS: ATT Device service.
+ * @MBIM_SERVICE_INTEL_FIRMWARE_UPDATE: Intel firmware update service.
+ * @MBIM_SERVICE_LAST: Internal value.
  *
  * Enumeration of the generic MBIM services.
  */
@@ -88,6 +91,8 @@ typedef enum {
     MBIM_SERVICE_MS_HOST_SHUTDOWN = 9,
     MBIM_SERVICE_PROXY_CONTROL    = 10,
     MBIM_SERVICE_QMI              = 11,
+    MBIM_SERVICE_ATDS             = 12,
+    MBIM_SERVICE_INTEL_FIRMWARE_UPDATE = 13,
 #if defined LIBMBIM_GLIB_COMPILATION
     MBIM_SERVICE_LAST /*< skip >*/
 #endif
@@ -200,6 +205,24 @@ typedef enum {
  * Returns: (transfer none): a #MbimUuid.
  */
 #define MBIM_UUID_QMI mbim_uuid_from_service (MBIM_SERVICE_QMI)
+
+/**
+ * MBIM_UUID_ATDS:
+ *
+ * Get the UUID of the %MBIM_SERVICE_ATDS service.
+ *
+ * Returns: (transfer none): a #MbimUuid.
+ */
+#define MBIM_UUID_ATDS mbim_uuid_from_service (MBIM_SERVICE_ATDS)
+
+/**
+ * MBIM_UUID_INTEL_FIRMWARE_UPDATE:
+ *
+ * Get the UUID of the %MBIM_SERVICE_INTEL_FIRMWARE_UPDATE service.
+ *
+ * Returns: (transfer none): a #MbimUuid.
+ */
+#define MBIM_UUID_INTEL_FIRMWARE_UPDATE mbim_uuid_from_service (MBIM_SERVICE_INTEL_FIRMWARE_UPDATE)
 
 const gchar *mbim_service_lookup_name (guint service);
 

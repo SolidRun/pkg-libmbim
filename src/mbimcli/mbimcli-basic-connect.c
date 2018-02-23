@@ -31,6 +31,7 @@
 
 #include <libmbim-glib.h>
 
+#include "mbim-common.h"
 #include "mbimcli.h"
 #include "mbimcli-helpers.h"
 
@@ -53,6 +54,7 @@ static gchar    *set_pin_change_str;
 static gchar    *set_pin_enable_str;
 static gchar    *set_pin_disable_str;
 static gchar    *set_pin_enter_puk_str;
+static gboolean  query_pin_list_flag;
 static gboolean  query_home_provider_flag;
 static gboolean  query_preferred_providers_flag;
 static gboolean  query_visible_providers_flag;
@@ -67,6 +69,7 @@ static gchar    *set_connect_activate_str;
 static gchar    *query_ip_configuration_str;
 static gchar    *set_connect_deactivate_str;
 static gboolean  query_packet_statistics_flag;
+static gchar    *query_ip_packet_filters_str;
 
 static gboolean query_connection_state_arg_parse (const char *option_name,
                                                   const char *value,
@@ -82,6 +85,11 @@ static gboolean disconnect_arg_parse (const char *option_name,
                                       const char *value,
                                       gpointer user_data,
                                       GError **error);
+
+static gboolean query_ip_packet_filters_arg_parse (const char *option_name,
+                                                   const char *value,
+                                                   gpointer user_data,
+                                                   GError **error);
 
 static GOptionEntry entries[] = {
     { "query-device-caps", 0, 0, G_OPTION_ARG_NONE, &query_device_caps_flag,
@@ -127,6 +135,10 @@ static GOptionEntry entries[] = {
     { "enter-puk", 0, 0, G_OPTION_ARG_STRING, &set_pin_enter_puk_str,
       "Enter PUK",
       "[(PUK),(new PIN)]"
+    },
+    { "query-pin-list", 0, 0, G_OPTION_ARG_NONE, &query_pin_list_flag,
+      "Query PIN list",
+      NULL
     },
     { "query-home-provider", 0, 0, G_OPTION_ARG_NONE, &query_home_provider_flag,
       "Query home provider",
@@ -184,6 +196,10 @@ static GOptionEntry entries[] = {
       "Query packet statistics",
       NULL
     },
+    { "query-ip-packet-filters", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_CALLBACK, G_CALLBACK (query_ip_packet_filters_arg_parse),
+      "Query IP packet filters (SessionID is optional, defaults to 0)",
+      "[SessionID]"
+    },
     { NULL }
 };
 
@@ -232,6 +248,16 @@ disconnect_arg_parse (const char *option_name,
     return TRUE;
 }
 
+static gboolean
+query_ip_packet_filters_arg_parse (const char *option_name,
+                                   const char *value,
+                                   gpointer user_data,
+                                   GError **error)
+{
+    query_ip_packet_filters_str = g_strdup (value ? value : "0");
+    return TRUE;
+}
+
 gboolean
 mbimcli_basic_connect_options_enabled (void)
 {
@@ -252,6 +278,7 @@ mbimcli_basic_connect_options_enabled (void)
                  !!set_pin_enable_str +
                  !!set_pin_disable_str +
                  !!set_pin_enter_puk_str +
+                 query_pin_list_flag +
                  query_register_state_flag +
                  query_home_provider_flag +
                  query_preferred_providers_flag +
@@ -265,7 +292,8 @@ mbimcli_basic_connect_options_enabled (void)
                  !!set_connect_activate_str +
                  !!query_ip_configuration_str +
                  !!set_connect_deactivate_str +
-                 query_packet_statistics_flag);
+                 query_packet_statistics_flag +
+                 !!query_ip_packet_filters_str);
 
     if (n_actions > 1) {
         g_printerr ("error: too many Basic Connect actions requested\n");
@@ -367,7 +395,7 @@ query_device_caps_ready (MbimDevice   *device,
              "\t      Device type: '%s'\n"
              "\t   Cellular class: '%s'\n"
              "\t      Voice class: '%s'\n"
-             "\t        Sim class: '%s'\n"
+             "\t        SIM class: '%s'\n"
              "\t       Data class: '%s'\n"
              "\t         SMS caps: '%s'\n"
              "\t        Ctrl caps: '%s'\n"
@@ -510,8 +538,8 @@ query_radio_state_ready (MbimDevice   *device,
     software_radio_state_str = mbim_radio_switch_state_get_string (software_radio_state);
 
     g_print ("[%s] Radio state retrieved:\n"
-             "\t     Hardware Radio State: '%s'\n"
-             "\t     Software Radio State: '%s'\n",
+             "\t     Hardware radio state: '%s'\n"
+             "\t     Software radio state: '%s'\n",
              mbim_device_get_path_display (device),
              VALIDATE_UNKNOWN (hardware_radio_state_str),
              VALIDATE_UNKNOWN (software_radio_state_str));
@@ -652,15 +680,15 @@ pin_ready (MbimDevice   *device,
 
     pin_state_str = mbim_pin_state_get_string (pin_state);
 
-    g_print ("[%s] Pin Info:\n"
-             "\t         Pin State: '%s'\n",
+    g_print ("[%s] PIN info:\n"
+             "\t         PIN state: '%s'\n",
              mbim_device_get_path_display (device),
              VALIDATE_UNKNOWN (pin_state_str));
     if (pin_type != MBIM_PIN_TYPE_UNKNOWN) {
         const gchar *pin_type_str;
 
         pin_type_str = mbim_pin_type_get_string (pin_type);
-        g_print ("\t           PinType: '%s'\n"
+        g_print ("\t          PIN type: '%s'\n"
                  "\tRemaining attempts: '%u'\n",
                  VALIDATE_UNKNOWN (pin_type_str),
                  remaining_attempts);
@@ -713,6 +741,100 @@ enum {
     CONNECT,
     DISCONNECT
 };
+
+static void
+print_pin_desc (const gchar *pin_name,
+                const MbimPinDesc *pin_desc)
+{
+    g_print ("\t%s:\n"
+             "\t\t      Mode: '%s'\n"
+             "\t\t    Format: '%s'\n"
+             "\t\tMin length: '%d'\n"
+             "\t\tMax length: '%d'\n"
+             "\n",
+             pin_name,
+             VALIDATE_UNKNOWN (mbim_pin_mode_get_string (pin_desc->pin_mode)),
+             VALIDATE_UNKNOWN (mbim_pin_format_get_string (pin_desc->pin_format)),
+             pin_desc->pin_length_min,
+             pin_desc->pin_length_max);
+}
+
+static void
+pin_list_ready (MbimDevice *device,
+                GAsyncResult *res,
+                gpointer user_data)
+{
+    MbimMessage *response;
+    GError *error = NULL;
+    MbimPinDesc *pin_desc_pin1;
+    MbimPinDesc *pin_desc_pin2;
+    MbimPinDesc *pin_desc_device_sim_pin;
+    MbimPinDesc *pin_desc_device_first_sim_pin;
+    MbimPinDesc *pin_desc_network_pin;
+    MbimPinDesc *pin_desc_network_subset_pin;
+    MbimPinDesc *pin_desc_service_provider_pin;
+    MbimPinDesc *pin_desc_corporate_pin;
+    MbimPinDesc *pin_desc_subsidy_lock;
+    MbimPinDesc *pin_desc_custom;
+
+    response = mbim_device_command_finish (device, res, &error);
+    if (!response || !mbim_message_response_get_result (response, MBIM_MESSAGE_TYPE_COMMAND_DONE, &error)) {
+        g_printerr ("error: operation failed: %s\n", error->message);
+        g_error_free (error);
+        if (response)
+            mbim_message_unref (response);
+        shutdown (FALSE);
+        return;
+    }
+
+    if (!mbim_message_pin_list_response_parse (
+            response,
+            &pin_desc_pin1,
+            &pin_desc_pin2,
+            &pin_desc_device_sim_pin,
+            &pin_desc_device_first_sim_pin,
+            &pin_desc_network_pin,
+            &pin_desc_network_subset_pin,
+            &pin_desc_service_provider_pin,
+            &pin_desc_corporate_pin,
+            &pin_desc_subsidy_lock,
+            &pin_desc_custom,
+            &error)) {
+        g_printerr ("error: couldn't parse response message: %s\n", error->message);
+        g_error_free (error);
+        mbim_message_unref (response);
+        shutdown (FALSE);
+        return;
+    }
+
+    g_print ("[%s] PIN list:\n\n",
+             mbim_device_get_path_display (device));
+
+    print_pin_desc ("PIN1", pin_desc_pin1);
+    print_pin_desc ("PIN2", pin_desc_pin2);
+    print_pin_desc ("Device SIM PIN", pin_desc_device_sim_pin);
+    print_pin_desc ("Device first SIM PIN", pin_desc_device_first_sim_pin);
+    print_pin_desc ("Network PIN", pin_desc_network_pin);
+    print_pin_desc ("Network subset PIN", pin_desc_network_subset_pin);
+    print_pin_desc ("Service provider PIN", pin_desc_service_provider_pin);
+    print_pin_desc ("Corporate PIN", pin_desc_corporate_pin);
+    print_pin_desc ("Subsidy lock", pin_desc_subsidy_lock);
+    print_pin_desc ("Custom", pin_desc_custom);
+
+    mbim_pin_desc_free (pin_desc_pin1);
+    mbim_pin_desc_free (pin_desc_pin2);
+    mbim_pin_desc_free (pin_desc_device_sim_pin);
+    mbim_pin_desc_free (pin_desc_device_first_sim_pin);
+    mbim_pin_desc_free (pin_desc_network_pin);
+    mbim_pin_desc_free (pin_desc_network_subset_pin);
+    mbim_pin_desc_free (pin_desc_service_provider_pin);
+    mbim_pin_desc_free (pin_desc_corporate_pin);
+    mbim_pin_desc_free (pin_desc_subsidy_lock);
+    mbim_pin_desc_free (pin_desc_custom);
+
+    mbim_message_unref (response);
+    shutdown (TRUE);
+}
 
 static void
 ip_configuration_query_ready (MbimDevice *device,
@@ -854,6 +976,63 @@ connect_ready (MbimDevice   *device,
         return;
     }
 
+    shutdown (TRUE);
+}
+
+static void
+ip_packet_filters_ready (MbimDevice *device,
+                         GAsyncResult *res,
+                         gpointer unused)
+{
+    MbimMessage *response;
+    GError *error = NULL;
+    MbimPacketFilter **filters;
+    guint32 filters_count, i;
+
+    response = mbim_device_command_finish (device, res, &error);
+    if (!response ||
+        !mbim_message_response_get_result (response, MBIM_MESSAGE_TYPE_COMMAND_DONE, &error)) {
+        g_printerr ("error: operation failed: %s\n", error->message);
+        g_error_free (error);
+        if (response)
+            mbim_message_unref (response);
+        shutdown (FALSE);
+        return;
+    }
+
+    if (!mbim_message_ip_packet_filters_response_parse (
+            response,
+            NULL, /* sessionid */
+            &filters_count,
+            &filters,
+            &error)) {
+        g_printerr ("error: couldn't parse response message: %s\n", error->message);
+        g_error_free (error);
+        mbim_message_unref (response);
+        shutdown (FALSE);
+        return;
+    }
+
+    g_print ("\n[%s] IP packet filters: (%u)\n", mbim_device_get_path_display (device), filters_count);
+
+    for (i = 0; i < filters_count; i++) {
+        gchar *bytes;
+
+        g_print ("\n");
+        g_print ("\tFilter size: %u\n", filters[i]->filter_size);
+
+        bytes = mbim_common_str_hex (filters[i]->packet_filter, filters[i]->filter_size, ' ');
+        g_print ("\tPacket filter: %s\n", VALIDATE_UNKNOWN (bytes));
+        g_free (bytes);
+
+        bytes = mbim_common_str_hex (filters[i]->packet_mask, filters[i]->filter_size, ' ');
+        g_print ("\tPacket mask: %s\n", VALIDATE_UNKNOWN (bytes));
+        g_free (bytes);
+    }
+
+    mbim_packet_filter_array_free (filters);
+
+    mbim_message_unref (response);
     shutdown (TRUE);
 }
 
@@ -1103,7 +1282,7 @@ home_provider_ready (MbimDevice   *device,
 
     g_print ("[%s] Home provider:\n"
              "\t   Provider ID: '%s'\n"
-             "\t Provider Name: '%s'\n"
+             "\t Provider name: '%s'\n"
              "\t         State: '%s'\n"
              "\tCellular class: '%s'\n"
              "\t          RSSI: '%u'\n"
@@ -1173,7 +1352,7 @@ preferred_providers_ready (MbimDevice   *device,
 
         g_print ("\tProvider [%u]:\n"
                  "\t\t    Provider ID: '%s'\n"
-                 "\t\t  Provider Name: '%s'\n"
+                 "\t\t  Provider name: '%s'\n"
                  "\t\t          State: '%s'\n"
                  "\t\t Cellular class: '%s'\n"
                  "\t\t           RSSI: '%u'\n"
@@ -1244,7 +1423,7 @@ visible_providers_ready (MbimDevice   *device,
 
         g_print ("\tProvider [%u]:\n"
                  "\t\t    Provider ID: '%s'\n"
-                 "\t\t  Provider Name: '%s'\n"
+                 "\t\t  Provider name: '%s'\n"
                  "\t\t          State: '%s'\n"
                  "\t\t Cellular class: '%s'\n"
                  "\t\t           RSSI: '%u'\n"
@@ -1748,6 +1927,22 @@ mbimcli_basic_connect_run (MbimDevice   *device,
         return;
     }
 
+    /* Query PIN list? */
+    if (query_pin_list_flag) {
+        MbimMessage *request;
+
+        g_debug ("Asynchronously querying PIN list...");
+        request = (mbim_message_pin_list_query_new (NULL));
+        mbim_device_command (ctx->device,
+                             request,
+                             10,
+                             ctx->cancellable,
+                             (GAsyncReadyCallback)pin_list_ready,
+                             GUINT_TO_POINTER (FALSE));
+        mbim_message_unref (request);
+        return;
+    }
+
     /* Query home provider? */
     if (query_home_provider_flag) {
         MbimMessage *request;
@@ -2052,6 +2247,41 @@ mbimcli_basic_connect_run (MbimDevice   *device,
                              10,
                              ctx->cancellable,
                              (GAsyncReadyCallback)packet_statistics_ready,
+                             NULL);
+        mbim_message_unref (request);
+        return;
+    }
+
+    /* Query IP packet filters? */
+    if (query_ip_packet_filters_str) {
+        MbimMessage *request;
+        GError *error = NULL;
+        guint32 session_id = 0;
+
+        if (!connect_session_id_parse (query_ip_packet_filters_str, TRUE, &session_id, &error)) {
+            g_printerr ("error: couldn't parse session ID: %s\n", error->message);
+            g_error_free (error);
+            shutdown (FALSE);
+            return;
+        }
+
+        request = (mbim_message_ip_packet_filters_query_new (
+                       session_id,
+                       0, /* packet_filters_count */
+                       NULL, /* packet_filters */
+                       &error));
+        if (!request) {
+            g_printerr ("error: couldn't create IP packet filters request: %s\n", error->message);
+            g_error_free (error);
+            shutdown (FALSE);
+            return;
+        }
+
+        mbim_device_command (ctx->device,
+                             request,
+                             10,
+                             ctx->cancellable,
+                             (GAsyncReadyCallback)ip_packet_filters_ready,
                              NULL);
         mbim_message_unref (request);
         return;

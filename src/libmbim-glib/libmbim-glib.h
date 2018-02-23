@@ -49,6 +49,8 @@
 #include "mbim-ms-firmware-id.h"
 #include "mbim-ms-host-shutdown.h"
 #include "mbim-qmi.h"
+#include "mbim-atds.h"
+#include "mbim-intel-firmware-update.h"
 
 /* backwards compatibility */
 #include "mbim-compat.h"

@@ -25,6 +25,8 @@
       <sub name="MS Firmware ID" link="libmbim-glib-MS-Firmware-ID.html"/>
       <sub name="MS Host Shutdown" link="libmbim-glib-MS-Host-Shutdown.html"/>
       <sub name="QMI" link="libmbim-glib-QMI.html"/>
+      <sub name="ATT Device Service" link="libmbim-glib-ATT-Device-Service.html"/>
+      <sub name="Intel Firmware Update" link="libmbim-glib-Intel-Firmware-Update.html"/>
     </sub>
     <sub name="Compatibility" link="ch04.html">
       <sub name="Deprecated API" link="libmbim-glib-Deprecated-API.html"/>
@@ -55,6 +57,7 @@
     <keyword type="enum" name="enum MbimContextType" link="libmbim-glib-UUIDs.html#MbimContextType"/>
     <keyword type="struct" name="MbimUuid" link="libmbim-glib-UUIDs.html#MbimUuid"/>
     <keyword type="macro" name="MBIM_UUID_INVALID" link="libmbim-glib-UUIDs.html#MBIM-UUID-INVALID:CAPS"/>
+    <keyword type="macro" name="MBIM_UUID_ATDS" link="libmbim-glib-UUIDs.html#MBIM-UUID-ATDS:CAPS"/>
     <keyword type="macro" name="MBIM_UUID_BASIC_CONNECT" link="libmbim-glib-UUIDs.html#MBIM-UUID-BASIC-CONNECT:CAPS"/>
     <keyword type="macro" name="MBIM_UUID_SMS" link="libmbim-glib-UUIDs.html#MBIM-UUID-SMS:CAPS"/>
     <keyword type="macro" name="MBIM_UUID_USSD" link="libmbim-glib-UUIDs.html#MBIM-UUID-USSD:CAPS"/>
@@ -66,10 +69,12 @@
     <keyword type="macro" name="MBIM_UUID_MS_HOST_SHUTDOWN" link="libmbim-glib-UUIDs.html#MBIM-UUID-MS-HOST-SHUTDOWN:CAPS"/>
     <keyword type="macro" name="MBIM_UUID_PROXY_CONTROL" link="libmbim-glib-UUIDs.html#MBIM-UUID-PROXY-CONTROL:CAPS"/>
     <keyword type="macro" name="MBIM_UUID_QMI" link="libmbim-glib-UUIDs.html#MBIM-UUID-QMI:CAPS"/>
+    <keyword type="macro" name="MBIM_UUID_INTEL_FIRMWARE_UPDATE" link="libmbim-glib-UUIDs.html#MBIM-UUID-INTEL-FIRMWARE-UPDATE:CAPS"/>
     <keyword type="function" name="mbim_cid_can_set ()" link="libmbim-glib-Command-IDs.html#mbim-cid-can-set"/>
     <keyword type="function" name="mbim_cid_can_query ()" link="libmbim-glib-Command-IDs.html#mbim-cid-can-query"/>
     <keyword type="function" name="mbim_cid_can_notify ()" link="libmbim-glib-Command-IDs.html#mbim-cid-can-notify"/>
     <keyword type="function" name="mbim_cid_get_printable ()" link="libmbim-glib-Command-IDs.html#mbim-cid-get-printable"/>
+    <keyword type="function" name="mbim_cid_atds_get_string ()" link="libmbim-glib-Command-IDs.html#mbim-cid-atds-get-string"/>
     <keyword type="function" name="mbim_cid_basic_connect_get_string ()" link="libmbim-glib-Command-IDs.html#mbim-cid-basic-connect-get-string"/>
     <keyword type="function" name="mbim_cid_sms_get_string ()" link="libmbim-glib-Command-IDs.html#mbim-cid-sms-get-string"/>
     <keyword type="function" name="mbim_cid_ussd_get_string ()" link="libmbim-glib-Command-IDs.html#mbim-cid-ussd-get-string"/>
@@ -81,6 +86,8 @@
     <keyword type="function" name="mbim_cid_ms_host_shutdown_get_string ()" link="libmbim-glib-Command-IDs.html#mbim-cid-ms-host-shutdown-get-string"/>
     <keyword type="function" name="mbim_cid_proxy_control_get_string ()" link="libmbim-glib-Command-IDs.html#mbim-cid-proxy-control-get-string"/>
     <keyword type="function" name="mbim_cid_qmi_get_string ()" link="libmbim-glib-Command-IDs.html#mbim-cid-qmi-get-string"/>
+    <keyword type="function" name="mbim_cid_intel_firmware_update_get_string ()" link="libmbim-glib-Command-IDs.html#mbim-cid-intel-firmware-update-get-string"/>
+    <keyword type="enum" name="enum MbimCidAtds" link="libmbim-glib-Command-IDs.html#MbimCidAtds"/>
     <keyword type="enum" name="enum MbimCidBasicConnect" link="libmbim-glib-Command-IDs.html#MbimCidBasicConnect"/>
     <keyword type="enum" name="enum MbimCidSms" link="libmbim-glib-Command-IDs.html#MbimCidSms"/>
     <keyword type="enum" name="enum MbimCidUssd" link="libmbim-glib-Command-IDs.html#MbimCidUssd"/>
@@ -92,6 +99,7 @@
     <keyword type="enum" name="enum MbimCidMsHostShutdown" link="libmbim-glib-Command-IDs.html#MbimCidMsHostShutdown"/>
     <keyword type="enum" name="enum MbimCidProxyControl" link="libmbim-glib-Command-IDs.html#MbimCidProxyControl"/>
     <keyword type="enum" name="enum MbimCidQmi" link="libmbim-glib-Command-IDs.html#MbimCidQmi"/>
+    <keyword type="enum" name="enum MbimCidIntelFirmwareUpdate" link="libmbim-glib-Command-IDs.html#MbimCidIntelFirmwareUpdate"/>
     <keyword type="function" name="mbim_message_new ()" link="MbimMessage.html#mbim-message-new"/>
     <keyword type="function" name="mbim_message_dup ()" link="MbimMessage.html#mbim-message-dup"/>
     <keyword type="function" name="mbim_message_ref ()" link="MbimMessage.html#mbim-message-ref"/>
@@ -226,6 +234,10 @@
     <keyword type="function" name="mbim_network_idle_hint_state_get_string ()" link="libmbim-glib-Enumerations-and-Flags.html#mbim-network-idle-hint-state-get-string"/>
     <keyword type="function" name="mbim_emergency_mode_state_get_string ()" link="libmbim-glib-Enumerations-and-Flags.html#mbim-emergency-mode-state-get-string"/>
     <keyword type="function" name="mbim_dss_link_state_get_string ()" link="libmbim-glib-Enumerations-and-Flags.html#mbim-dss-link-state-get-string"/>
+    <keyword type="function" name="mbim_atds_provider_plmn_mode_get_string ()" link="libmbim-glib-Enumerations-and-Flags.html#mbim-atds-provider-plmn-mode-get-string"/>
+    <keyword type="function" name="mbim_atds_rat_mode_get_string ()" link="libmbim-glib-Enumerations-and-Flags.html#mbim-atds-rat-mode-get-string"/>
+    <keyword type="enum" name="enum MbimAtdsProviderPlmnMode" link="libmbim-glib-Enumerations-and-Flags.html#MbimAtdsProviderPlmnMode"/>
+    <keyword type="enum" name="enum MbimAtdsRatMode" link="libmbim-glib-Enumerations-and-Flags.html#MbimAtdsRatMode"/>
     <keyword type="enum" name="enum MbimDeviceType" link="libmbim-glib-Enumerations-and-Flags.html#MbimDeviceType"/>
     <keyword type="enum" name="enum MbimCellularClass" link="libmbim-glib-Enumerations-and-Flags.html#MbimCellularClass"/>
     <keyword type="enum" name="enum MbimVoiceClass" link="libmbim-glib-Enumerations-and-Flags.html#MbimVoiceClass"/>
@@ -425,6 +437,20 @@
     <keyword type="function" name="mbim_message_ms_host_shutdown_notify_set_new ()" link="libmbim-glib-MS-Host-Shutdown.html#mbim-message-ms-host-shutdown-notify-set-new"/>
     <keyword type="function" name="mbim_message_qmi_msg_set_new ()" link="libmbim-glib-QMI.html#mbim-message-qmi-msg-set-new"/>
     <keyword type="function" name="mbim_message_qmi_msg_response_parse ()" link="libmbim-glib-QMI.html#mbim-message-qmi-msg-response-parse"/>
+    <keyword type="function" name="mbim_atds_provider_array_free ()" link="libmbim-glib-ATT-Device-Service.html#mbim-atds-provider-array-free"/>
+    <keyword type="function" name="mbim_message_atds_signal_query_new ()" link="libmbim-glib-ATT-Device-Service.html#mbim-message-atds-signal-query-new"/>
+    <keyword type="function" name="mbim_message_atds_signal_response_parse ()" link="libmbim-glib-ATT-Device-Service.html#mbim-message-atds-signal-response-parse"/>
+    <keyword type="function" name="mbim_message_atds_location_query_new ()" link="libmbim-glib-ATT-Device-Service.html#mbim-message-atds-location-query-new"/>
+    <keyword type="function" name="mbim_message_atds_location_response_parse ()" link="libmbim-glib-ATT-Device-Service.html#mbim-message-atds-location-response-parse"/>
+    <keyword type="function" name="mbim_message_atds_operators_query_new ()" link="libmbim-glib-ATT-Device-Service.html#mbim-message-atds-operators-query-new"/>
+    <keyword type="function" name="mbim_message_atds_operators_response_parse ()" link="libmbim-glib-ATT-Device-Service.html#mbim-message-atds-operators-response-parse"/>
+    <keyword type="function" name="mbim_message_atds_rat_query_new ()" link="libmbim-glib-ATT-Device-Service.html#mbim-message-atds-rat-query-new"/>
+    <keyword type="function" name="mbim_message_atds_rat_set_new ()" link="libmbim-glib-ATT-Device-Service.html#mbim-message-atds-rat-set-new"/>
+    <keyword type="function" name="mbim_message_atds_rat_response_parse ()" link="libmbim-glib-ATT-Device-Service.html#mbim-message-atds-rat-response-parse"/>
+    <keyword type="function" name="mbim_message_atds_register_state_query_new ()" link="libmbim-glib-ATT-Device-Service.html#mbim-message-atds-register-state-query-new"/>
+    <keyword type="function" name="mbim_message_atds_register_state_response_parse ()" link="libmbim-glib-ATT-Device-Service.html#mbim-message-atds-register-state-response-parse"/>
+    <keyword type="struct" name="MbimAtdsProvider" link="libmbim-glib-ATT-Device-Service.html#MbimAtdsProvider"/>
+    <keyword type="function" name="mbim_message_intel_firmware_update_modem_reboot_set_new ()" link="libmbim-glib-Intel-Firmware-Update.html#mbim-message-intel-firmware-update-modem-reboot-set-new"/>
     <keyword type="function" name="mbim_message_device_service_subscriber_list_response_parse ()" link="libmbim-glib-Deprecated-API.html#mbim-message-device-service-subscriber-list-response-parse" deprecated="1.8.0: Use mbim_message_device_service_subscribe_list_response_parse() instead."/>
     <keyword type="function" name="mbim_message_device_service_subscriber_list_set_new ()" link="libmbim-glib-Deprecated-API.html#mbim-message-device-service-subscriber-list-set-new" deprecated="1.8.0: Use mbim_message_device_service_subscribe_list_set_new() instead."/>
     <keyword type="macro" name="MBIM_CID_BASIC_CONNECT_DEVICE_SERVICE_SUBSCRIBER_LIST" link="libmbim-glib-Deprecated-API.html#MBIM-CID-BASIC-CONNECT-DEVICE-SERVICE-SUBSCRIBER-LIST:CAPS" deprecated="1.8.0: Use MBIM_CID_BASIC_CONNECT_DEVICE_SERVICE_SUBSCRIBE_LIST instead."/>
@@ -441,6 +467,9 @@
     <keyword type="constant" name="MBIM_SERVICE_MS_HOST_SHUTDOWN" link="libmbim-glib-UUIDs.html#MBIM-SERVICE-MS-HOST-SHUTDOWN:CAPS"/>
     <keyword type="constant" name="MBIM_SERVICE_PROXY_CONTROL" link="libmbim-glib-UUIDs.html#MBIM-SERVICE-PROXY-CONTROL:CAPS"/>
     <keyword type="constant" name="MBIM_SERVICE_QMI" link="libmbim-glib-UUIDs.html#MBIM-SERVICE-QMI:CAPS"/>
+    <keyword type="constant" name="MBIM_SERVICE_ATDS" link="libmbim-glib-UUIDs.html#MBIM-SERVICE-ATDS:CAPS"/>
+    <keyword type="constant" name="MBIM_SERVICE_INTEL_FIRMWARE_UPDATE" link="libmbim-glib-UUIDs.html#MBIM-SERVICE-INTEL-FIRMWARE-UPDATE:CAPS"/>
+    <keyword type="constant" name="MBIM_SERVICE_LAST" link="libmbim-glib-UUIDs.html#MBIM-SERVICE-LAST:CAPS"/>
     <keyword type="constant" name="MBIM_CONTEXT_TYPE_INVALID" link="libmbim-glib-UUIDs.html#MBIM-CONTEXT-TYPE-INVALID:CAPS"/>
     <keyword type="constant" name="MBIM_CONTEXT_TYPE_NONE" link="libmbim-glib-UUIDs.html#MBIM-CONTEXT-TYPE-NONE:CAPS"/>
     <keyword type="constant" name="MBIM_CONTEXT_TYPE_INTERNET" link="libmbim-glib-UUIDs.html#MBIM-CONTEXT-TYPE-INTERNET:CAPS"/>
@@ -451,6 +480,12 @@
     <keyword type="constant" name="MBIM_CONTEXT_TYPE_IMS" link="libmbim-glib-UUIDs.html#MBIM-CONTEXT-TYPE-IMS:CAPS"/>
     <keyword type="constant" name="MBIM_CONTEXT_TYPE_MMS" link="libmbim-glib-UUIDs.html#MBIM-CONTEXT-TYPE-MMS:CAPS"/>
     <keyword type="constant" name="MBIM_CONTEXT_TYPE_LOCAL" link="libmbim-glib-UUIDs.html#MBIM-CONTEXT-TYPE-LOCAL:CAPS"/>
+    <keyword type="constant" name="MBIM_CID_ATDS_UNKNOWN" link="libmbim-glib-Command-IDs.html#MBIM-CID-ATDS-UNKNOWN:CAPS"/>
+    <keyword type="constant" name="MBIM_CID_ATDS_SIGNAL" link="libmbim-glib-Command-IDs.html#MBIM-CID-ATDS-SIGNAL:CAPS"/>
+    <keyword type="constant" name="MBIM_CID_ATDS_LOCATION" link="libmbim-glib-Command-IDs.html#MBIM-CID-ATDS-LOCATION:CAPS"/>
+    <keyword type="constant" name="MBIM_CID_ATDS_OPERATORS" link="libmbim-glib-Command-IDs.html#MBIM-CID-ATDS-OPERATORS:CAPS"/>
+    <keyword type="constant" name="MBIM_CID_ATDS_RAT" link="libmbim-glib-Command-IDs.html#MBIM-CID-ATDS-RAT:CAPS"/>
+    <keyword type="constant" name="MBIM_CID_ATDS_REGISTER_STATE" link="libmbim-glib-Command-IDs.html#MBIM-CID-ATDS-REGISTER-STATE:CAPS"/>
     <keyword type="constant" name="MBIM_CID_BASIC_CONNECT_UNKNOWN" link="libmbim-glib-Command-IDs.html#MBIM-CID-BASIC-CONNECT-UNKNOWN:CAPS"/>
     <keyword type="constant" name="MBIM_CID_BASIC_CONNECT_DEVICE_CAPS" link="libmbim-glib-Command-IDs.html#MBIM-CID-BASIC-CONNECT-DEVICE-CAPS"/>
     <keyword type="constant" name="MBIM_CID_BASIC_CONNECT_SUBSCRIBER_READY_STATUS" link="libmbim-glib-Command-IDs.html#MBIM-CID-BASIC-CONNECT-SUBSCRIBER-READY-STATUS:CAPS"/>
@@ -505,6 +540,8 @@
     <keyword type="constant" name="MBIM_CID_PROXY_CONTROL_CONFIGURATION" link="libmbim-glib-Command-IDs.html#MBIM-CID-PROXY-CONTROL-CONFIGURATION:CAPS"/>
     <keyword type="constant" name="MBIM_CID_QMI_UNKNOWN" link="libmbim-glib-Command-IDs.html#MBIM-CID-QMI-UNKNOWN:CAPS"/>
     <keyword type="constant" name="MBIM_CID_QMI_MSG" link="libmbim-glib-Command-IDs.html#MBIM-CID-QMI-MSG:CAPS"/>
+    <keyword type="constant" name="MBIM_CID_INTEL_FIRMWARE_UPDATE_UNKNOWN" link="libmbim-glib-Command-IDs.html#MBIM-CID-INTEL-FIRMWARE-UPDATE-UNKNOWN:CAPS"/>
+    <keyword type="constant" name="MBIM_CID_INTEL_FIRMWARE_UPDATE_MODEM_REBOOT" link="libmbim-glib-Command-IDs.html#MBIM-CID-INTEL-FIRMWARE-UPDATE-MODEM-REBOOT:CAPS"/>
     <keyword type="constant" name="MBIM_MESSAGE_TYPE_INVALID" link="MbimMessage.html#MBIM-MESSAGE-TYPE-INVALID:CAPS"/>
     <keyword type="constant" name="MBIM_MESSAGE_TYPE_OPEN" link="MbimMessage.html#MBIM-MESSAGE-TYPE-OPEN:CAPS"/>
     <keyword type="constant" name="MBIM_MESSAGE_TYPE_CLOSE" link="MbimMessage.html#MBIM-MESSAGE-TYPE-CLOSE:CAPS"/>
@@ -520,6 +557,13 @@
     <keyword type="constant" name="MBIM_MESSAGE_COMMAND_TYPE_SET" link="MbimMessage.html#MBIM-MESSAGE-COMMAND-TYPE-SET:CAPS"/>
     <keyword type="constant" name="MBIM_DEVICE_OPEN_FLAGS_NONE" link="MbimDevice.html#MBIM-DEVICE-OPEN-FLAGS-NONE:CAPS"/>
     <keyword type="constant" name="MBIM_DEVICE_OPEN_FLAGS_PROXY" link="MbimDevice.html#MBIM-DEVICE-OPEN-FLAGS-PROXY:CAPS"/>
+    <keyword type="constant" name="MBIM_ATDS_PROVIDER_PLMN_MODE_GSM" link="libmbim-glib-Enumerations-and-Flags.html#MBIM-ATDS-PROVIDER-PLMN-MODE-GSM:CAPS"/>
+    <keyword type="constant" name="MBIM_ATDS_PROVIDER_PLMN_MODE_UTRAN" link="libmbim-glib-Enumerations-and-Flags.html#MBIM-ATDS-PROVIDER-PLMN-MODE-UTRAN:CAPS"/>
+    <keyword type="constant" name="MBIM_ATDS_PROVIDER_PLMN_MODE_LTE" link="libmbim-glib-Enumerations-and-Flags.html#MBIM-ATDS-PROVIDER-PLMN-MODE-LTE:CAPS"/>
+    <keyword type="constant" name="MBIM_ATDS_RAT_MODE_AUTOMATIC" link="libmbim-glib-Enumerations-and-Flags.html#MBIM-ATDS-RAT-MODE-AUTOMATIC:CAPS"/>
+    <keyword type="constant" name="MBIM_ATDS_RAT_MODE_2G_ONLY" link="libmbim-glib-Enumerations-and-Flags.html#MBIM-ATDS-RAT-MODE-2G-ONLY:CAPS"/>
+    <keyword type="constant" name="MBIM_ATDS_RAT_MODE_3G_ONLY" link="libmbim-glib-Enumerations-and-Flags.html#MBIM-ATDS-RAT-MODE-3G-ONLY:CAPS"/>
+    <keyword type="constant" name="MBIM_ATDS_RAT_MODE_4G_ONLY" link="libmbim-glib-Enumerations-and-Flags.html#MBIM-ATDS-RAT-MODE-4G-ONLY:CAPS"/>
     <keyword type="constant" name="MBIM_DEVICE_TYPE_UNKNOWN" link="libmbim-glib-Enumerations-and-Flags.html#MBIM-DEVICE-TYPE-UNKNOWN:CAPS"/>
     <keyword type="constant" name="MBIM_DEVICE_TYPE_EMBEDDED" link="libmbim-glib-Enumerations-and-Flags.html#MBIM-DEVICE-TYPE-EMBEDDED:CAPS"/>
     <keyword type="constant" name="MBIM_DEVICE_TYPE_REMOVABLE" link="libmbim-glib-Enumerations-and-Flags.html#MBIM-DEVICE-TYPE-REMOVABLE:CAPS"/>
@@ -763,6 +807,7 @@
     <keyword type="constant" name="MBIM_CORE_ERROR_INVALID_MESSAGE" link="libmbim-glib-Errors.html#MBIM-CORE-ERROR-INVALID-MESSAGE:CAPS"/>
     <keyword type="constant" name="MBIM_CORE_ERROR_UNSUPPORTED" link="libmbim-glib-Errors.html#MBIM-CORE-ERROR-UNSUPPORTED:CAPS"/>
     <keyword type="constant" name="MBIM_CORE_ERROR_ABORTED" link="libmbim-glib-Errors.html#MBIM-CORE-ERROR-ABORTED:CAPS"/>
+    <keyword type="constant" name="MBIM_CORE_ERROR_UNKNOWN_STATE" link="libmbim-glib-Errors.html#MBIM-CORE-ERROR-UNKNOWN-STATE:CAPS"/>
     <keyword type="constant" name="MBIM_PROTOCOL_ERROR_INVALID" link="libmbim-glib-Errors.html#MBIM-PROTOCOL-ERROR-INVALID:CAPS"/>
     <keyword type="constant" name="MBIM_PROTOCOL_ERROR_TIMEOUT_FRAGMENT" link="libmbim-glib-Errors.html#MBIM-PROTOCOL-ERROR-TIMEOUT-FRAGMENT:CAPS"/>
     <keyword type="constant" name="MBIM_PROTOCOL_ERROR_FRAGMENT_OUT_OF_SEQUENCE" link="libmbim-glib-Errors.html#MBIM-PROTOCOL-ERROR-FRAGMENT-OUT-OF-SEQUENCE:CAPS"/>
@@ -809,6 +854,7 @@
     <keyword type="constant" name="MBIM_STATUS_ERROR_AUTH_INCORRECT_AUTN" link="libmbim-glib-Errors.html#MBIM-STATUS-ERROR-AUTH-INCORRECT-AUTN:CAPS"/>
     <keyword type="constant" name="MBIM_STATUS_ERROR_AUTH_SYNC_FAILURE" link="libmbim-glib-Errors.html#MBIM-STATUS-ERROR-AUTH-SYNC-FAILURE:CAPS"/>
     <keyword type="constant" name="MBIM_STATUS_ERROR_AUTH_AMF_NOT_SET" link="libmbim-glib-Errors.html#MBIM-STATUS-ERROR-AUTH-AMF-NOT-SET:CAPS"/>
+    <keyword type="constant" name="MBIM_STATUS_ERROR_CONTEXT_NOT_SUPPORTED" link="libmbim-glib-Errors.html#MBIM-STATUS-ERROR-CONTEXT-NOT-SUPPORTED:CAPS"/>
     <keyword type="constant" name="MBIM_STATUS_ERROR_SMS_UNKNOWN_SMSC_ADDRESS" link="libmbim-glib-Errors.html#MBIM-STATUS-ERROR-SMS-UNKNOWN-SMSC-ADDRESS:CAPS"/>
     <keyword type="constant" name="MBIM_STATUS_ERROR_SMS_NETWORK_TIMEOUT" link="libmbim-glib-Errors.html#MBIM-STATUS-ERROR-SMS-NETWORK-TIMEOUT:CAPS"/>
     <keyword type="constant" name="MBIM_STATUS_ERROR_SMS_LANG_NOT_SUPPORTED" link="libmbim-glib-Errors.html#MBIM-STATUS-ERROR-SMS-LANG-NOT-SUPPORTED:CAPS"/>
@@ -872,5 +918,11 @@
     <keyword type="member" name="MbimPhonebookEntry.entry-index" link="libmbim-glib-Phonebook.html#MbimPhonebookEntry.entry-index"/>
     <keyword type="member" name="MbimPhonebookEntry.number" link="libmbim-glib-Phonebook.html#MbimPhonebookEntry.number"/>
     <keyword type="member" name="MbimPhonebookEntry.name" link="libmbim-glib-Phonebook.html#MbimPhonebookEntry.name"/>
+    <keyword type="member" name="MbimAtdsProvider.provider-id" link="libmbim-glib-ATT-Device-Service.html#MbimAtdsProvider.provider-id"/>
+    <keyword type="member" name="MbimAtdsProvider.provider-state" link="libmbim-glib-ATT-Device-Service.html#MbimAtdsProvider.provider-state"/>
+    <keyword type="member" name="MbimAtdsProvider.provider-name" link="libmbim-glib-ATT-Device-Service.html#MbimAtdsProvider.provider-name"/>
+    <keyword type="member" name="MbimAtdsProvider.plmn-mode" link="libmbim-glib-ATT-Device-Service.html#MbimAtdsProvider.plmn-mode"/>
+    <keyword type="member" name="MbimAtdsProvider.rssi" link="libmbim-glib-ATT-Device-Service.html#MbimAtdsProvider.rssi"/>
+    <keyword type="member" name="MbimAtdsProvider.error-rate" link="libmbim-glib-ATT-Device-Service.html#MbimAtdsProvider.error-rate"/>
   </functions>
 </book>

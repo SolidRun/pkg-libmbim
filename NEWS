@@ -1,23 +1,45 @@
 
-Overview of changes in libmbim 1.14.2
+Overview of changes in libmbim 1.16
 ----------------------------------------
 
+* Build now requires GLib 2.36.
+
+* All the code base was ported to use the GTask based asynchronous operations
+  support instead of the deprecated GSimpleAsyncResult.
+
+* New AT&T Device Service support, that includes operator-specific commands to
+  query signal info or cell location.
+
+* New Intel Firmware Update Service support, that includes commands to request
+  the Intel-based module to reboot in firmware download mode.
+
 * libmbim-glib:
+  ** Added MBIM_STATUS_ERROR_CONTEXT_NOT_SUPPORTED to MbimStatusError.
+  ** Avoid using iconv() directly for the UTF-16BE conversions, which makes it
+     possible to use libmbim on systems with a stub iconv() implementation.
+  ** Added support to detect already open MBIM channels on the Sierra Wireless
+     EM7345.
+
+* mbimcli:
+  ** New '--query-ip-packet-filters' action.
+  ** New '--query-pin-list' action.
+  ** New '--atds-query-signal' and '--atds-query-location' actions.
+  ** New '--intel-modem-reboot' action.
+
+* Several other minor improvements and fixes.
+
+The following features which were backported to 1.14.x releases are also present
+in libmbim 1.16.0:
+
+* libmbim-glib:
+  ** Prefer realpath() to canonicalize_file_name().
   ** Added MBIM_READY_INFO_FLAG_NONE to MbimReadyInfoFlag.
-  ** Fixed G_DEPRECATED_FOR annotations.
 
 * mbim-proxy:
-  ** Fixed segfault when device goes away while being opened.
   ** Avoid receiving signals from the parent process.
 
 * mbimcli:
-  ** Fix second ctrl+c handling.
   ** Add cancellability to the query-ip-configuration action.
-
-* mbim-network:
-  ** Fix bashisms.
-
-* Several other minor improvements and fixes.
 
 Overview of changes in libmbim 1.14
 ----------------------------------------

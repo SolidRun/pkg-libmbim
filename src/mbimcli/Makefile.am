@@ -4,6 +4,7 @@ bin_PROGRAMS = mbimcli
 mbimcli_CPPFLAGS = \
 	$(MBIMCLI_CFLAGS) \
 	-I$(top_srcdir) \
+	-I$(top_srcdir)/src/common \
 	-I$(top_srcdir)/src/libmbim-glib \
 	-I$(top_builddir)/src/libmbim-glib \
 	-I$(top_srcdir)/src/libmbim-glib/generated \
@@ -16,10 +17,13 @@ mbimcli_SOURCES = \
 	mbimcli-phonebook.c \
 	mbimcli-dss.c \
 	mbimcli-ms-firmware-id.c \
-	mbimcli-ms-host-shutdown.c
+	mbimcli-ms-host-shutdown.c \
+	mbimcli-atds.c \
+	mbimcli-intel-firmware-update.c
 
 mbimcli_LDADD = \
 	$(MBIMCLI_LIBS) \
+	$(top_builddir)/src/common/libmbim-common.la \
 	$(top_builddir)/src/libmbim-glib/libmbim-glib.la
 
 
