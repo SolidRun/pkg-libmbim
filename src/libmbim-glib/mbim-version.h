@@ -43,7 +43,7 @@
  * Evaluates to the minor version number of libmbim-glib which this source
  * is compiled against.
  */
-#define MBIM_MINOR_VERSION (14)
+#define MBIM_MINOR_VERSION (16)
 
 /**
  * MBIM_MICRO_VERSION:
@@ -51,7 +51,7 @@
  * Evaluates to the micro version number of libmbim-glib which this source
  * compiled against.
  */
-#define MBIM_MICRO_VERSION (2)
+#define MBIM_MICRO_VERSION (0)
 
 /**
  * MBIM_CHECK_VERSION:

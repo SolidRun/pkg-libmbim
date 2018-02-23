@@ -13,6 +13,7 @@ MbimService
 MbimContextType
 MbimUuid
 MBIM_UUID_INVALID
+MBIM_UUID_ATDS
 MBIM_UUID_BASIC_CONNECT
 MBIM_UUID_SMS
 MBIM_UUID_USSD
@@ -24,6 +25,7 @@ MBIM_UUID_MS_FIRMWARE_ID
 MBIM_UUID_MS_HOST_SHUTDOWN
 MBIM_UUID_PROXY_CONTROL
 MBIM_UUID_QMI
+MBIM_UUID_INTEL_FIRMWARE_UPDATE
 <SUBSECTION Methods>
 mbim_service_get_string
 mbim_service_lookup_name
@@ -46,6 +48,7 @@ mbim_context_type_build_string_from_mask
 
 <SECTION>
 <FILE>mbim-cid</FILE>
+MbimCidAtds
 MbimCidBasicConnect
 MbimCidSms
 MbimCidUssd
@@ -57,11 +60,13 @@ MbimCidMsFirmwareId
 MbimCidMsHostShutdown
 MbimCidProxyControl
 MbimCidQmi
+MbimCidIntelFirmwareUpdate
 <SUBSECTION Methods>
 mbim_cid_can_set
 mbim_cid_can_query
 mbim_cid_can_notify
 mbim_cid_get_printable
+mbim_cid_atds_get_string
 mbim_cid_basic_connect_get_string
 mbim_cid_sms_get_string
 mbim_cid_ussd_get_string
@@ -73,7 +78,9 @@ mbim_cid_ms_firmware_id_get_string
 mbim_cid_ms_host_shutdown_get_string
 mbim_cid_proxy_control_get_string
 mbim_cid_qmi_get_string
+mbim_cid_intel_firmware_update_get_string
 <SUBSECTION Private>
+mbim_cid_atds_build_string_from_mask
 mbim_cid_basic_connect_build_string_from_mask
 mbim_cid_sms_build_string_from_mask
 mbim_cid_ussd_build_string_from_mask
@@ -85,7 +92,9 @@ mbim_cid_ms_firmware_id_build_string_from_mask
 mbim_cid_ms_host_shutdown_build_string_from_mask
 mbim_cid_proxy_control_build_string_from_mask
 mbim_cid_qmi_build_string_from_mask
+mbim_cid_intel_firmware_update_build_string_from_mask
 <SUBSECTION Standard>
+MBIM_TYPE_CID_ATDS
 MBIM_TYPE_CID_AUTH
 MBIM_TYPE_CID_BASIC_CONNECT
 MBIM_TYPE_CID_DSS
@@ -97,6 +106,8 @@ MBIM_TYPE_CID_MS_FIRMWARE_ID
 MBIM_TYPE_CID_MS_HOST_SHUTDOWN
 MBIM_TYPE_CID_PROXY_CONTROL
 MBIM_TYPE_CID_QMI
+MBIM_TYPE_CID_INTEL_FIRMWARE_UPDATE
+mbim_cid_atds_get_type
 mbim_cid_auth_get_type
 mbim_cid_basic_connect_get_type
 mbim_cid_dss_get_type
@@ -108,6 +119,7 @@ mbim_cid_ms_firmware_id_get_type
 mbim_cid_ms_host_shutdown_get_type
 mbim_cid_proxy_control_get_type
 mbim_cid_qmi_get_type
+mbim_cid_intel_firmware_update_get_type
 </SECTION>
 
 <SECTION>
@@ -245,6 +257,8 @@ mbim_proxy_get_type
 
 <SECTION>
 <FILE>mbim-enums</FILE>
+MbimAtdsProviderPlmnMode
+MbimAtdsRatMode
 MbimDeviceType
 MbimCellularClass
 MbimVoiceClass
@@ -343,6 +357,8 @@ mbim_stk_pac_type_get_string
 mbim_network_idle_hint_state_get_string
 mbim_emergency_mode_state_get_string
 mbim_dss_link_state_get_string
+mbim_atds_provider_plmn_mode_get_string
+mbim_atds_rat_mode_get_string
 <SUBSECTION Private>
 mbim_device_type_build_string_from_mask
 mbim_cellular_class_get_string
@@ -394,9 +410,13 @@ mbim_stk_pac_type_build_string_from_mask
 mbim_network_idle_hint_state_build_string_from_mask
 mbim_emergency_mode_state_build_string_from_mask
 mbim_dss_link_state_build_string_from_mask
+mbim_atds_provider_plmn_mode_build_string_from_mask
+mbim_atds_rat_mode_build_string_from_mask
 <SUBSECTION Standard>
 MBIM_TYPE_ACTIVATION_COMMAND
 MBIM_TYPE_ACTIVATION_STATE
+MBIM_TYPE_ATDS_PROVIDER_PLMN_MODE
+MBIM_TYPE_ATDS_RAT_MODE
 MBIM_TYPE_AUTH_PROTOCOL
 MBIM_TYPE_CELLULAR_CLASS
 MBIM_TYPE_COMPRESSION
@@ -501,6 +521,8 @@ mbim_stk_pac_type_get_type
 mbim_network_idle_hint_state_get_type
 mbim_emergency_mode_state_get_type
 mbim_dss_link_state_get_type
+mbim_atds_provider_plmn_mode_get_type
+mbim_atds_rat_mode_get_type
 </SECTION>
 
 <SECTION>
@@ -544,6 +566,9 @@ MBIM_CID_BASIC_CONNECT_DEVICE_SERVICE_SUBSCRIBER_LIST
 MBIM_REGISTRATION_FLAG_MANUAL_PACKET_SERVICE_AUTOMATIC_ATTACH
 mbim_message_device_service_subscriber_list_response_parse
 mbim_message_device_service_subscriber_list_set_new
+<SUBSECTION Private>
+MbimDeprecatedCidBasicConnect
+MbimDeprecatedRegistrationFlag
 </SECTION>
 
 <SECTION>
@@ -833,4 +858,41 @@ mbim_message_ms_host_shutdown_notify_set_new
 <SUBSECTION msg>
 mbim_message_qmi_msg_set_new
 mbim_message_qmi_msg_response_parse
+</SECTION>
+
+<SECTION>
+<FILE>mbim-att-device-service</FILE>
+<TITLE>ATT Device Service</TITLE>
+<SUBSECTION MbimAtdsProvider>
+MbimAtdsProvider
+mbim_atds_provider_array_free
+
+<SUBSECTION signal>
+mbim_message_atds_signal_query_new
+mbim_message_atds_signal_response_parse
+
+<SUBSECTION location>
+mbim_message_atds_location_query_new
+mbim_message_atds_location_response_parse
+
+<SUBSECTION operators>
+mbim_message_atds_operators_query_new
+mbim_message_atds_operators_response_parse
+
+<SUBSECTION rat>
+mbim_message_atds_rat_query_new
+mbim_message_atds_rat_set_new
+mbim_message_atds_rat_response_parse
+
+<SUBSECTION register-state>
+mbim_message_atds_register_state_query_new
+mbim_message_atds_register_state_response_parse
+</SECTION>
+
+<SECTION>
+<FILE>mbim-intel-firmware-update</FILE>
+<TITLE>Intel Firmware Update</TITLE>
+
+<SUBSECTION modem-reboot>
+mbim_message_intel_firmware_update_modem_reboot_set_new
 </SECTION>

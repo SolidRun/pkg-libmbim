@@ -125,8 +125,8 @@ print_version_and_exit (void)
 {
     g_print ("\n"
              PROGRAM_NAME " " PROGRAM_VERSION "\n"
-             "Copyright (C) 2013 Aleksander Morgado\n"
-             "Copyright (C) 2014 Greg Suarez\n"
+             "Copyright (C) 2013-2018 Aleksander Morgado\n"
+             "Copyright (C) 2014-2018 Greg Suarez\n"
              "License GPLv2+: GNU GPL version 2 or later <http://gnu.org/licenses/gpl-2.0.html>\n"
              "This is free software: you are free to change and redistribute it.\n"
              "There is NO WARRANTY, to the extent permitted by law.\n"
@@ -195,10 +195,6 @@ int main (int argc, char **argv)
     GOptionContext *context;
 
     setlocale (LC_ALL, "");
-
-#if !GLIB_CHECK_VERSION (2, 36, 0)
-    g_type_init ();
-#endif
 
     /* Setup option context, process it and destroy it */
     context = g_option_context_new ("- Proxy for MBIM devices");

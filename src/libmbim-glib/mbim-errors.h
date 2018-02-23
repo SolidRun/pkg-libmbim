@@ -49,7 +49,8 @@
  * @MBIM_CORE_ERROR_INVALID_ARGS: Invalid arguments given.
  * @MBIM_CORE_ERROR_INVALID_MESSAGE: MBIM message is invalid.
  * @MBIM_CORE_ERROR_UNSUPPORTED: Not supported.
- * @MBIM_CORE_ERROR_ABORTED: Operation aborted..
+ * @MBIM_CORE_ERROR_ABORTED: Operation aborted.
+ * @MBIM_CORE_ERROR_UNKNOWN_STATE: State is unknown.
  *
  * Common errors that may be reported by libmbim-glib.
  */
@@ -60,7 +61,8 @@ typedef enum { /*< underscore_name=mbim_core_error >*/
     MBIM_CORE_ERROR_INVALID_ARGS     = 3, /*< nick=InvalidArgs >*/
     MBIM_CORE_ERROR_INVALID_MESSAGE  = 4, /*< nick=InvalidMessage >*/
     MBIM_CORE_ERROR_UNSUPPORTED      = 5, /*< nick=Unsupported >*/
-    MBIM_CORE_ERROR_ABORTED          = 6  /*< nick=Aborted >*/
+    MBIM_CORE_ERROR_ABORTED          = 6, /*< nick=Aborted >*/
+    MBIM_CORE_ERROR_UNKNOWN_STATE    = 7  /*< nick=UnknownState >*/
 } MbimCoreError;
 
 /**
@@ -129,6 +131,7 @@ typedef enum {
  * @MBIM_STATUS_ERROR_AUTH_INCORRECT_AUTN: Incorrect AUTN when sending authentication.
  * @MBIM_STATUS_ERROR_AUTH_SYNC_FAILURE: Synchronization failure during the authentication.
  * @MBIM_STATUS_ERROR_AUTH_AMF_NOT_SET: AMF bit not set in the authentication.
+ * @MBIM_STATUS_ERROR_CONTEXT_NOT_SUPPORTED: ContextType not supported by the operation.
  * @MBIM_STATUS_ERROR_SMS_UNKNOWN_SMSC_ADDRESS: Unknown SMSC address.
  * @MBIM_STATUS_ERROR_SMS_NETWORK_TIMEOUT: Network timeout when sending SMS.
  * @MBIM_STATUS_ERROR_SMS_LANG_NOT_SUPPORTED: Language not supported in SMS.
@@ -176,6 +179,7 @@ typedef enum {
     MBIM_STATUS_ERROR_AUTH_INCORRECT_AUTN              = 35, /*< nick=AuthIncorrectAuth >*/
     MBIM_STATUS_ERROR_AUTH_SYNC_FAILURE                = 36, /*< nick=AuthSyncFailure >*/
     MBIM_STATUS_ERROR_AUTH_AMF_NOT_SET                 = 37, /*< nick=AuthAmfNotSet >*/
+    MBIM_STATUS_ERROR_CONTEXT_NOT_SUPPORTED            = 38, /*< nick=ContextNotSupported >*/
     MBIM_STATUS_ERROR_SMS_UNKNOWN_SMSC_ADDRESS         = 100, /*< nick=SmsUnknownSmscAddress >*/
     MBIM_STATUS_ERROR_SMS_NETWORK_TIMEOUT              = 101, /*< nick=SmsNetworkTimeout >*/
     MBIM_STATUS_ERROR_SMS_LANG_NOT_SUPPORTED           = 102, /*< nick=SmsLangNotSupported >*/

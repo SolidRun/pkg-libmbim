@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Errors: libmbim-glib Reference Manual</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
 <link rel="home" href="index.html" title="libmbim-glib Reference Manual">
 <link rel="up" href="ch01.html" title="Core">
 <link rel="prev" href="libmbim-glib-Enumerations-and-Flags.html" title="Enumerations and Flags">
 <link rel="next" href="libmbim-glib-Common-utilities.html" title="Common utilities">
-<meta name="generator" content="GTK-Doc V1.25.1 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.27 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -41,21 +41,21 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="function_type">const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+<td class="function_type">const <a href="../glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
 </td>
 <td class="function_name">
 <a class="link" href="libmbim-glib-Errors.html#mbim-core-error-get-string" title="mbim_core_error_get_string ()">mbim_core_error_get_string</a> <span class="c_punctuation">()</span>
 </td>
 </tr>
 <tr>
-<td class="function_type">const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+<td class="function_type">const <a href="../glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
 </td>
 <td class="function_name">
 <a class="link" href="libmbim-glib-Errors.html#mbim-protocol-error-get-string" title="mbim_protocol_error_get_string ()">mbim_protocol_error_get_string</a> <span class="c_punctuation">()</span>
 </td>
 </tr>
 <tr>
-<td class="function_type">const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+<td class="function_type">const <a href="../glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
 </td>
 <td class="function_name">
 <a class="link" href="libmbim-glib-Errors.html#mbim-status-error-get-string" title="mbim_status_error_get_string ()">mbim_status_error_get_string</a> <span class="c_punctuation">()</span>
@@ -89,7 +89,7 @@
 </div>
 <div class="refsect1">
 <a name="libmbim-glib-Errors.object-hierarchy"></a><h2>Object Hierarchy</h2>
-<pre class="screen">    <a href="https://developer.gnome.org/gobject/unstable/gobject-Enumeration-and-Flag-Types.html">GEnum</a>
+<pre class="screen">    <a href="/usr/share/gtk-doc/html/gobject/gobject-Enumeration-and-Flag-Types.html">GEnum</a>
     <span class="lineart">├──</span> MbimCoreError
     <span class="lineart">├──</span> MbimProtocolError
     <span class="lineart">╰──</span> MbimStatusError
@@ -103,7 +103,7 @@
 <a name="libmbim-glib-Errors.functions_details"></a><h2>Functions</h2>
 <div class="refsect2">
 <a name="mbim-core-error-get-string"></a><h3>mbim_core_error_get_string ()</h3>
-<pre class="programlisting">const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+<pre class="programlisting">const <a href="../glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
 mbim_core_error_get_string (<em class="parameter"><code><a class="link" href="libmbim-glib-Errors.html#MbimCoreError" title="enum MbimCoreError"><span class="type">MbimCoreError</span></a> val</code></em>);</pre>
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Errors.html#MbimCoreError" title="enum MbimCoreError"><span class="type">MbimCoreError</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
@@ -124,14 +124,14 @@ mbim_core_error_get_string (<em class="parameter"><code><a class="link" href="li
 </div>
 <div class="refsect3">
 <a name="mbim-core-error-get-string.returns"></a><h4>Returns</h4>
-<p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
+<p>a string with the nickname, or <a href="../glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
 </div>
 <hr>
 <div class="refsect2">
 <a name="mbim-protocol-error-get-string"></a><h3>mbim_protocol_error_get_string ()</h3>
-<pre class="programlisting">const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+<pre class="programlisting">const <a href="../glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
 mbim_protocol_error_get_string (<em class="parameter"><code><a class="link" href="libmbim-glib-Errors.html#MbimProtocolError" title="enum MbimProtocolError"><span class="type">MbimProtocolError</span></a> val</code></em>);</pre>
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Errors.html#MbimProtocolError" title="enum MbimProtocolError"><span class="type">MbimProtocolError</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
@@ -152,14 +152,14 @@ mbim_protocol_error_get_string (<em class="parameter"><code><a class="link" href
 </div>
 <div class="refsect3">
 <a name="mbim-protocol-error-get-string.returns"></a><h4>Returns</h4>
-<p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
+<p>a string with the nickname, or <a href="../glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
 </div>
 <hr>
 <div class="refsect2">
 <a name="mbim-status-error-get-string"></a><h3>mbim_status_error_get_string ()</h3>
-<pre class="programlisting">const <a href="https://developer.gnome.org/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+<pre class="programlisting">const <a href="../glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
 mbim_status_error_get_string (<em class="parameter"><code><a class="link" href="libmbim-glib-Errors.html#MbimStatusError" title="enum MbimStatusError"><span class="type">MbimStatusError</span></a> val</code></em>);</pre>
 <p>Gets the nickname string for the <a class="link" href="libmbim-glib-Errors.html#MbimStatusError" title="enum MbimStatusError"><span class="type">MbimStatusError</span></a> specified at <em class="parameter"><code>val</code></em>
 .</p>
@@ -180,7 +180,7 @@ mbim_status_error_get_string (<em class="parameter"><code><a class="link" href="
 </div>
 <div class="refsect3">
 <a name="mbim-status-error-get-string.returns"></a><h4>Returns</h4>
-<p> a string with the nickname, or <a href="https://developer.gnome.org/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
+<p>a string with the nickname, or <a href="../glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if not found. Do not free the returned value. </p>
 <p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
 </div>
 </div>
@@ -244,7 +244,14 @@ mbim_status_error_get_string (<em class="parameter"><code><a class="link" href="
 <tr>
 <td class="enum_member_name"><p><a name="MBIM-CORE-ERROR-ABORTED:CAPS"></a>MBIM_CORE_ERROR_ABORTED</p></td>
 <td class="enum_member_description">
-<p>Operation aborted..</p>
+<p>Operation aborted.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="MBIM-CORE-ERROR-UNKNOWN-STATE:CAPS"></a>MBIM_CORE_ERROR_UNKNOWN_STATE</p></td>
+<td class="enum_member_description">
+<p>State is unknown.</p>
 </td>
 <td class="enum_member_annotations"> </td>
 </tr>
@@ -605,6 +612,13 @@ mbim_status_error_get_string (<em class="parameter"><code><a class="link" href="
 <td class="enum_member_annotations"> </td>
 </tr>
 <tr>
+<td class="enum_member_name"><p><a name="MBIM-STATUS-ERROR-CONTEXT-NOT-SUPPORTED:CAPS"></a>MBIM_STATUS_ERROR_CONTEXT_NOT_SUPPORTED</p></td>
+<td class="enum_member_description">
+<p>ContextType not supported by the operation.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
 <td class="enum_member_name"><p><a name="MBIM-STATUS-ERROR-SMS-UNKNOWN-SMSC-ADDRESS:CAPS"></a>MBIM_STATUS_ERROR_SMS_UNKNOWN_SMSC_ADDRESS</p></td>
 <td class="enum_member_description">
 <p>Unknown SMSC address.</p>
@@ -646,6 +660,6 @@ mbim_status_error_get_string (<em class="parameter"><code><a class="link" href="
 </div>
 </div>
 <div class="footer">
-<hr>Generated by GTK-Doc V1.25.1</div>
+<hr>Generated by GTK-Doc V1.27</div>
 </body>
 </html>

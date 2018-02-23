@@ -17,7 +17,9 @@ ALL_SECTIONS = \
 	$(top_builddir)/src/libmbim-glib/generated/mbim-dss.sections \
 	$(top_builddir)/src/libmbim-glib/generated/mbim-ms-firmware-id.sections \
 	$(top_builddir)/src/libmbim-glib/generated/mbim-ms-host-shutdown.sections \
-	$(top_builddir)/src/libmbim-glib/generated/mbim-qmi.sections
+	$(top_builddir)/src/libmbim-glib/generated/mbim-qmi.sections \
+	$(top_builddir)/src/libmbim-glib/generated/mbim-atds.sections \
+	$(top_builddir)/src/libmbim-glib/generated/mbim-intel-firmware-update.sections
 
 $(DOC_MODULE)-sections.mstamp: $(ALL_SECTIONS)
 	$(AM_V_GEN) \
@@ -28,7 +30,7 @@ $(DOC_MODULE)-sections.mstamp: $(ALL_SECTIONS)
 BUILT_SOURCES = $(DOC_MODULE)-sections.mstamp
 
 # Extra options to supply to gtkdoc-scan
-SCAN_OPTIONS = --rebuild-types
+SCAN_OPTIONS = --rebuild-types --deprecated-guards="MBIM_DISABLE_DEPRECATED"
 
 # The directory containing the source code.
 DOC_SOURCE_DIR = \

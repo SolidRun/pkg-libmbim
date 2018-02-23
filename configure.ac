@@ -3,8 +3,8 @@ AC_PREREQ([2.68])
 
 dnl The libmbim version number
 m4_define([mbim_major_version], [1])
-m4_define([mbim_minor_version], [14])
-m4_define([mbim_micro_version], [2])
+m4_define([mbim_minor_version], [16])
+m4_define([mbim_micro_version], [0])
 m4_define([mbim_version],
           [mbim_major_version.mbim_minor_version.mbim_micro_version])
 
@@ -16,9 +16,9 @@ dnl        If the interface has grown (that is, the new library is compatible
 dnl            with old code), increment a.
 dnl        If the interface has changed in an incompatible way (that is,
 dnl            functions have changed or been removed), then zero a.
-m4_define([mbim_glib_lt_current],  [6])
+m4_define([mbim_glib_lt_current],  [7])
 m4_define([mbim_glib_lt_revision], [0])
-m4_define([mbim_glib_lt_age],      [2])
+m4_define([mbim_glib_lt_age],      [3])
 
 
 AC_INIT([libmbim], [mbim_version], [libmbim-devel@lists.freedesktop.org])
@@ -64,9 +64,18 @@ AC_SUBST(MBIM_GLIB_LT_CURRENT)
 AC_SUBST(MBIM_GLIB_LT_REVISION)
 AC_SUBST(MBIM_GLIB_LT_AGE)
 
+dnl Required dependency versions
+GLIB_MIN_VERSION=2.36
+
+dnl General dependencies for common
+PKG_CHECK_MODULES(MBIM_COMMON,
+                  glib-2.0 >= $GLIB_MIN_VERSION)
+AC_SUBST(MBIM_COMMON_CFLAGS)
+AC_SUBST(MBIM_COMMON_LIBS)
+
 dnl General dependencies for libmbim-glib
 PKG_CHECK_MODULES(LIBMBIM_GLIB,
-                  glib-2.0 >= 2.32
+                  glib-2.0 >= $GLIB_MIN_VERSION
                   gobject-2.0
                   gio-2.0
                   gio-unix-2.0)
@@ -75,7 +84,7 @@ AC_SUBST(LIBMBIM_GLIB_LIBS)
 
 dnl General dependencies for mbimcli
 PKG_CHECK_MODULES(MBIMCLI,
-                  glib-2.0 >= 2.32
+                  glib-2.0 >= $GLIB_MIN_VERSION
                   gobject-2.0
                   gio-2.0)
 AC_SUBST(MBIMCLI_CFLAGS)
@@ -83,7 +92,7 @@ AC_SUBST(MBIMCLI_LIBS)
 
 dnl General dependencies for mbim-proxy
 PKG_CHECK_MODULES(MBIMPROXY,
-                  glib-2.0 >= 2.32
+                  glib-2.0 >= $GLIB_MIN_VERSION
                   gobject-2.0
                   gio-2.0)
 AC_SUBST(MBIMPROXY_CFLAGS)
@@ -138,7 +147,6 @@ case $with_udev in
         fi
         ;;
     *)
-        AC_DEFINE(WITH_UDEV, 0, [Define if you want udev support])
         with_udev=no
         ;;
 esac
@@ -164,6 +172,8 @@ AC_CONFIG_FILES([Makefile
                  data/pkg-config/Makefile
                  data/pkg-config/mbim-glib.pc
                  src/Makefile
+                 src/common/Makefile
+                 src/common/test/Makefile
                  src/libmbim-glib/Makefile
                  src/libmbim-glib/mbim-version.h
                  src/libmbim-glib/generated/Makefile

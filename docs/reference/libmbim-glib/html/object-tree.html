@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Object Hierarchy: libmbim-glib Reference Manual</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
 <link rel="home" href="index.html" title="libmbim-glib Reference Manual">
 <link rel="up" href="index.html" title="libmbim-glib Reference Manual">
 <link rel="prev" href="libmbim-glib-Deprecated-API.html" title="Deprecated API">
 <link rel="next" href="api-index-full.html" title="API Index">
-<meta name="generator" content="GTK-Doc V1.25.1 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.27 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -23,16 +23,20 @@
 <div class="titlepage"><div><div><h1 class="title">
 <a name="object-tree"></a>Object Hierarchy</h1></div></div></div>
 <pre class="screen">
-    <a href="https://developer.gnome.org/gobject/unstable/gobject-The-Base-Object-Type.html#GObject-struct">GObject</a>
+    <a href="../gobject/gobject-The-Base-Object-Type.html#GObject-struct">GObject</a>
     <span class="lineart">├──</span> <a class="link" href="MbimDevice.html" title="MbimDevice">MbimDevice</a>
     <span class="lineart">╰──</span> <a class="link" href="MbimProxy.html" title="MbimProxy">MbimProxy</a>
-    <a href="https://developer.gnome.org/gobject/unstable/gobject-Enumeration-and-Flag-Types.html">GEnum</a>
+    <a href="/usr/share/gtk-doc/html/gobject/gobject-Enumeration-and-Flag-Types.html">GEnum</a>
     <span class="lineart">├──</span> <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimActivationCommand" title="enum MbimActivationCommand">MbimActivationCommand</a>
     <span class="lineart">├──</span> <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimActivationState" title="enum MbimActivationState">MbimActivationState</a>
+    <span class="lineart">├──</span> <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimAtdsProviderPlmnMode" title="enum MbimAtdsProviderPlmnMode">MbimAtdsProviderPlmnMode</a>
+    <span class="lineart">├──</span> <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimAtdsRatMode" title="enum MbimAtdsRatMode">MbimAtdsRatMode</a>
     <span class="lineart">├──</span> <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimAuthProtocol" title="enum MbimAuthProtocol">MbimAuthProtocol</a>
+    <span class="lineart">├──</span> <a class="link" href="libmbim-glib-Command-IDs.html#MbimCidAtds" title="enum MbimCidAtds">MbimCidAtds</a>
     <span class="lineart">├──</span> <a class="link" href="libmbim-glib-Command-IDs.html#MbimCidAuth" title="enum MbimCidAuth">MbimCidAuth</a>
     <span class="lineart">├──</span> <a class="link" href="libmbim-glib-Command-IDs.html#MbimCidBasicConnect" title="enum MbimCidBasicConnect">MbimCidBasicConnect</a>
     <span class="lineart">├──</span> <a class="link" href="libmbim-glib-Command-IDs.html#MbimCidDss" title="enum MbimCidDss">MbimCidDss</a>
+    <span class="lineart">├──</span> <a class="link" href="libmbim-glib-Command-IDs.html#MbimCidIntelFirmwareUpdate" title="enum MbimCidIntelFirmwareUpdate">MbimCidIntelFirmwareUpdate</a>
     <span class="lineart">├──</span> <a class="link" href="libmbim-glib-Command-IDs.html#MbimCidMsFirmwareId" title="enum MbimCidMsFirmwareId">MbimCidMsFirmwareId</a>
     <span class="lineart">├──</span> <a class="link" href="libmbim-glib-Command-IDs.html#MbimCidMsHostShutdown" title="enum MbimCidMsHostShutdown">MbimCidMsHostShutdown</a>
     <span class="lineart">├──</span> <a class="link" href="libmbim-glib-Command-IDs.html#MbimCidPhonebook" title="enum MbimCidPhonebook">MbimCidPhonebook</a>
@@ -85,7 +89,7 @@
     <span class="lineart">├──</span> <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimVisibleProvidersAction" title="enum MbimVisibleProvidersAction">MbimVisibleProvidersAction</a>
     <span class="lineart">├──</span> <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimVoiceCallState" title="enum MbimVoiceCallState">MbimVoiceCallState</a>
     <span class="lineart">╰──</span> <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimVoiceClass" title="enum MbimVoiceClass">MbimVoiceClass</a>
-    <a href="https://developer.gnome.org/gobject/unstable/gobject-Enumeration-and-Flag-Types.html">GFlags</a>
+    <a href="/usr/share/gtk-doc/html/gobject/gobject-Enumeration-and-Flag-Types.html">GFlags</a>
     <span class="lineart">├──</span> <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimCellularClass" title="enum MbimCellularClass">MbimCellularClass</a>
     <span class="lineart">├──</span> <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimCtrlCaps" title="enum MbimCtrlCaps">MbimCtrlCaps</a>
     <span class="lineart">├──</span> <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimDataClass" title="enum MbimDataClass">MbimDataClass</a>
@@ -95,11 +99,11 @@
     <span class="lineart">├──</span> <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimRegistrationFlag" title="enum MbimRegistrationFlag">MbimRegistrationFlag</a>
     <span class="lineart">├──</span> <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimSimClass" title="enum MbimSimClass">MbimSimClass</a>
     <span class="lineart">╰──</span> <a class="link" href="libmbim-glib-Enumerations-and-Flags.html#MbimSmsCaps" title="enum MbimSmsCaps">MbimSmsCaps</a>
-    <a href="https://developer.gnome.org/gobject/unstable/gobject-Boxed-Types.html">GBoxed</a>
+    <a href="/usr/share/gtk-doc/html/gobject/gobject-Boxed-Types.html">GBoxed</a>
     <span class="lineart">╰──</span> <a class="link" href="MbimMessage.html" title="MbimMessage">MbimMessage</a>
 </pre>
 </div>
 <div class="footer">
-<hr>Generated by GTK-Doc V1.25.1</div>
+<hr>Generated by GTK-Doc V1.27</div>
 </body>
 </html>
