@@ -4,6 +4,9 @@ libmbim (1.16.0-1) UNRELEASED; urgency=medium
   * Adopting the package. (Closes: #888680)
   * debian/control: bump libglib-dev Depends to (>= 2.36) as required by the
     new release.
+  * debian/libmbim-glib4.symbols: update symbols for new release.
+  * debian/rules: add DPKG_GENSYMBOLS_CHECK_LEVEL=4; it's more verbose with
+    added or changed symbols then.
 
  -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Fri, 23 Feb 2018 09:54:57 -0500
 
