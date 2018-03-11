@@ -2,7 +2,7 @@ Source: libmbim
 Section: libs
 Priority: optional
 Maintainer: Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>
-Build-Depends: debhelper (>= 10.3),
+Build-Depends: debhelper (>= 10),
                pkg-config,
                libglib2.0-dev (>= 2.36),
                libgudev-1.0-dev (>= 147),
